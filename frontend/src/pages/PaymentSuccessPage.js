@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import api from '../services/api';
 
 const PaymentSuccessPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const [status, setStatus] = useState('checking'); // checking, success, failed, error
+  const [status, setStatus] = useState('checking');
   const [paymentInfo, setPaymentInfo] = useState(null);
   const [error, setError] = useState(null);
 
@@ -22,14 +21,8 @@ const PaymentSuccessPage = () => {
 
         console.log('🔍 Проверяем статус платежа:', orderId);
 
-        // Извлекаем внутренний orderId из alfabank orderId
-        // orderId от альфы: 01d29f47-a22a-7edf-9333-bf5702745c4b
-        // Нужно найти платеж по alfabank_order_id
-        
-        // Даем время на обработку платежа
         await new Promise(resolve => setTimeout(resolve, 2000));
 
-        // Проверяем статус через API
         const token = localStorage.getItem('token');
         const response = await fetch(`${process.env.REACT_APP_API_URL || '/api'}/balance/payment/check/${orderId}`, {
           headers: {
@@ -77,13 +70,17 @@ const PaymentSuccessPage = () => {
 
   if (status === 'checking') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+      <div className="min-h-screen bg-white flex items-center justify-center p-4">
+        <div className="text-center max-w-md w-full">
+          {/* Animated loader with orange accent */}
+          <div className="relative w-24 h-24 mx-auto mb-6">
+            <div className="absolute inset-0 rounded-full border-4 border-gray-100"></div>
+            <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#FF6933] animate-spin"></div>
+          </div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
             Проверяем статус платежа
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-500">
             Пожалуйста, подождите...
           </p>
         </div>
@@ -93,13 +90,17 @@ const PaymentSuccessPage = () => {
 
   if (status === 'success') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full">
+      <div className="min-h-screen bg-gradient-to-br from-white via-orange-50 to-yellow-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-[28px] shadow-xl p-8 max-w-md w-full border border-gray-100">
           <div className="text-center mb-6">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-              </svg>
+            {/* Success icon with orange gradient */}
+            <div className="relative w-24 h-24 mx-auto mb-6">
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-yellow-400 rounded-full opacity-20 blur-xl"></div>
+              <div className="relative w-24 h-24 bg-gradient-to-br from-[#FF6933] to-[#FFA726] rounded-full flex items-center justify-center shadow-lg">
+                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
             </div>
             <h1 className="text-3xl font-bold text-gray-800 mb-2">
               Оплата успешна!
@@ -110,18 +111,20 @@ const PaymentSuccessPage = () => {
           </div>
 
           {paymentInfo && (
-            <div className="bg-gray-50 rounded-lg p-4 mb-6">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-gray-600">Сумма пополнения:</span>
-                <span className="text-2xl font-bold text-green-600">
+            <div className="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-[20px] p-6 mb-6 border border-orange-100">
+              <div className="flex justify-between items-center mb-3">
+                <span className="text-gray-600 font-medium">Сумма пополнения:</span>
+                <span className="text-3xl font-bold bg-gradient-to-r from-[#FF6933] to-[#FFA726] bg-clip-text text-transparent">
                   {paymentInfo.amount} ₽
                 </span>
               </div>
-              <div className="flex justify-between items-center text-sm">
-                <span className="text-gray-500">ID платежа:</span>
-                <span className="text-gray-700 font-mono text-xs">
-                  {paymentInfo.orderId?.substring(0, 20)}...
-                </span>
+              <div className="pt-3 border-t border-orange-200">
+                <div className="flex justify-between items-center text-sm">
+                  <span className="text-gray-500">ID платежа:</span>
+                  <span className="text-gray-700 font-mono text-xs">
+                    {paymentInfo.orderId?.substring(0, 20)}...
+                  </span>
+                </div>
               </div>
             </div>
           )}
@@ -129,13 +132,13 @@ const PaymentSuccessPage = () => {
           <div className="space-y-3">
             <button
               onClick={handleGoToBalance}
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="w-full bg-gradient-to-r from-[#FF6933] to-[#FFA726] text-white py-4 rounded-[20px] hover:shadow-lg transition-all duration-300 font-semibold text-lg"
             >
               Перейти к балансу
             </button>
             <button
               onClick={handleGoHome}
-              className="w-full bg-gray-100 text-gray-700 py-3 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+              className="w-full bg-gray-100 text-gray-700 py-4 rounded-[20px] hover:bg-gray-200 transition-all duration-300 font-medium"
             >
               На главную
             </button>
@@ -147,13 +150,16 @@ const PaymentSuccessPage = () => {
 
   if (status === 'failed') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 to-rose-100 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full">
+      <div className="min-h-screen bg-gradient-to-br from-white via-red-50 to-orange-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-[28px] shadow-xl p-8 max-w-md w-full border border-gray-100">
           <div className="text-center mb-6">
-            <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-10 h-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
+            <div className="relative w-24 h-24 mx-auto mb-6">
+              <div className="absolute inset-0 bg-red-200 rounded-full opacity-20 blur-xl"></div>
+              <div className="relative w-24 h-24 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </div>
             </div>
             <h1 className="text-3xl font-bold text-gray-800 mb-2">
               Оплата не прошла
@@ -164,7 +170,7 @@ const PaymentSuccessPage = () => {
           </div>
 
           {paymentInfo && (
-            <div className="bg-gray-50 rounded-lg p-4 mb-6">
+            <div className="bg-gray-50 rounded-[20px] p-4 mb-6 border border-gray-200">
               <div className="flex justify-between items-center text-sm">
                 <span className="text-gray-600">Сумма:</span>
                 <span className="text-lg font-semibold text-gray-800">
@@ -174,16 +180,22 @@ const PaymentSuccessPage = () => {
             </div>
           )}
 
+          <div className="bg-yellow-50 border-l-4 border-[#FFA726] rounded-r-[15px] p-4 mb-6">
+            <p className="text-sm text-gray-700">
+              💡 Деньги не были списаны с вашего счета
+            </p>
+          </div>
+
           <div className="space-y-3">
             <button
               onClick={handleGoToBalance}
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="w-full bg-gradient-to-r from-[#FF6933] to-[#FFA726] text-white py-4 rounded-[20px] hover:shadow-lg transition-all duration-300 font-semibold"
             >
               Попробовать снова
             </button>
             <button
               onClick={handleGoHome}
-              className="w-full bg-gray-100 text-gray-700 py-3 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+              className="w-full bg-gray-100 text-gray-700 py-4 rounded-[20px] hover:bg-gray-200 transition-all duration-300 font-medium"
             >
               На главную
             </button>
@@ -195,13 +207,16 @@ const PaymentSuccessPage = () => {
 
   // Error state
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-amber-100 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full">
+    <div className="min-h-screen bg-gradient-to-br from-white via-yellow-50 to-orange-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-[28px] shadow-xl p-8 max-w-md w-full border border-gray-100">
         <div className="text-center mb-6">
-          <div className="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-10 h-10 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-            </svg>
+          <div className="relative w-24 h-24 mx-auto mb-6">
+            <div className="absolute inset-0 bg-yellow-200 rounded-full opacity-20 blur-xl"></div>
+            <div className="relative w-24 h-24 bg-gradient-to-br from-[#FFA726] to-yellow-400 rounded-full flex items-center justify-center shadow-lg">
+              <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+              </svg>
+            </div>
           </div>
           <h1 className="text-3xl font-bold text-gray-800 mb-2">
             Ошибка
@@ -214,13 +229,13 @@ const PaymentSuccessPage = () => {
         <div className="space-y-3">
           <button
             onClick={handleGoToBalance}
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            className="w-full bg-gradient-to-r from-[#FF6933] to-[#FFA726] text-white py-4 rounded-[20px] hover:shadow-lg transition-all duration-300 font-semibold"
           >
             К балансу
           </button>
           <button
             onClick={handleGoHome}
-            className="w-full bg-gray-100 text-gray-700 py-3 rounded-lg hover:bg-gray-200 transition-colors font-medium"
+            className="w-full bg-gray-100 text-gray-700 py-4 rounded-[20px] hover:bg-gray-200 transition-all duration-300 font-medium"
           >
             На главную
           </button>
