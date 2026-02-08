@@ -28,6 +28,7 @@ tar --exclude='node_modules' \
     --exclude='.git' \
     --exclude='uploads' \
     --exclude='logs' \
+    --exclude='backups' \
     -czf "$BACKUP_CODE" -C "$PROJECT_DIR" .
 echo "✅ Бекап кода создан: $BACKUP_CODE"
 
