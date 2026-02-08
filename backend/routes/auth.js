@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
     });
     
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
-      expiresIn: '2h',
+      expiresIn: '365d',
     });
     
     res.status(201).json({
@@ -62,7 +62,7 @@ router.post('/login', async (req, res) => {
     }
 
     const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
-      expiresIn: '2h',
+      expiresIn: '365d',
     });
 
     res.json({
@@ -107,7 +107,7 @@ router.post('/admin/login', async (req, res) => {
           username: adminUsername 
         }, 
         process.env.JWT_SECRET, 
-        { expiresIn: '12h' }
+        { expiresIn: '365d' }
       );
       
       res.json({
@@ -137,7 +137,7 @@ router.post('/club/login', async (req, res) => {
         clubId: result.clubId,
         isClubOwner: true
       }, process.env.JWT_SECRET, {
-        expiresIn: '12h'
+        expiresIn: '365d'
       });
       
       res.json({
