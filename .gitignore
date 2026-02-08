@@ -35,3 +35,25 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Backups
+backups/
+
+# Uploads
+backend/uploads/
+frontend/uploads/
+
+# PM2
+.pm2/
+ecosystem.config.js.backup
+
+# Database dumps
+*.sql
+*.sql.gz
+
+# Archives
+*.tar.gz
+*.zip
+
+# Frontend build
+frontend/build/
