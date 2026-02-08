@@ -42,6 +42,41 @@ const PaymentSuccessPage = () => {
         if (data.status === 'completed') {
           setStatus('success');
           setPaymentInfo(data);
+          
+          // 🎯 УВЕДОМЛЯЕМ ХЕДЕР ОБ ОБНОВЛЕНИИ БАЛАНСА
+          console.log('📢 Уведомляем хедер об обновлении баланса после оплаты');
+          
+          // Получаем актуальный баланс пользователя
+          const userResponse = await fetch(`${process.env.REACT_APP_API_URL || '/api'}/auth/me`, {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+          
+          if (userResponse.ok) {
+            const userData = await userResponse.json();
+            const newBalance = userData.balance;
+            
+            console.log('💰 Новый баланс после оплаты:', newBalance);
+            
+            // Сохраняем в localStorage
+            const balanceData = {
+              balance: newBalance,
+              timestamp: Date.now()
+            };
+            localStorage.setItem('latestBalance', JSON.stringify(balanceData));
+            
+            // Отправляем событие для обновления хедера
+            window.dispatchEvent(new CustomEvent('balanceUpdated', {
+              detail: {
+                balance: newBalance,
+                timestamp: Date.now()
+              }
+            }));
+            
+            console.log('✅ Хедер уведомлен об обновлении баланса');
+          }
+          
         } else if (data.status === 'failed') {
           setStatus('failed');
           setPaymentInfo(data);
@@ -60,7 +95,34 @@ const PaymentSuccessPage = () => {
     checkPaymentStatus();
   }, [searchParams]);
 
-  const handleGoToBalance = () => {
+  const handleGoToBalance = async () => {
+    // Перед переходом еще раз уведомляем хедер
+    const token = localStorage.getItem('token');
+    try {
+      const userResponse = await fetch(`${process.env.REACT_APP_API_URL || '/api'}/auth/me`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      
+      if (userResponse.ok) {
+        const userData = await userResponse.json();
+        const balanceData = {
+          balance: userData.balance,
+          timestamp: Date.now()
+        };
+        localStorage.setItem('latestBalance', JSON.stringify(balanceData));
+        window.dispatchEvent(new CustomEvent('balanceUpdated', {
+          detail: {
+            balance: userData.balance,
+            timestamp: Date.now()
+          }
+        }));
+      }
+    } catch (err) {
+      console.error('Ошибка обновления баланса:', err);
+    }
+    
     navigate('/balance');
   };
 
