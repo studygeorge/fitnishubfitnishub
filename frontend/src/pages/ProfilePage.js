@@ -704,10 +704,10 @@ const ProfilePage = () => {
                     <div className="fitness-booking-info">
                       <h3>{booking.class_name}</h3>
                       <p className="fitness-booking-club">{booking.club_name}</p>
-                      {booking.booking_code && (
+                      {booking.visit_code && (
                         <p className="fitness-booking-code">
                           <span className="fitness-booking-code-label">Код:</span>
-                          <span className="fitness-booking-code-value">{booking.booking_code}</span>
+                          <span className="fitness-booking-code-value">{booking.visit_code}</span>
                         </p>
                       )}
                       
