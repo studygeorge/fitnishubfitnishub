@@ -133,6 +133,104 @@ router.post('/webhook/alfabank', async (req, res) => {
   }
 });
 
+// Проверка статуса платежа по alfabank orderId (для страницы success/failed)
+router.get('/payment/check/:alfabankOrderId', auth, async (req, res) => {
+  try {
+    const { alfabankOrderId } = req.params;
+    
+    console.log('🔍 Проверяем статус платежа по alfabankOrderId:', alfabankOrderId);
+    
+    const { getPaymentByAlfabankOrderId } = require('../models/paymentModel');
+    const payment = await getPaymentByAlfabankOrderId(alfabankOrderId);
+    
+    if (!payment) {
+      console.log('❌ Платеж не найден:', alfabankOrderId);
+      return res.status(404).json({ error: 'Платеж не найден' });
+    }
+    
+    if (payment.user_id !== req.userId) {
+      console.log('❌ Нет доступа к платежу:', alfabankOrderId);
+      return res.status(403).json({ error: 'Нет доступа к платежу' });
+    }
+
+    console.log('📋 Найден платеж:', {
+      orderId: payment.order_id,
+      status: payment.status,
+      amount: payment.amount,
+      alfabankOrderId: payment.alfabank_order_id
+    });
+
+    if (payment.status === 'completed') {
+      return res.json({
+        orderId: payment.order_id,
+        status: 'completed',
+        amount: payment.amount,
+        createdAt: payment.created_at,
+        completedAt: payment.completed_at,
+        message: 'Оплата прошла успешно! Баланс пополнен.'
+      });
+    }
+
+    // Проверяем статус в Альфа-Банк
+    console.log('🔍 Проверяем статус в Альфа-Банк:', alfabankOrderId);
+    
+    const alfabankStatus = await alfabankService.getOrderStatus(alfabankOrderId);
+    
+    if (alfabankStatus) {
+      console.log('📊 Статус от Альфа-Банк:', alfabankStatus);
+
+      if (alfabankService.isSuccessfulPayment(alfabankStatus.orderStatus)) {
+        if (payment.status !== 'completed') {
+          console.log('✅ Платеж успешен, пополняем баланс');
+
+          await createDeposit(
+            payment.user_id,
+            payment.amount,
+            'alfabank',
+            `Пополнение через Альфа-Банк (заказ: ${payment.order_id})`
+          );
+
+          await updatePaymentStatus(payment.order_id, 'completed', alfabankStatus);
+
+          console.log(`✅ Баланс пользователя ${payment.user_id} пополнен на ${payment.amount} ₽`);
+
+          return res.json({
+            orderId: payment.order_id,
+            status: 'completed',
+            amount: payment.amount,
+            createdAt: payment.created_at,
+            completedAt: new Date(),
+            message: 'Оплата прошла успешно! Баланс пополнен.'
+          });
+        }
+      } else if (alfabankService.isFailedPayment(alfabankStatus.orderStatus)) {
+        await updatePaymentStatus(payment.order_id, 'failed', alfabankStatus);
+        
+        return res.json({
+          orderId: payment.order_id,
+          status: 'failed',
+          amount: payment.amount,
+          createdAt: payment.created_at,
+          message: 'Оплата отклонена'
+        });
+      }
+    }
+    
+    // Статус еще pending
+    res.json({
+      orderId: payment.order_id,
+      status: payment.status,
+      amount: payment.amount,
+      createdAt: payment.created_at,
+      message: 'Платеж обрабатывается...'
+    });
+    
+  } catch (err) {
+    console.error('❌ Ошибка получения статуса платежа:', err);
+    res.status(500).json({ error: 'Ошибка при получении статуса платежа' });
+  }
+});
+
 // Проверка статуса платежа и пополнение баланса
 router.get('/payment/status/:orderId', auth, async (req, res) => {
   try {

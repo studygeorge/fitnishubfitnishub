@@ -28,6 +28,10 @@ import RecommendationPolicyPage from './pages/RecommendationPolicyPage';
 import UserRulesPage from './pages/UserRulesPage';
 import OfertaPartners from './pages/OfertaPartners'; // Новая страница договора оферты для партнеров
 
+// Импорт страниц платежей
+import PaymentSuccessPage from './pages/PaymentSuccessPage';
+import PaymentFailedPage from './pages/PaymentFailedPage';
+
 // Импорт клубных компонентов
 import { ClubProvider } from './club/contexts/ClubContext';
 import ClubLoginPage from './club/pages/ClubLoginPage';
@@ -219,6 +223,18 @@ const AppContent = () => {
         <Layout>
           <OfertaPartners />
         </Layout>
+      } />
+
+      {/* Страницы платежей БЕЗ Layout */}
+      <Route path="/payment/success" element={
+        <ProtectedRoute>
+          <PaymentSuccessPage />
+        </ProtectedRoute>
+      } />
+      <Route path="/payment/failed" element={
+        <ProtectedRoute>
+          <PaymentFailedPage />
+        </ProtectedRoute>
       } />
       
       {/* 404 страница */}
