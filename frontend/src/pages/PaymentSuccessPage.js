@@ -30,19 +30,31 @@ const PaymentSuccessPage = () => {
         await new Promise(resolve => setTimeout(resolve, 2000));
 
         // Проверяем статус через API
-        const response = await api.get(`/balance/payment/check/${orderId}`);
-        
-        console.log('📊 Ответ от API:', response.data);
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${process.env.REACT_APP_API_URL || '/api'}/balance/payment/check/${orderId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
 
-        if (response.data.status === 'completed') {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        console.log('📊 Ответ от API:', data);
+
+        if (data.status === 'completed') {
           setStatus('success');
-          setPaymentInfo(response.data);
-        } else if (response.data.status === 'failed') {
+          setPaymentInfo(data);
+        } else if (data.status === 'failed') {
           setStatus('failed');
-          setPaymentInfo(response.data);
+          setPaymentInfo(data);
         } else {
           setStatus('checking');
-          setPaymentInfo(response.data);
+          setPaymentInfo(data);
         }
 
       } catch (err) {
