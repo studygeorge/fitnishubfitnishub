@@ -1,0 +1,195 @@
+.logo-editor-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .logo-editor-modal {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    max-height: 90vh;
+  }
+  
+  .logo-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .logo-editor-header h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .logo-editor-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(90vh - 120px);
+    overflow-y: auto;
+  }
+  
+  @media (min-width: 768px) {
+    .logo-editor-content {
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
+  
+  .crop-container {
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  
+  .crop-instructions {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+  }
+  
+  .preview-container {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logo-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+  }
+  
+  .preview-canvas {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+  }
+  
+  .preview-note {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+  }
+  
+  .logo-editor-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cancel-btn, .save-btn, .save-original-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .save-original-btn {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    color: #555;
+    margin-right: auto;
+  }
+  
+  .cancel-btn {
+    background-color: #f1f2f6;
+    border: 1px solid #ddd;
+    color: #555;
+  }
+  
+  .save-btn {
+    background-color: #4A90E2;
+    border: 1px solid #4A90E2;
+    color: white;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #e1e2e6;
+  }
+  
+  .save-btn:hover {
+    background-color: #3A80D2;
+  }
+  
+  .save-original-btn:hover {
+    background-color: #eaeaea;
+  }
+  
+  .save-btn:disabled {
+    background-color: #ccc;
+    border-color: #bbb;
+    cursor: not-allowed;
+  }
+  
+  /* Состояния загрузки и ошибки */
+  .loading, .error {
+    padding: 40px;
+    text-align: center;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #4A90E2;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Стили для ReactCrop */
+  .ReactCrop {
+    max-height: 500px;
+    margin: 0 auto;
+  }
+  
+  .ReactCrop__crop-selection {
+    border: 2px solid #4A90E2;
+  }

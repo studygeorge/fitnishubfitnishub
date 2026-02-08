@@ -1,0 +1,892 @@
+/* src/pages/HomePage.css */
+
+/* Подключение шрифта Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ОТКЛЮЧЕНИЕ АВТОМАТИЧЕСКОЙ ТЕМНОЙ ТЕМЫ БРАУЗЕРА */
+html {
+  color-scheme: light only;
+}
+
+body {
+  color-scheme: light only;
+}
+
+.fitness-home-page {
+  color-scheme: light only;
+}
+
+/* Принудительное сохранение ваших цветов */
+* {
+  color-scheme: light only;
+}
+
+/* ПЛАВНОЕ ЛИСТАНИЕ */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Улучшенная прокрутка для всех элементов */
+* {
+  scroll-behavior: smooth;
+}
+
+/* CSS переменные с новой айдентикой */
+:root {
+  --fitness-primary: #FF6933; /* Основной оранжевый */
+  --fitness-secondary: #3D5A80; /* Темно-синий */
+  --fitness-dark: #293241; /* Темно-серый/черный */
+  --fitness-accent: #B7CE63; /* Салатовый акцент */
+  --fitness-light: #F5F5F5; /* Светло-серый */
+  
+  /* Дополнительные оттенки */
+  --fitness-primary-light: rgba(255, 105, 51, 0.1); /* Светлый оранжевый */
+  --fitness-secondary-light: rgba(61, 90, 128, 0.1); /* Светлый синий */
+  --fitness-white: #ffffff;
+  --fitness-black: #000000;
+  
+  /* Градиенты с новой палитрой */
+  --fitness-gradient-orange: linear-gradient(135deg, #FF6933 0%, #FF8A5B 100%);
+  --fitness-gradient-blue: linear-gradient(135deg, #3D5A80 0%, #5B7FA6 100%);
+  --fitness-gradient-contrast: linear-gradient(135deg, #E8F0F5 0%, #D1DEE6 100%); /* Оставляем блеклый серо-голубой */
+  --fitness-gradient-accent: linear-gradient(135deg, #B7CE63 0%, #C9D678 100%);
+  
+  --fitness-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  --fitness-shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.12);
+  --fitness-border-radius: 16px;
+  --fitness-border-radius-large: 28px;
+  --fitness-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-height-desktop: 0px;
+  --header-height-mobile: 70px;
+}
+
+/* ПРИНУДИТЕЛЬНОЕ СОХРАНЕНИЕ СВЕТЛОЙ ТЕМЫ - ИСПОЛЬЗУЕМ ПРЯМЫЕ ЦВЕТА */
+@media (prefers-color-scheme: dark) {
+  html,
+  body,
+  .fitness-home-page {
+    background-color: #ffffff !important; /* ПРЯМОЙ БЕЛЫЙ ЦВЕТ */
+    color: #293241 !important; /* ПРЯМОЙ ТЕМНО-СЕРЫЙ */
+  }
+  
+  /* Принудительное сохранение белого фона для всех светлых блоков */
+  .fitness-block.fitness-light-block,
+  .fitness-block.fitness-gray-block,
+  .fitness-card,
+  .fitness-advantage-card,
+  .fitness-sport-card,
+  .fitness-news-item,
+  .fitness-mock-screen {
+    background-color: #ffffff !important; /* ПРЯМОЙ БЕЛЫЙ */
+    color: #293241 !important; /* ПРЯМОЙ ТЕМНО-СЕРЫЙ */
+  }
+  
+  /* Серые блоки остаются серыми */
+  .fitness-block.fitness-gray-block {
+    background-color: #F8F8F8 !important; /* ПРЯМОЙ СВЕТЛО-СЕРЫЙ */
+  }
+  
+  /* Сохранение цветов текста - используем прямые цвета */
+  .fitness-section-title,
+  .fitness-advantage-card h3,
+  .fitness-sport-info h3,
+  .fitness-news-content h3,
+  .fitness-info-content h3,
+  .fitness-instruction-title {
+    color: #293241 !important; /* ПРЯМОЙ ТЕМНО-СЕРЫЙ */
+  }
+  
+  .fitness-section-subtitle,
+  .fitness-advantage-card p,
+  .fitness-news-content p {
+    color: #3D5A80 !important; /* ПРЯМОЙ ТЕМНО-СИНИЙ */
+  }
+  
+  .fitness-sport-count {
+    color: #FF6933 !important; /* ПРЯМОЙ ОРАНЖЕВЫЙ */
+  }
+  
+  .fitness-advantage-icon {
+    color: #FF6933 !important; /* ПРЯМОЙ ОРАНЖЕВЫЙ */
+  }
+  
+  /* Hero секция - белый текст должен остаться белым */
+  .fitness-hero-title,
+  .fitness-hero-subtitle,
+  .fitness-hero-tagline {
+    color: #FFFFFF !important; /* ПРЯМОЙ БЕЛЫЙ */
+  }
+  
+  /* Ссылки */
+  .fitness-doc-links a,
+  .fitness-social-links a {
+    color: #3D5A80 !important; /* ПРЯМОЙ ТЕМНО-СИНИЙ */
+  }
+  
+  .fitness-doc-links a:hover,
+  .fitness-social-links a:hover {
+    color: #FF6933 !important; /* ПРЯМОЙ ОРАНЖЕВЫЙ */
+  }
+  
+  .social-icon {
+    color: #B7CE63 !important; /* ПРЯМОЙ САЛАТОВЫЙ */
+  }
+}
+
+/* Базовые стили */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--fitness-white);
+  color: var(--fitness-dark); /* Используем новый темный цвет */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Отступ сверху при переходе к якорям */
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.fitness-home-page {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  background-color: var(--fitness-white);
+  padding: 16px;
+}
+
+/* ID для якорных ссылок на секции */
+#fitness-hero-section,
+#fitness-advantages-section,
+#fitness-sports-section,
+#fitness-instruction-section,
+#fitness-news-section,
+#fitness-footer-section {
+  scroll-margin-top: 80px; /* Отступ при переходе к секции */
+}
+
+/* Блочная структура */
+.fitness-block {
+  margin: 16px auto;
+  border-radius: var(--fitness-border-radius-large);
+  overflow: hidden;
+}
+
+/* Типы блоков с новой палитрой */
+.fitness-block.fitness-orange-block {
+  background: var(--fitness-gradient-orange);
+}
+
+.fitness-block.fitness-blue-block {
+  background: var(--fitness-gradient-blue);
+}
+
+.fitness-block.fitness-accent-block {
+  background: var(--fitness-gradient-accent);
+}
+
+.fitness-block.fitness-light-block {
+  background-color: var(--fitness-light);
+}
+
+.fitness-block.fitness-gray-block {
+  background-color: #F8F8F8;
+}
+
+/* Контрастный блок - оставляем блеклый серо-голубой */
+.fitness-block.fitness-contrast-block {
+  background: var(--fitness-gradient-contrast);
+}
+
+/* Контейнер для содержимого блока */
+.fitness-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 100%;
+}
+
+/* Отдельный стиль для первого блока (Hero) */
+#fitness-hero-section {
+  margin-top: 0;
+}
+
+#fitness-hero-section .fitness-container {
+  padding: 43px 16px;
+}
+
+/* Фон с изображением для Hero секции */
+.fitness-hero-background {
+  background-image: var(--fitness-gradient-orange);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 715px;
+}
+
+/* Общие стили для секций */
+.fitness-section-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--fitness-dark); /* Новый темный цвет */
+  letter-spacing: -0.02em;
+}
+
+.fitness-section-subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  text-align: center;
+  color: var(--fitness-secondary); /* Темно-синий для подзаголовков */
+  margin-bottom: 50px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* Сетки для компонентов */
+.fitness-advantages-grid,
+.fitness-sports-grid,
+.fitness-instruction-grid {
+  display: grid;
+  gap: 30px;
+}
+
+.fitness-advantages-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.fitness-sports-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.fitness-instruction-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Карточки */
+.fitness-card,
+.fitness-advantage-card,
+.fitness-sport-card {
+  background: var(--fitness-white);
+  border-radius: var(--fitness-border-radius);
+  overflow: hidden;
+  box-shadow: var(--fitness-shadow);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fitness-card:hover,
+.fitness-advantage-card:hover,
+.fitness-sport-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--fitness-shadow-hover);
+}
+
+/* Кнопки с новой палитрой */
+.fitness-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--fitness-primary);
+  color: var(--fitness-white);
+  text-decoration: none;
+  border-radius: var(--fitness-border-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 8px 25px rgba(255, 105, 51, 0.25);
+}
+
+.fitness-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 105, 51, 0.35);
+  background: #E55A29; /* Темнее при ховере */
+}
+
+.fitness-btn-arrow {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.fitness-btn-primary:hover .fitness-btn-arrow {
+  transform: translateX(4px);
+}
+
+.fitness-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--fitness-primary);
+  border: 2px solid var(--fitness-primary);
+  text-decoration: none;
+  border-radius: var(--fitness-border-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fitness-btn-secondary:hover {
+  background: var(--fitness-primary);
+  color: var(--fitness-white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 105, 51, 0.3);
+}
+
+/* Акцентная кнопка с салатовым цветом */
+.fitness-btn-accent {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  background: var(--fitness-accent);
+  color: var(--fitness-dark);
+  text-decoration: none;
+  border-radius: var(--fitness-border-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 8px 25px rgba(183, 206, 99, 0.25);
+}
+
+.fitness-btn-accent:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(183, 206, 99, 0.35);
+  background: #A8BD58;
+}
+
+/* ИСПРАВЛЕННЫЕ СТИЛИ HERO СЕКЦИИ - БЕЛЫЙ ТЕКСТ */
+.fitness-hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fitness-hero-text {
+  max-width: 55%;
+  padding-right: 40px;
+}
+
+/* БЕЛЫЙ ЦВЕТ ДЛЯ ЗАГОЛОВКА HERO */
+.fitness-hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #FFFFFF !important; /* БЕЛЫЙ ЦВЕТ */
+  letter-spacing: -0.02em;
+}
+
+/* БЕЛЫЙ ЦВЕТ ДЛЯ ПОДЗАГОЛОВКА HERO */
+.fitness-hero-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  opacity: 0.85;
+  color: #FFFFFF !important; /* БЕЛЫЙ ЦВЕТ */
+}
+
+/* БЕЛЫЙ ЦВЕТ ДЛЯ ТЕГЛАЙНА HERO */
+.fitness-hero-tagline {
+  background: rgba(255, 255, 255, 0.3);
+  color: #FFFFFF !important; /* БЕЛЫЙ ЦВЕТ */
+  padding: 12px 24px;
+  border-radius: 25px;
+  display: inline-block;
+  margin: 15px 0 25px 0;
+  font-weight: 600;
+  font-size: 1rem;
+  backdrop-filter: blur(5px);
+}
+
+.fitness-hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Телефон с приложением */
+.fitness-hero-app {
+  position: relative;
+  width: 250px;
+  height: 500px;
+  flex-shrink: 0;
+}
+
+.fitness-hero-phone {
+  width: 250px;
+  height: 500px;
+  background: var(--fitness-dark); /* Новый темный цвет */
+  border-radius: 36px;
+  position: relative;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.fitness-hero-app-content {
+  width: 100%;
+  height: 100%;
+  background: var(--fitness-gradient-orange);
+  border-radius: 28px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.fitness-hero-app-content h3 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.fitness-app-time {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.fitness-app-schedule {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.fitness-app-time-slot {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.fitness-app-times {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.fitness-app-time-slot.fitness-active {
+  background: var(--fitness-accent); /* Салатовый для активного слота */
+  color: var(--fitness-dark);
+}
+
+/* Преимущества */
+.fitness-advantage-card {
+  background: var(--fitness-white);
+  padding: 35px 25px;
+  border-radius: var(--fitness-border-radius);
+  box-shadow: var(--fitness-shadow);
+  text-align: center;
+  border: 1px solid var(--fitness-light); /* Легкая граница */
+}
+
+.fitness-advantage-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--fitness-primary); /* Оранжевые иконки */
+}
+
+.fitness-advantage-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--fitness-dark);
+}
+
+.fitness-advantage-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--fitness-secondary);
+}
+
+/* Спорт карточки */
+.fitness-sports-header {
+  margin-bottom: 40px;
+}
+
+.fitness-sport-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.fitness-sport-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.fitness-sport-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.fitness-sport-card:hover .fitness-sport-image img {
+  transform: scale(1.05);
+}
+
+.fitness-sport-info {
+  padding: 20px;
+}
+
+.fitness-sport-info h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--fitness-dark);
+}
+
+.fitness-sport-count {
+  color: var(--fitness-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.fitness-sports-cta {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Инструкции */
+.fitness-instruction-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--fitness-dark);
+}
+
+.fitness-instruction-step {
+  text-align: center;
+}
+
+.fitness-instruction-screen {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.fitness-mock-screen {
+  width: 200px;
+  height: 300px;
+  background: var(--fitness-white);
+  border-radius: 20px;
+  box-shadow: var(--fitness-shadow);
+  padding: 20px;
+  border: 2px solid var(--fitness-light);
+  transition: var(--fitness-transition);
+}
+
+.fitness-mock-screen:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--fitness-shadow-hover);
+  border-color: var(--fitness-accent); /* Салатовая граница при ховере */
+}
+
+/* Новости */
+.fitness-news-item {
+  max-width: 800px;
+  margin: 40px auto;
+  background: var(--fitness-white);
+  border-radius: var(--fitness-border-radius);
+  box-shadow: var(--fitness-shadow);
+  overflow: hidden;
+  border: 1px solid var(--fitness-light);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fitness-news-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--fitness-shadow-hover);
+}
+
+.fitness-news-date {
+  background: var(--fitness-secondary); /* Темно-синий для даты */
+  color: white;
+  padding: 15px 25px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.fitness-news-content {
+  padding: 25px;
+}
+
+.fitness-news-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--fitness-dark);
+}
+
+.fitness-news-content p {
+  color: var(--fitness-secondary);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Информация */
+.fitness-info-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+}
+
+.fitness-info-content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--fitness-dark);
+}
+
+.fitness-doc-links, .fitness-social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fitness-doc-links a, .fitness-social-links a {
+  color: var(--fitness-secondary);
+  text-decoration: none;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--fitness-light);
+  transition: var(--fitness-transition);
+}
+
+.fitness-doc-links a:hover, .fitness-social-links a:hover {
+  color: var(--fitness-primary);
+  padding-left: 10px;
+}
+
+.social-icon {
+  font-size: 1.2rem;
+  margin-right: 8px;
+  color: var(--fitness-accent); /* Салатовые иконки соцсетей */
+}
+
+/* Улучшенная прокрутка для WebKit браузеров */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FF6933;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E55A29;
+}
+
+/* Адаптивность - меньшие отступы для мобильных */
+@media (max-width: 992px) {
+  .fitness-advantages-grid,
+  .fitness-sports-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  #fitness-hero-section {
+    margin-top: calc(var(--header-height-mobile) + 8px);
+  }
+  
+  .fitness-home-page {
+    padding: 8px;
+  }
+  
+  .fitness-block {
+    width: calc(100% - 16px);
+    margin: 8px auto;
+    border-radius: 24px;
+  }
+  
+  .fitness-container {
+    padding: 30px 16px;
+  }
+  
+  #fitness-hero-section .fitness-container {
+    padding: 30px 16px;
+  }
+  
+  .fitness-hero-content {
+    flex-direction: column;
+  }
+  
+  .fitness-hero-text {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
+    padding-right: 0;
+  }
+  
+  .fitness-hero-buttons {
+    justify-content: center;
+  }
+  
+  /* НА МОБИЛЬНЫХ ТОЖЕ БЕЛЫЙ ТЕКСТ */
+  .fitness-hero-title {
+    font-size: 2.25rem;
+    color: #FFFFFF !important;
+  }
+  
+  .fitness-hero-subtitle {
+    color: #FFFFFF !important;
+  }
+  
+  .fitness-hero-tagline {
+    color: #FFFFFF !important;
+  }
+  
+  .fitness-hero-app {
+    width: 220px;
+    height: 440px;
+  }
+  
+  .fitness-hero-phone {
+    width: 220px;
+    height: 440px;
+  }
+  
+  .fitness-instruction-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .fitness-advantages-grid,
+  .fitness-sports-grid,
+  .fitness-instruction-grid {
+    gap: 20px;
+  }
+  
+  .fitness-info-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  #fitness-hero-section {
+    margin-top: calc(var(--header-height-mobile) + 5px);
+  }
+  
+  .fitness-home-page {
+    padding: 5px;
+  }
+  
+  .fitness-block {
+    width: calc(100% - 10px);
+    margin: 5px auto;
+    border-radius: 20px;
+  }
+  
+  .fitness-container {
+    padding: 25px 12px;
+  }
+  
+  #fitness-hero-section .fitness-container {
+    padding: 25px 12px;
+  }
+  
+  /* НА МАЛЕНЬКИХ МОБИЛЬНЫХ ТОЖЕ БЕЛЫЙ ТЕКСТ */
+  .fitness-hero-title {
+    font-size: 1.9rem;
+    color: #FFFFFF !important;
+  }
+  
+  .fitness-hero-subtitle {
+    color: #FFFFFF !important;
+  }
+  
+  .fitness-hero-tagline {
+    color: #FFFFFF !important;
+  }
+  
+  .fitness-hero-app {
+    width: 180px;
+    height: 360px;
+  }
+  
+  .fitness-hero-phone {
+    width: 180px;
+    height: 360px;
+    border-radius: 28px;
+  }
+  
+  .fitness-hero-app-content {
+    border-radius: 22px;
+  }
+  
+  .fitness-advantages-grid,
+  .fitness-sports-grid,
+  .fitness-instruction-grid {
+    gap: 15px;
+  }
+  
+  .fitness-advantage-card {
+    padding: 25px 15px;
+  }
+  
+  .fitness-sport-info {
+    padding: 15px;
+  }
+  
+  .fitness-news-content {
+    padding: 20px 15px;
+  }
+  
+  .fitness-btn-primary,
+  .fitness-btn-secondary,
+  .fitness-btn-accent {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Отключение плавной прокрутки для пользователей с ограниченными возможностями */
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states для доступности */
+a:focus,
+button:focus {
+  outline: 2px solid var(--fitness-primary);
+  outline-offset: 2px;
+}

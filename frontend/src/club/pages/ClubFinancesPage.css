@@ -1,0 +1,576 @@
+/* ClubFinancesPage.css - Единый стиль */
+:root {
+  color-scheme: light only;
+}
+
+@media (prefers-color-scheme: dark) {
+  .club-finances-page,
+  .club-finances-page *,
+  .club-finances-page *::before,
+  .club-finances-page *::after {
+    color-scheme: light !important;
+    background-color: initial !important;
+    color: initial !important;
+  }
+}
+
+/* Main Container */
+.club-finances-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #F8FAFC !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Page Header */
+.page-header {
+  margin-bottom: 32px;
+  background: #FFFFFF !important;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #293241 !important;
+}
+
+.page-header p {
+  color: #64748B !important;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Loading States */
+.club-loading,
+.loading-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  color: #293241 !important;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #F1F5F9;
+  border-top: 4px solid #FF6B35;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-placeholder p,
+.club-loading p {
+  color: #64748B !important;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Finances Content */
+.finances-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Finance Stats Section */
+.finance-stats {
+  display: block;
+  margin-bottom: 32px;
+}
+
+/* Статистика за месяц */
+.monthly-stats-expanded {
+  background: #FFFFFF !important;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #E2E8F0;
+}
+
+.monthly-stats-expanded h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 32px 0;
+  color: #293241 !important;
+  text-align: center;
+}
+
+.stats-grid-expanded {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.stat-item-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #F8FAFC !important;
+  border: 2px solid #E2E8F0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.stat-item-large:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: #FF6B35;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.stat-label {
+  font-weight: 600;
+  color: #64748B !important;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value-large {
+  font-weight: 800;
+  color: #293241 !important;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+
+/* Transactions Section */
+.transactions-section {
+  background: #FFFFFF !important;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #E2E8F0;
+}
+
+.transactions-section h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  color: #293241 !important;
+}
+
+/* Empty Transactions */
+.empty-transactions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.empty-icon {
+  width: 64px;
+  height: 64px;
+  background: #E2E8F0;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.empty-transactions h4 {
+  margin-bottom: 8px;
+  color: #293241 !important;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.empty-transactions p {
+  color: #64748B !important;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Transactions Table */
+.transactions-table {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #E2E8F0;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 180px 120px 1fr 140px;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #F8FAFC !important;
+  font-weight: 700;
+  color: #293241 !important;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #E2E8F0;
+}
+
+.table-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 180px 120px 1fr 140px;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #F1F5F9;
+  transition: all 0.3s ease;
+  background: #FFFFFF !important;
+}
+
+.table-row:hover {
+  background: #F8FAFC !important;
+  transform: translateX(4px);
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+/* Transaction Elements */
+.transaction-date {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 600;
+  color: #293241 !important;
+  font-size: 14px;
+}
+
+.transaction-time {
+  font-size: 12px;
+  color: #64748B !important;
+  font-weight: 500;
+}
+
+.transaction-type {
+  display: flex;
+  align-items: center;
+}
+
+.type-badge {
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid #E2E8F0;
+  background: #F8FAFC !important;
+  color: #64748B !important;
+}
+
+.type-badge.transaction-income {
+  background: #F0F9FF !important;
+  color: #0369A1 !important;
+  border-color: #BAE6FD;
+}
+
+.type-badge.transaction-withdrawal {
+  background: #FFFBEB !important;
+  color: #D97706 !important;
+  border-color: #FDE68A;
+}
+
+.type-badge.transaction-refund {
+  background: #FEF2F2 !important;
+  color: #DC2626 !important;
+  border-color: #FECACA;
+}
+
+.transaction-description {
+  font-weight: 500;
+  color: #475569 !important;
+  font-size: 14px;
+}
+
+.transaction-amount {
+  font-weight: 700;
+  font-size: 16px;
+  text-align: right;
+  color: #293241 !important;
+}
+
+.transaction-amount.transaction-income {
+  color: #0369A1 !important;
+}
+
+.transaction-amount.transaction-withdrawal {
+  color: #D97706 !important;
+}
+
+.transaction-amount.transaction-refund {
+  color: #DC2626 !important;
+}
+
+/* Информационная секция */
+.info-section {
+  background: #F8FAFC !important;
+  border: 2px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.info-section h4 {
+  margin: 0 0 16px 0;
+  color: #293241 !important;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.info-section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.info-section li {
+  position: relative;
+  color: #475569 !important;
+  margin-bottom: 12px;
+  padding-left: 24px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.info-section li:last-child {
+  margin-bottom: 0;
+}
+
+.info-section li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #FF6B35;
+  font-weight: bold;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1024px) {
+  .stats-grid-expanded {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+  
+  .table-header,
+  .table-row {
+    grid-template-columns: 140px 100px 1fr 120px;
+    gap: 12px;
+    padding: 16px 20px;
+  }
+  
+  .table-header {
+    font-size: 12px;
+  }
+  
+  .transaction-date,
+  .transaction-amount {
+    font-size: 13px;
+  }
+  
+  .transaction-description {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .club-finances-page {
+    padding: 16px;
+  }
+  
+  .page-header {
+    padding: 24px;
+  }
+  
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .monthly-stats-expanded,
+  .transactions-section,
+  .info-section {
+    padding: 24px;
+  }
+  
+  .stats-grid-expanded {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .stat-item-large {
+    padding: 20px;
+  }
+  
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .stat-value-large {
+    font-size: 1.5rem;
+  }
+  
+  .table-header {
+    display: none;
+  }
+  
+  .table-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border: 2px solid #E2E8F0;
+  }
+  
+  .table-row:hover {
+    transform: none;
+  }
+  
+  .transaction-date {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .transaction-amount {
+    text-align: left;
+    font-size: 18px;
+  }
+  
+  .info-section {
+    padding: 20px;
+  }
+  
+  .info-section h4 {
+    font-size: 16px;
+  }
+  
+  .info-section li {
+    padding-left: 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .club-finances-page {
+    padding: 12px;
+  }
+  
+  .page-header {
+    padding: 20px;
+  }
+  
+  .page-header h1 {
+    font-size: 1.25rem;
+  }
+  
+  .monthly-stats-expanded,
+  .transactions-section,
+  .info-section {
+    padding: 16px;
+  }
+  
+  .monthly-stats-expanded h3 {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+  
+  .stat-item-large {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .stat-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+  
+  .stat-value-large {
+    font-size: 1.3rem;
+  }
+  
+  .transactions-section h3 {
+    font-size: 18px;
+  }
+  
+  .transaction-amount {
+    font-size: 16px;
+  }
+  
+  .type-badge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
+  .info-section h4 {
+    font-size: 14px;
+  }
+  
+  .info-section li {
+    font-size: 13px;
+    padding-left: 16px;
+  }
+}
+
+/* Accessibility improvements */
+.table-row:focus {
+  outline: 3px solid rgba(255, 107, 53, 0.5);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .stat-item-large,
+  .table-row {
+    transition: none;
+  }
+  
+  .stat-item-large:hover {
+    transform: none;
+  }
+  
+  .loading-spinner {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .monthly-stats-expanded,
+  .transactions-section,
+  .info-section {
+    border: 3px solid #000000;
+  }
+  
+  .stat-item-large {
+    border: 3px solid #000000;
+  }
+}

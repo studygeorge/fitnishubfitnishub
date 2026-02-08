@@ -1,0 +1,221 @@
+:root {
+  --layout-sidebar-width: 280px;
+  --layout-header-height: 70px;
+  --layout-primary: #F8A284;
+  --layout-secondary: #E68A73;
+  --layout-text: #2c3e50;
+  --layout-text-light: #7f8c8d;
+  --layout-white: #ffffff;
+  --layout-bg: #fafafa;
+  --layout-border: #e9ecef;
+  --layout-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --layout-radius: 12px;
+  --layout-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Skip to content for accessibility */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--layout-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: top 0.3s ease;
+}
+
+.skip-to-content:focus {
+  top: 6px;
+}
+
+/* Main Layout Container */
+.club-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--layout-bg);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Main Content Area */
+.club-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
+}
+
+/* Desktop sidebar adjustments */
+.club-main.with-sidebar {
+  margin-left: var(--layout-sidebar-width);
+}
+
+/* Desktop Header */
+.club-header {
+  position: sticky;
+  top: 0;
+  height: var(--layout-header-height);
+  background: var(--layout-white);
+  border-bottom: 1px solid var(--layout-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 97;
+  box-shadow: var(--layout-shadow);
+  flex-shrink: 0;
+}
+
+.club-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.club-header-title h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: var(--layout-text);
+  line-height: 1.2;
+}
+
+.club-header-title p {
+  font-size: 0.85rem;
+  color: var(--layout-text-light);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.club-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.club-balance {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--layout-primary), var(--layout-secondary));
+  border-radius: var(--layout-radius);
+  color: white;
+  font-size: 0.9rem;
+}
+
+.balance-label {
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.balance-value {
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.notification-btn {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: var(--layout-transition);
+  color: var(--layout-text-light);
+}
+
+.notification-btn:hover {
+  background-color: var(--layout-bg);
+  color: var(--layout-text);
+}
+
+.notification-btn:focus {
+  outline: 2px solid var(--layout-primary);
+  outline-offset: 2px;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  background: #ff4757;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 0.15rem 0.4rem;
+  border-radius: 10px;
+  min-width: 16px;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Content Area */
+.club-content {
+  flex: 1;
+  padding: 1.5rem;
+  background-color: var(--layout-bg);
+  min-height: calc(100vh - var(--layout-header-height));
+  outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .club-balance {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .balance-label {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .club-main {
+    margin-left: 0 !important;
+  }
+  
+  .club-content {
+    padding: 1rem;
+    padding-bottom: 90px; /* Space for bottom navigation */
+    min-height: calc(100vh - var(--layout-header-height) - 90px);
+  }
+}
+
+@media (max-width: 480px) {
+  .club-header {
+    padding: 0 0.75rem;
+  }
+  
+  .club-header-title h1 {
+    font-size: 1.1rem;
+  }
+  
+  .club-content {
+    padding: 0.75rem;
+    padding-bottom: 90px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .club-content {
+    padding: 2rem;
+  }
+  
+  .club-header {
+    padding: 0 2rem;
+  }
+}

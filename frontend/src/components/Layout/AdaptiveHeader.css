@@ -1,0 +1,451 @@
+/* Подключение шрифта Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* src/components/Layout/AdaptiveHeader.css - С префиксами */
+.fitness-adaptive-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  background: white !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+  z-index: 1001 !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* Стили для логотипа-изображения */
+.fitness-logo-image {
+  height: 45px !important; /* Высота логотипа для десктопа */
+  width: auto !important;
+  max-width: 200px !important;
+  object-fit: contain !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.fitness-logo-image:hover {
+  opacity: 0.9 !important;
+}
+
+/* Базовые стили для ссылки логотипа */
+.fitness-header-logo {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important; /* Расстояние между логотипом и текстом */
+  text-decoration: none !important;
+  transition: transform 0.3s ease !important;
+  flex-shrink: 0 !important;
+  height: 80px !important;
+}
+
+.fitness-header-logo:hover {
+  transform: scale(1.02) !important;
+}
+
+/* СТИЛИ ДЛЯ ОРАНЖЕВОГО ТЕКСТА ЛОГОТИПА */
+.fitness-logo-text {
+  font-family: 'Arial', sans-serif !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  color: #ff6b35 !important; /* Оранжевый цвет */
+  letter-spacing: 1px !important;
+  transition: color 0.3s ease !important;
+  white-space: nowrap !important; /* Не переносить текст */
+}
+
+.fitness-header-logo:hover .fitness-logo-text {
+  color: #e55a2b !important; /* Чуть более темный оранжевый при наведении */
+}
+
+/* Мобильный заголовок - СКРЫТ */
+.fitness-mobile-header {
+  height: 60px !important;
+  display: none !important; /* СКРЫВАЕМ МОБИЛЬНЫЙ ХЕДЕР */
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 16px !important;
+}
+
+/* Для мобильной версии логотипа */
+.fitness-mobile-header .fitness-logo-image {
+  height: 35px !important; /* Чуть меньше для мобильных */
+  max-width: 150px !important;
+}
+
+.fitness-mobile-header .fitness-header-logo {
+  text-decoration: none !important;
+  color: #333 !important;
+}
+
+/* Десктоп заголовок */
+.fitness-desktop-header {
+  height: 80px !important;
+  padding: 0 20px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.fitness-header-content {
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: 80px !important;
+  line-height: 80px !important;
+}
+
+.fitness-desktop-header .fitness-header-logo {
+  text-decoration: none !important;
+  color: #333 !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 80px !important;
+}
+
+/* Навигация в центре - УВЕЛИЧЕННЫЕ ОТСТУПЫ */
+.fitness-header-navigation {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 20px !important; /* УВЕЛИЧИЛИ с 8px до 20px */
+  flex: 1 !important;
+  height: 80px !important;
+}
+
+.fitness-nav-section {
+  display: flex !important;
+  align-items: center !important;
+  gap: 20px !important; /* УВЕЛИЧИЛИ с 8px до 20px */
+  height: 80px !important;
+}
+
+.fitness-nav-section.fitness-additional {
+  margin-left: 24px !important; /* УВЕЛИЧИЛИ с 16px до 24px */
+  padding-left: 24px !important; /* УВЕЛИЧИЛИ с 16px до 24px */
+  border-left: 1px solid #e0e0e0 !important;
+}
+
+.fitness-nav-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 12px 24px !important; /* УВЕЛИЧИЛИ с 20px до 24px */
+  color: #666 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  border-radius: 12px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  white-space: nowrap !important;
+  letter-spacing: -0.01em !important;
+  height: 44px !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+  min-width: 100px !important; /* ДОБАВИЛИ минимальную ширину */
+}
+
+.fitness-nav-item:hover {
+  background-color: #f5f5f5 !important;
+  color: #333 !important;
+}
+
+.fitness-nav-item.fitness-active {
+  background-color: #f0f0f0 !important;
+  color: #333 !important;
+  font-weight: 600 !important;
+}
+
+.fitness-nav-label {
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1 !important;
+}
+
+/* Правая часть - действия */
+.fitness-header-actions {
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 80px !important;
+}
+
+/* Информация о пользователе */
+.fitness-user-section {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  padding: 10px 20px !important;
+  background-color: rgba(255, 107, 53, 0.05) !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(255, 107, 53, 0.1) !important;
+  height: 44px !important;
+  box-sizing: border-box !important;
+}
+
+.fitness-user-info-compact {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.fitness-user-avatar-small {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 107, 53, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #FF6B35 !important;
+  overflow: hidden !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+}
+
+.fitness-user-avatar-small img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+}
+
+.fitness-user-details {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+
+.fitness-user-name-small {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #333 !important;
+  white-space: nowrap !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1 !important;
+}
+
+.fitness-user-balance-small {
+  font-size: 12px !important;
+  color: #FF6B35 !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+}
+
+.fitness-logout-btn-small {
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  color: #666 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  font-family: 'Inter', sans-serif !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 32px !important;
+  line-height: 1 !important;
+}
+
+.fitness-logout-btn-small:hover {
+  background-color: rgba(255, 0, 0, 0.1) !important;
+  color: #ff4757 !important;
+}
+
+/* Кнопки авторизации */
+.fitness-auth-buttons {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.fitness-auth-btn {
+  padding: 12px 20px !important;
+  text-decoration: none !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+  letter-spacing: -0.01em !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 44px !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+}
+
+.fitness-login-btn {
+  color: #FF6B35 !important;
+  background-color: rgba(255, 107, 53, 0.1) !important;
+  border: 1px solid rgba(255, 107, 53, 0.2) !important;
+}
+
+.fitness-login-btn:hover {
+  background-color: rgba(255, 107, 53, 0.2) !important;
+  transform: translateY(-2px) !important;
+}
+
+.fitness-register-btn {
+  color: white !important;
+  background: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%) !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3) !important;
+}
+
+.fitness-register-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4) !important;
+}
+
+/* Адаптивные размеры логотипа */
+@media (max-width: 1200px) {
+  .fitness-logo-image {
+    height: 42px !important;
+    max-width: 180px !important;
+  }
+  
+  /* АДАПТИВНЫЕ РАЗМЕРЫ ТЕКСТА ЛОГОТИПА */
+  .fitness-logo-text {
+    font-size: 22px !important;
+    letter-spacing: 0.8px !important;
+  }
+  
+  .fitness-header-logo {
+    gap: 10px !important; /* Уменьшаем расстояние на больших экранах */
+  }
+  
+  .fitness-nav-item {
+    padding: 10px 20px !important; /* УВЕЛИЧИЛИ с 16px до 20px */
+    font-size: 14px !important;
+    min-width: 90px !important; /* УМЕНЬШИЛИ минимальную ширину */
+  }
+  
+  .fitness-nav-section {
+    gap: 16px !important; /* УМЕНЬШИЛИ gap для средних экранов */
+  }
+  
+  .fitness-header-navigation {
+    gap: 16px !important; /* УМЕНЬШИЛИ gap для средних экранов */
+  }
+}
+
+@media (max-width: 1024px) {
+  .fitness-logo-image {
+    height: 40px !important;
+    max-width: 160px !important;
+  }
+  
+  /* АДАПТИВНЫЕ РАЗМЕРЫ ТЕКСТА ДЛЯ ПЛАНШЕТОВ */
+  .fitness-logo-text {
+    font-size: 20px !important;
+    letter-spacing: 0.6px !important;
+  }
+  
+  .fitness-header-logo {
+    gap: 8px !important; /* Еще меньше расстояние на планшетах */
+  }
+  
+  .fitness-header-navigation {
+    display: none !important;
+  }
+  
+  .fitness-header-content {
+    justify-content: space-between !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .fitness-logo-image {
+    height: 32px !important;
+    max-width: 140px !important;
+  }
+  
+  /* АДАПТИВНЫЕ РАЗМЕРЫ ТЕКСТА ДЛЯ ТЕЛЕФОНОВ */
+  .fitness-logo-text {
+    font-size: 18px !important;
+    letter-spacing: 0.5px !important;
+  }
+  
+  .fitness-header-logo {
+    gap: 6px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .fitness-logo-image {
+    height: 28px !important;
+    max-width: 120px !important;
+  }
+  
+  /* АДАПТИВНЫЕ РАЗМЕРЫ ДЛЯ МАЛЕНЬКИХ ЭКРАНОВ */
+  .fitness-logo-text {
+    font-size: 16px !important;
+    letter-spacing: 0.3px !important;
+  }
+  
+  .fitness-header-logo {
+    gap: 5px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  /* ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ - СКРЫВАЕМ ТЕКСТ */
+  .fitness-logo-text {
+    display: none !important;
+  }
+  
+  .fitness-header-logo {
+    gap: 0 !important; /* Убираем gap если текст скрыт */
+  }
+}
+
+/* ПОЛНОСТЬЮ СКРЫВАЕМ ХЕДЕР НА МОБИЛЬНЫХ */
+@media (max-width: 768px) {
+  .fitness-adaptive-header {
+    display: none !important;
+  }
+  
+  .fitness-desktop-header {
+    display: none !important;
+  }
+  
+  .fitness-mobile-header {
+    display: none !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .fitness-mobile-header {
+    display: none !important;
+  }
+}
+
+/* Загрузка пользователя */
+.fitness-loading-user {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px !important;
+}
+
+.fitness-loading-spinner {
+  width: 20px !important;
+  height: 20px !important;
+  border: 2px solid #f3f3f3 !important;
+  border-top: 2px solid #FF6B35 !important;
+  border-radius: 50% !important;
+  animation: fitness-spin 1s linear infinite !important;
+}
+
+@keyframes fitness-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

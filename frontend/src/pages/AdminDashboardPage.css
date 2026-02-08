@@ -1,0 +1,557 @@
+.admin-dashboard {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .admin-sidebar {
+    width: 260px;
+    background-color: #2c3e50;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+  }
+  
+  /* Модальное окно подтверждения удаления */
+.admin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.admin-modal {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.admin-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 25px;
+  border-bottom: 1px solid #eee;
+  background: #f8f9fa;
+}
+
+.admin-modal-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.admin-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.admin-modal-close:hover {
+  background: #e9ecef;
+  color: #000;
+}
+
+.admin-modal-content {
+  padding: 25px;
+}
+
+.admin-modal-content p {
+  margin-bottom: 15px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.admin-warning-text {
+  color: #dc3545 !important;
+  font-weight: 600;
+  margin-top: 20px !important;
+}
+
+.admin-warning-list {
+  margin: 10px 0;
+  padding-left: 20px;
+  color: #666;
+}
+
+.admin-warning-list li {
+  margin: 5px 0;
+}
+
+.admin-modal-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 20px 25px;
+  border-top: 1px solid #eee;
+  background: #f8f9fa;
+}
+
+.admin-btn-cancel,
+.admin-btn-delete {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.admin-btn-cancel {
+  background: #6c757d;
+  color: white;
+}
+
+.admin-btn-cancel:hover:not(:disabled) {
+  background: #5a6268;
+}
+
+.admin-btn-delete {
+  background: #dc3545;
+  color: white;
+}
+
+.admin-btn-delete:hover:not(:disabled) {
+  background: #c82333;
+}
+
+.admin-btn-cancel:disabled,
+.admin-btn-delete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Кнопка удаления в таблице */
+.action-delete {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  margin-left: 5px;
+}
+
+.action-delete:hover:not(:disabled) {
+  background: #c82333;
+}
+
+.action-delete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.table-actions {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+  .admin-logo {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .admin-logo h2 {
+    color: var(--accent-color);
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  
+  .admin-logo p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin: 5px 0 0;
+  }
+  
+  .admin-menu {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    flex-grow: 1;
+  }
+  
+  .admin-menu li {
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+  
+  .admin-menu li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .admin-menu li.active {
+    background-color: var(--accent-color);
+    font-weight: 500;
+  }
+  
+  .admin-menu li i {
+    margin-right: 12px;
+    font-size: 1.1rem;
+  }
+  
+  .admin-logout {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .admin-logout button {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .admin-logout button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .admin-content {
+    flex: 1;
+    margin-left: 260px;
+    padding: 30px;
+    background-color: #f5f7fa;
+  }
+  
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .admin-header h1 {
+    color: #444;
+    font-size: 1.8rem;
+    margin: 0;
+  }
+  
+  .admin-header-actions {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .action-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .action-button:hover {
+    background-color: #FF6347;
+  }
+  
+  .admin-error-message {
+    background-color: #FFEBEE;
+    color: #F44336;
+    padding: 12px 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .admin-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+  }
+  
+  .admin-spinner {
+    border: 4px solid rgba(255, 127, 80, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid var(--accent-color);
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Таблица для списка клубов */
+  .admin-table {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .admin-table thead {
+    background-color: #f8f9fa;
+  }
+  
+  .admin-table th, .admin-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .admin-table th {
+    color: #555;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  .admin-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    display: inline-block;
+  }
+  
+  .status-badge.active {
+    background-color: #E8F5E9;
+    color: #4CAF50;
+  }
+  
+  .status-badge.pending {
+    background-color: #FFF8E1;
+    color: #FFC107;
+  }
+  
+  .status-badge.suspended {
+    background-color: #FFEBEE;
+    color: #F44336;
+  }
+  
+  .status-badge.inactive {
+    background-color: #ECEFF1;
+    color: #90A4AE;
+  }
+  
+  .table-actions {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .action-edit, .action-view {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .action-edit {
+    background-color: #E3F2FD;
+    color: #2196F3;
+    text-decoration: none;
+  }
+  
+  .action-edit:hover {
+    background-color: #BBDEFB;
+  }
+  
+  .action-view {
+    background-color: #F5F5F5;
+    color: #616161;
+    border: none;
+  }
+  
+  .action-view:hover {
+    background-color: #E0E0E0;
+  }
+  
+  .no-data {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+  }
+  
+  /* Карточки для заявок */
+  .admin-requests-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+  }
+  
+  .request-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .request-header {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .request-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #444;
+  }
+  
+  .request-status {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+  }
+  
+  .request-status.pending {
+    background-color: #FFF8E1;
+    color: #FFC107;
+  }
+  
+  .request-status.approved {
+    background-color: #E8F5E9;
+    color: #4CAF50;
+  }
+  
+  .request-status.rejected {
+    background-color: #FFEBEE;
+    color: #F44336;
+  }
+  
+  .request-details {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .request-details p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  .request-message {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .request-message p {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+  }
+  
+  .request-actions {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .approve-btn, .reject-btn, .create-btn {
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: none;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  .approve-btn {
+    background-color: #E8F5E9;
+    color: #4CAF50;
+  }
+  
+  .approve-btn:hover {
+    background-color: #C8E6C9;
+  }
+  
+  .reject-btn {
+    background-color: #FFEBEE;
+    color: #F44336;
+  }
+  
+  .reject-btn:hover {
+    background-color: #FFCDD2;
+  }
+  
+  .create-btn {
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .create-btn:hover {
+    background-color: #FF6347;
+  }
+  
+  .no-requests {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    color: #888;
+  }
+  
+  @media (max-width: 768px) {
+    .admin-dashboard {
+      flex-direction: column;
+    }
+    
+    .admin-sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    
+    .admin-content {
+      margin-left: 0;
+    }
+    
+    .admin-requests-list {
+      grid-template-columns: 1fr;
+    }
+  }

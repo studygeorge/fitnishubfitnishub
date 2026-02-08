@@ -1,0 +1,252 @@
+.legal-page {
+    min-height: calc(100vh - 160px);
+    background-color: #f8f9fa;
+    padding: 40px 20px;
+  }
+  
+  .legal-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .legal-header {
+    background: linear-gradient(135deg, #FF6933 0%, #e55a2b 100%);
+    color: white;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .legal-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  
+  .legal-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    opacity: 0.9;
+  }
+  
+  .legal-subtitle p {
+    margin: 5px 0;
+  }
+  
+  .legal-date {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin: 5px 0;
+  }
+  
+  .legal-content {
+    padding: 50px;
+  }
+  
+  .legal-section {
+    margin-bottom: 40px;
+  }
+  
+  .legal-section:last-child {
+    margin-bottom: 0;
+  }
+  
+  .legal-section h2 {
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #FF6933;
+  }
+  
+  .legal-section h3 {
+    color: #444;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 25px 0 15px 0;
+  }
+  
+  .legal-section p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    text-align: justify;
+  }
+  
+  .legal-section ul {
+    margin: 20px 0;
+    padding-left: 30px;
+  }
+  
+  .legal-section li {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 10px;
+  }
+  
+  .legal-link {
+    color: #FF6933;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .legal-link:hover {
+    color: #e55a2b;
+    text-decoration: underline;
+  }
+  
+  .legal-company-details {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 25px;
+    margin-top: 20px;
+  }
+  
+  .legal-company-details h3 {
+    color: #333;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+  
+  .legal-company-details p {
+    margin-bottom: 8px;
+    color: #555;
+  }
+  
+  .legal-company-details strong {
+    color: #333;
+    font-weight: 600;
+  }
+  
+  /* Адаптивные стили */
+  @media (max-width: 768px) {
+    .legal-page {
+      padding: 20px 15px;
+    }
+    
+    .legal-container {
+      border-radius: 8px;
+    }
+    
+    .legal-header {
+      padding: 30px 20px;
+    }
+    
+    .legal-title {
+      font-size: 2rem;
+    }
+    
+    .legal-subtitle {
+      font-size: 1rem;
+    }
+    
+    .legal-content {
+      padding: 30px 20px;
+    }
+    
+    .legal-section {
+      margin-bottom: 30px;
+    }
+    
+    .legal-section h2 {
+      font-size: 1.5rem;
+    }
+    
+    .legal-section h3 {
+      font-size: 1.2rem;
+    }
+    
+    .legal-section p,
+    .legal-section li {
+      font-size: 0.95rem;
+      text-align: left;
+    }
+    
+    .legal-company-details {
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .legal-header {
+      padding: 25px 15px;
+    }
+    
+    .legal-title {
+      font-size: 1.7rem;
+    }
+    
+    .legal-content {
+      padding: 25px 15px;
+    }
+    
+    .legal-section h2 {
+      font-size: 1.3rem;
+    }
+    
+    .legal-section h3 {
+      font-size: 1.1rem;
+    }
+    
+    .legal-section p,
+    .legal-section li {
+      font-size: 0.9rem;
+    }
+    
+    .legal-company-details {
+      padding: 15px;
+    }
+  }
+  
+  /* Улучшения для печати */
+  @media print {
+    .legal-page {
+      background: white;
+      padding: 0;
+    }
+    
+    .legal-container {
+      box-shadow: none;
+      border-radius: 0;
+    }
+    
+    .legal-header {
+      background: #333 !important;
+      -webkit-print-color-adjust: exact;
+      color-adjust: exact;
+    }
+    
+    .legal-section {
+      break-inside: avoid;
+    }
+    
+    .legal-link {
+      color: #333 !important;
+      text-decoration: underline;
+    }
+  }
+  
+  /* Плавная прокрутка для якорных ссылок */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Выделение текста */
+  ::selection {
+    background-color: rgba(255, 105, 51, 0.2);
+    color: #333;
+  }
+  
+  ::-moz-selection {
+    background-color: rgba(255, 105, 51, 0.2);
+    color: #333;
+  }

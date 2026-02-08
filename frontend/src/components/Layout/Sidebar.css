@@ -1,0 +1,229 @@
+/* src/components/Layout/Sidebar.css - Оранжевая тема */
+.sidebar {
+    background: linear-gradient(135deg, #F8A284 0%, #E68A73 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+  }
+  
+  /* Остальные стили остаются теми же... */
+  /* Заголовок сайдбара */
+  .sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .logo-icon {
+    font-size: 24px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px;
+    border-radius: 8px;
+  }
+  
+  .logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  
+  .sidebar-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar-close:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Навигация */
+  .sidebar-nav {
+    flex: 1;
+    padding: 0;
+  }
+  
+  .nav-section {
+    margin-bottom: 30px;
+  }
+  
+  .nav-section-title {
+    padding: 20px 20px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    background: none;
+    width: 100%;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: translateX(5px);
+  }
+  
+  .nav-item.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-right: 3px solid white;
+  }
+  
+  .nav-icon {
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+  }
+  
+  .nav-label {
+    font-weight: 500;
+  }
+  
+  .logout-btn {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .logout-btn:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: #ffcccb;
+  }
+  
+  /* Информация о пользователе */
+  .sidebar-user {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .user-info {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .user-name {
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .user-email {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .user-balance {
+    font-size: 12px;
+    color: #90EE90;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  
+  /* Анимации */
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  .mobile-sidebar.open {
+    animation: slideInLeft 0.3s ease-out;
+  }
+  
+  /* Скроллбар */
+  .sidebar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Добавить в src/components/Layout/Sidebar.css */
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .user-avatar {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .user-avatar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+  }

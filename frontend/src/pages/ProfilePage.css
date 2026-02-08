@@ -1,0 +1,2029 @@
+/* FITNESS PROFILE PAGE STYLES */
+
+.fitness-profile-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.fitness-profile-loading,
+.fitness-profile-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  gap: 20px;
+  color: #293241;
+}
+
+.fitness-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #F5F5F5;
+  border-top: 3px solid #FF6933;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.fitness-profile-error .fitness-error-icon svg,
+.fitness-profile-loading svg {
+  width: 60px;
+  height: 60px;
+  color: #FF6933;
+}
+
+/* AUTH PROMPT STYLES */
+.fitness-auth-prompt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 20px;
+}
+
+.fitness-auth-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 2px solid #F5F5F5;
+  padding: 40px;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(41, 50, 65, 0.1);
+}
+
+.fitness-auth-icon svg {
+  width: 80px;
+  height: 80px;
+  color: #FF6933;
+  margin-bottom: 20px;
+}
+
+.fitness-auth-card h2 {
+  color: #293241;
+  margin-bottom: 15px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.fitness-auth-card p {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.fitness-auth-benefits {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.fitness-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: #F5F5F5;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.fitness-benefit-item svg {
+  width: 24px;
+  height: 24px;
+  color: #FF6933;
+  flex-shrink: 0;
+}
+
+.fitness-benefit-item span {
+  color: #293241;
+  font-weight: 500;
+}
+
+.fitness-auth-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+/* PROFILE HEADER STYLES */
+.fitness-profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #F5F5F5;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 16px;
+  border: 2px solid #F5F5F5;
+}
+
+.fitness-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex: 1;
+}
+
+/* ИСПРАВЛЕННЫЕ СТИЛИ АВАТАРКИ - БЕЗ ОБВОДКИ */
+.fitness-profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: none !important;
+  flex-shrink: 0;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fitness-profile-avatar:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: none !important;
+}
+
+.fitness-profile-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+/* Плейсхолдер скрыт по умолчанию */
+.fitness-avatar-placeholder {
+  display: none;
+  width: 100% !important;
+  height: 100% !important;
+  background: #FF6933;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+  border-radius: 50% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+/* Класс для показа плейсхолдера */
+.fitness-avatar-placeholder.show {
+  display: flex !important;
+}
+
+.fitness-profile-details {
+  flex: 1;
+}
+
+.fitness-profile-name-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 8px;
+}
+
+.fitness-profile-details h1 {
+  margin: 0;
+  color: #293241;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.fitness-profile-email {
+  color: #666;
+  font-size: 16px;
+  margin: 0 0 20px 0;
+}
+
+.fitness-user-stats {
+  display: flex;
+  gap: 30px;
+}
+
+.fitness-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.fitness-stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FF6933;
+  line-height: 1;
+}
+
+.fitness-stat-label {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* BALANCE SECTION STYLES - ИСПРАВЛЕННЫЕ */
+.fitness-balance-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fitness-balance-button,
+.fitness-balance-button:link,
+.fitness-balance-button:visited {
+  background: #FF6933 !important;
+  color: #ffffff !important;
+  border: 2px solid #FF6933 !important;
+  padding: 12px 24px !important;
+  border-radius: 20px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.fitness-balance-button:hover,
+.fitness-balance-button:focus {
+  background: #e65a29 !important;
+  color: #ffffff !important;
+  border-color: #e65a29 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(255, 105, 51, 0.3) !important;
+}
+
+.fitness-balance-button:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 8px rgba(255, 105, 51, 0.2) !important;
+}
+
+/* СКРЫВАЕМ ВСЕ ЭЛЕМЕНТЫ СВЯЗАННЫЕ С РЕДАКТИРОВАНИЕМ АВАТАРКИ В ШАПКЕ */
+.fitness-avatar-edit-button {
+  display: none !important;
+}
+
+.fitness-avatar-loading {
+  display: none !important;
+}
+
+.fitness-avatar-menu {
+  display: none !important;
+}
+
+.fitness-avatar-menu-overlay {
+  display: none !important;
+}
+
+/* AVATAR SETTINGS STYLES */
+.fitness-avatar-settings {
+  background: #F5F5F5;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 16px;
+}
+
+.fitness-avatar-settings h3 {
+  color: #293241;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fitness-avatar-setting-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 15px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.fitness-avatar-setting-item:hover {
+  border-color: #FF6933;
+}
+
+.fitness-avatar-setting-preview {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.fitness-avatar-preview-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: none;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fitness-avatar-preview-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+/* Плейсхолдер превью скрыт по умолчанию */
+.fitness-avatar-preview-image .fitness-avatar-placeholder {
+  display: none;
+  width: 100% !important;
+  height: 100% !important;
+  background: #FF6933;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  border-radius: 50% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.fitness-avatar-preview-image .fitness-avatar-placeholder.show {
+  display: flex !important;
+}
+
+.fitness-avatar-setting-info h4 {
+  color: #293241;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.fitness-avatar-setting-info p {
+  color: #666;
+  margin-bottom: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.fitness-current-photo-status {
+  color: #FF6933;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.fitness-avatar-setting-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+  min-width: 150px;
+}
+
+.fitness-avatar-setting-actions .fitness-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.fitness-avatar-setting-actions .fitness-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.fitness-btn-loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  flex-shrink: 0;
+}
+
+/* SETTINGS FORM */
+.fitness-settings-section {
+  background: #F5F5F5;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 16px;
+}
+
+.fitness-settings-section h3 {
+  color: #293241;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fitness-settings-item {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.fitness-settings-item:hover {
+  border-color: #FF6933;
+}
+
+.fitness-settings-item label {
+  display: block;
+  color: #293241;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.fitness-settings-item input,
+.fitness-settings-item select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #E0E0E0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.fitness-settings-item input:focus,
+.fitness-settings-item select:focus {
+  border-color: #FF6933;
+  outline: none;
+}
+
+.fitness-save-btn {
+  background: #FF6933;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.fitness-save-btn:hover {
+  background: #e65a29;
+}
+
+.fitness-save-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* ACTIVITY SECTION */
+.fitness-activity-section {
+  background: #F5F5F5;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 16px;
+}
+
+.fitness-activity-section h3 {
+  color: #293241;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fitness-activity-card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 20px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.fitness-activity-card:hover {
+  border-color: #FF6933;
+}
+
+.fitness-activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fitness-activity-header h4 {
+  color: #293241;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.fitness-activity-date {
+  color: #999;
+  font-size: 13px;
+}
+
+.fitness-activity-details {
+  margin-top: 10px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .fitness-profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .fitness-profile-info {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .fitness-user-stats {
+    width: 100%;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 768px) {
+  .fitness-profile-page {
+    padding: 10px;
+  }
+
+  .fitness-profile-header {
+    padding: 20px;
+  }
+
+  .fitness-profile-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .fitness-avatar-placeholder {
+    font-size: 28px;
+  }
+
+  .fitness-profile-details h1 {
+    font-size: 24px;
+  }
+
+  .fitness-user-stats {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fitness-profile-header {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .fitness-profile-avatar {
+    width: 70px;
+    height: 70px;
+  }
+
+  .fitness-avatar-placeholder {
+    font-size: 24px;
+  }
+
+  .fitness-profile-details h1 {
+    font-size: 20px;
+  }
+
+  .fitness-profile-email {
+    font-size: 14px;
+  }
+}
+
+/* TELEGRAM BUTTON STYLES */
+.fitness-telegram-button-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fitness-telegram-button-section .fitness-telegram-link-btn,
+.fitness-telegram-link-btn.fitness-telegram-link-btn {
+  background: #FF6933 !important;
+  color: #ffffff !important;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.fitness-telegram-button-section .fitness-telegram-link-btn:hover:not(:disabled),
+.fitness-telegram-link-btn.fitness-telegram-link-btn:hover:not(:disabled) {
+  background: #B8B8B8 !important;
+  color: #FF6933 !important;
+}
+
+.fitness-telegram-link-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.fitness-telegram-connected {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fitness-telegram-status {
+  color: #FF6933;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.fitness-telegram-unlink-btn {
+  background: #F5F5F5;
+  color: #293241;
+  border: 1px solid #B8B8B8;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.fitness-telegram-unlink-btn:hover {
+  background: #B8B8B8 !important;
+  color: #FF6933 !important;
+  border-color: #B8B8B8 !important;
+}
+
+/* TABS STYLES */
+.fitness-profile-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #F5F5F5;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  background: #ffffff;
+}
+
+.fitness-profile-tab {
+  background: transparent;
+  border: none;
+  padding: 15px 25px;
+  color: #666;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 12px 12px 0 0;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+}
+
+.fitness-profile-tab:hover {
+  color: #FF6933 !important;
+  background: #B8B8B8 !important;
+}
+
+.fitness-profile-tab.active {
+  color: #ffffff !important;
+  background: #FF6933 !important;
+  border-bottom: 3px solid #FF6933;
+}
+
+/* CONTENT SECTIONS */
+.fitness-profile-content {
+  min-height: 400px;
+}
+
+.fitness-profile-section h2 {
+  color: #293241;
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* UPCOMING BOOKINGS */
+.fitness-bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fitness-booking-card {
+  background: #F5F5F5;
+  border-radius: 20px;
+  padding: 25px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.fitness-booking-card:hover {
+  border-color: #FF6933;
+  box-shadow: 0 4px 15px rgba(255, 105, 51, 0.1);
+}
+
+.fitness-booking-info h3 {
+  color: #293241;
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fitness-booking-club {
+  color: #FF6933;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.fitness-booking-details {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.fitness-booking-date,
+.fitness-booking-time,
+.fitness-booking-trainer {
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 15px;
+  font-size: 14px;
+  color: #293241;
+  font-weight: 500;
+}
+
+.fitness-booking-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* CLUB CANCELLATION NOTICE */
+.fitness-club-cancellation-notice {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(184, 184, 184, 0.08) 0%, rgba(184, 184, 184, 0.12) 100%);
+  border: 2px solid #B8B8B8;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 15px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.fitness-club-cancellation-notice::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #FF6933, #B8B8B8);
+}
+
+.fitness-club-cancellation-notice p {
+  margin: 0 0 12px 0;
+  color: #293241;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.fitness-club-cancellation-notice p:last-child {
+  margin-bottom: 0;
+  color: #666;
+  font-weight: 400;
+}
+
+.fitness-booking-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* VISIT HISTORY */
+.fitness-visit-history {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fitness-visit-card {
+  background: #F5F5F5;
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.fitness-visit-info h3 {
+  color: #293241;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.fitness-visit-club {
+  color: #FF6933;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.fitness-visit-details {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.fitness-visit-date,
+.fitness-visit-time,
+.fitness-visit-trainer {
+  background: #ffffff;
+  padding: 6px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #293241;
+  font-weight: 500;
+}
+
+.fitness-visit-rating {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.fitness-visit-rating p {
+  margin: 0 0 8px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+/* RATING STARS */
+.fitness-rating-stars {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.fitness-star {
+  font-size: 24px;
+  color: #B8B8B8;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  transform: scale(1);
+}
+
+.fitness-star.filled {
+  color: #FF6933;
+  transform: scale(1.1);
+}
+
+.fitness-star:hover {
+  color: #FF6933;
+  transform: scale(1.2);
+}
+
+/* HOVER ANIMS */
+.fitness-rating-stars:hover .fitness-star:nth-child(1):hover,
+.fitness-rating-stars:hover .fitness-star:nth-child(1):hover ~ .fitness-star.filled {
+  animation: starGrow 0.2s ease-out;
+}
+
+.fitness-rating-stars:hover .fitness-star:nth-child(2):hover,
+.fitness-rating-stars:hover .fitness-star:nth-child(1):hover ~ .fitness-star:nth-child(2),
+.fitness-rating-stars:hover .fitness-star:nth-child(2):hover ~ .fitness-star.filled {
+  animation: starGrow 0.2s ease-out 0.05s both;
+}
+
+.fitness-rating-stars:hover .fitness-star:nth-child(3):hover,
+.fitness-rating-stars:hover .fitness-star:nth-child(1):hover ~ .fitness-star:nth-child(3),
+.fitness-rating-stars:hover .fitness-star:nth-child(2):hover ~ .fitness-star:nth-child(3),
+.fitness-rating-stars:hover .fitness-star:nth-child(3):hover ~ .fitness-star.filled {
+  animation: starGrow 0.2s ease-out 0.1s both;
+}
+
+.fitness-rating-stars:hover .fitness-star:nth-child(4):hover,
+.fitness-rating-stars:hover .fitness-star:nth-child(1):hover ~ .fitness-star:nth-child(4),
+.fitness-rating-stars:hover .fitness-star:nth-child(2):hover ~ .fitness-star:nth-child(4),
+.fitness-rating-stars:hover .fitness-star:nth-child(3):hover ~ .fitness-star:nth-child(4),
+.fitness-rating-stars:hover .fitness-star:nth-child(4):hover ~ .fitness-star.filled {
+  animation: starGrow 0.2s ease-out 0.15s both;
+}
+
+.fitness-rating-stars:hover .fitness-star:nth-child(5):hover,
+.fitness-rating-stars:hover .fitness-star:nth-child(1):hover ~ .fitness-star:nth-child(5),
+.fitness-rating-stars:hover .fitness-star:nth-child(2):hover ~ .fitness-star:nth-child(5),
+.fitness-rating-stars:hover .fitness-star:nth-child(3):hover ~ .fitness-star:nth-child(5),
+.fitness-rating-stars:hover .fitness-star:nth-child(4):hover ~ .fitness-star:nth-child(5) {
+  animation: starGrow 0.2s ease-out 0.2s both;
+}
+
+@keyframes starGrow {
+  0% { transform: scale(1); color: #B8B8B8; }
+  50% { transform: scale(1.3); color: #FF6933; }
+  100% { transform: scale(1.1); color: #FF6933; }
+}
+
+.fitness-rating-stars .fitness-star:hover,
+.fitness-rating-stars .fitness-star:hover ~ .fitness-star {
+  color: #FF6933;
+}
+
+.fitness-rating-stars .fitness-star:hover:not(.filled) {
+  animation: starPulse 0.3s ease-in-out;
+}
+
+@keyframes starPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.fitness-visit-feedback {
+  font-style: italic;
+  color: #666;
+  font-size: 13px;
+  max-width: 200px;
+  margin: 0;
+}
+
+/* TELEGRAM SETTINGS + GENERAL FORM */
+.fitness-telegram-settings {
+  background: #F5F5F5;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 16px;
+}
+
+.fitness-telegram-settings h3 {
+  color: #293241;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fitness-telegram-setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 15px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.fitness-telegram-setting-item:hover {
+  border-color: #FF6933;
+}
+
+.fitness-telegram-setting-info h4 {
+  color: #293241;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.fitness-telegram-setting-info p {
+  color: #666;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.fitness-telegram-setting-info small {
+  color: #FF6933;
+  font-weight: 500;
+}
+
+.fitness-telegram-setting-status {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.fitness-telegram-enabled .fitness-status-text {
+  color: #FF6933;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.fitness-telegram-disabled {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.fitness-telegram-disabled .fitness-status-text {
+  color: #293241;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* SETTINGS FORM */
+.fitness-settings-form {
+  background: #F5F5F5;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.fitness-form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.fitness-form-group {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.fitness-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #293241;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.fitness-form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  background: #ffffff;
+}
+
+.fitness-form-group input:focus {
+  outline: none;
+  border-color: #FF6933;
+}
+
+.fitness-form-group input:disabled {
+  background: #F5F5F5;
+  opacity: 0.6;
+}
+
+.fitness-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+/* EMPTY STATE */
+.fitness-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.fitness-empty-state svg {
+  width: 80px;
+  height: 80px;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+.fitness-empty-state h3 {
+  color: #293241;
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.fitness-empty-state p {
+  margin-bottom: 30px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* BUTTONS */
+.fitness-btn,
+.fitness-profile-page .fitness-btn,
+button.fitness-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.fitness-btn-primary,
+.fitness-profile-page .fitness-btn-primary,
+button.fitness-btn-primary {
+  background: #FF6933 !important;
+  color: #ffffff !important;
+  border-color: #FF6933;
+}
+
+.fitness-btn-primary:hover:not(:disabled),
+.fitness-profile-page .fitness-btn-primary:hover:not(:disabled),
+button.fitness-btn-primary:hover:not(:disabled) {
+  background: #B8B8B8 !important;
+  color: #FF6933 !important;
+  border-color: #B8B8B8 !important;
+}
+
+.fitness-btn-secondary,
+.fitness-profile-page .fitness-btn-secondary,
+button.fitness-btn-secondary {
+  background: #F5F5F5;
+  color: #293241;
+  border-color: #F5F5F5;
+}
+
+.fitness-btn-secondary:hover:not(:disabled),
+.fitness-profile-page .fitness-btn-secondary:hover:not(:disabled),
+button.fitness-btn-secondary:hover:not(:disabled) {
+  background: #B8B8B8 !important;
+  color: #FF6933 !important;
+  border-color: #B8B8B8 !important;
+}
+
+.fitness-btn-danger,
+.fitness-profile-page .fitness-btn-danger,
+button.fitness-btn-danger {
+  background: #293241;
+  color: #ffffff;
+  border-color: #293241;
+}
+
+.fitness-btn-danger:hover:not(:disabled),
+.fitness-profile-page .fitness-btn-danger:hover:not(:disabled),
+button.fitness-btn-danger:hover:not(:disabled) {
+  background: #B8B8B8 !important;
+  color: #FF6933 !important;
+  border-color: #B8B8B8 !important;
+}
+
+.fitness-btn-sm {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.fitness-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* MODAL STYLES */
+.fitness-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.fitness-modal {
+  background: #ffffff;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.fitness-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 30px 20px;
+  border-bottom: 2px solid #F5F5F5;
+  position: relative;
+}
+
+.fitness-modal-header h3 {
+  flex: 1;
+  margin: 0;
+  color: #293241;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fitness-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.fitness-modal-close:hover {
+  color: #FF6933;
+}
+
+.fitness-modal-close svg {
+  width: 24px;
+  height: 24px;
+}
+
+.fitness-modal-content {
+  padding: 25px 30px;
+}
+
+.fitness-modal-actions {
+  padding: 15px 30px 25px;
+  border-top: 2px solid #F5F5F5;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+/* ALERT MODAL */
+.fitness-alert-modal { max-width: 400px; }
+
+.fitness-alert-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fitness-alert-icon svg { width: 24px; height: 24px; }
+
+.fitness-alert-icon-success { background: rgba(255, 105, 51, 0.1); color: #FF6933; }
+.fitness-alert-icon-warning { background: rgba(184, 184, 184, 0.2); color: #293241; }
+.fitness-alert-icon-error { background: rgba(41, 50, 65, 0.1); color: #293241; }
+.fitness-alert-icon-info { background: rgba(255, 105, 51, 0.1); color: #FF6933; }
+
+.fitness-alert-message {
+  color: #293241;
+  line-height: 1.5;
+  margin: 0;
+  font-size: 16px;
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ КНОПКИ БАЛАНСА */
+@media (max-width: 768px) {
+  .fitness-profile-page { padding: 15px; }
+
+  .fitness-profile-header {
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+    margin-bottom: 16px;
+  }
+
+  .fitness-profile-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  /* увеличенная мобильная аватарка — ПЛЕЙСХОЛДЕР НЕ ПОКАЗЫВАЕМ ПО УМОЛЧАНИЮ */
+  .fitness-profile-avatar {
+    width: 120px !important;
+    height: 120px !important;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: none !important;
+    margin: 0 auto;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+  }
+
+  .fitness-profile-avatar:hover {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    border: none !important;
+  }
+
+  .fitness-profile-avatar img {
+    width: 120px !important;
+    height: 120px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+    border-radius: 50% !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+
+  /* Плейсхолдер: БЕЗ display:flex по умолчанию, только размеры и шрифты */
+  .fitness-avatar-placeholder {
+    font-size: 42px !important;
+    width: 120px !important;
+    height: 120px !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    border-radius: 50% !important;
+    /* display: none уже задан сверху; показываем только .show */
+  }
+
+  .fitness-avatar-placeholder.show { display: flex !important; }
+
+  .fitness-profile-name-section {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .fitness-profile-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fitness-profile-details h1 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .fitness-user-stats {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 15px 0 !important;
+  }
+
+  .fitness-stat {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+  }
+
+  .fitness-stat-value {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #FF6933 !important;
+    line-height: 1.2 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .fitness-stat-label {
+    font-size: 14px !important;
+    color: #666 !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    margin: 0 !important;
+  }
+
+  .fitness-balance-section {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 15px !important;
+  }
+
+  .fitness-balance-button,
+  .fitness-balance-button:link,
+  .fitness-balance-button:visited {
+    background: #FF6933 !important;
+    color: #ffffff !important;
+    border: 2px solid #FF6933 !important;
+    padding: 15px 30px !important;
+    border-radius: 25px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    max-width: 280px !important;
+    min-width: 200px !important;
+    text-align: center !important;
+    box-shadow: none !important;
+    outline: none !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .fitness-balance-button:hover,
+  .fitness-balance-button:focus {
+    background: #e65a29 !important;
+    color: #ffffff !important;
+    border-color: #e65a29 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 15px rgba(255, 105, 51, 0.3) !important;
+  }
+
+  .fitness-balance-button:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 10px rgba(255, 105, 51, 0.2) !important;
+  }
+
+  /* скрыть кнопку «Отключить» в мобильной версии */
+  .fitness-telegram-unlink-btn { display: none !important; }
+
+  .fitness-telegram-connected {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .fitness-telegram-status {
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .fitness-telegram-button-section .fitness-telegram-link-btn,
+  .fitness-telegram-link-btn.fitness-telegram-link-btn {
+    font-size: 12px !important;
+    padding: 8px 16px !important;
+    max-width: 250px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .fitness-profile-tabs {
+    display: flex;
+    gap: 2px;
+    padding: 0;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #F5F5F5;
+    overflow: hidden;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .fitness-profile-tab {
+    padding: 12px 10px;
+    min-width: auto;
+    width: auto;
+    flex: none;
+    position: relative;
+    text-indent: -9999px;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .fitness-profile-tab::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #666;
+    font-weight: 500;
+    font-size: 14px;
+    white-space: nowrap;
+    text-indent: 0;
+  }
+
+  .fitness-profile-tab:nth-child(1)::before { content: 'Записи'; }
+  .fitness-profile-tab:nth-child(2)::before { content: 'История'; }
+  .fitness-profile-tab:nth-child(3)::before { content: 'Настройки'; }
+
+  .fitness-profile-tab:hover { background: #B8B8B8 !important; }
+  .fitness-profile-tab:hover::before { color: #FF6933 !important; }
+
+  .fitness-profile-tab.active {
+    background: #FF6933 !important;
+    border-bottom: 3px solid #FF6933;
+  }
+
+  .fitness-profile-tab.active::before { color: #ffffff !important; }
+
+  .fitness-profile-section h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .fitness-booking-card,
+  .fitness-visit-card { padding: 20px; }
+
+  .fitness-booking-details,
+  .fitness-visit-details { gap: 10px; }
+
+  .fitness-visit-card {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .fitness-visit-rating { text-align: left; }
+  .fitness-rating-stars { justify-content: flex-start; }
+
+  .fitness-form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .fitness-telegram-setting-item {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .fitness-telegram-setting-info h4 {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .fitness-telegram-setting-info p {
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .fitness-telegram-setting-status { align-self: flex-start; }
+  .fitness-telegram-disabled { align-items: flex-start; }
+
+  .fitness-telegram-disabled .fitness-btn-sm {
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+    white-space: normal !important;
+    line-height: 1.2 !important;
+    text-align: center;
+  }
+
+  .fitness-modal {
+    margin: 10px;
+    max-height: calc(100vh - 40px);
+  }
+
+  .fitness-modal-header,
+  .fitness-modal-content,
+  .fitness-modal-actions {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .fitness-auth-card { padding: 30px 20px; }
+  .fitness-benefit-item { padding: 12px; }
+
+  .fitness-telegram-settings {
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+
+  .fitness-settings-form { padding: 20px; }
+
+  .fitness-form-actions { justify-content: stretch; }
+  .fitness-form-actions .fitness-btn { width: 100%; }
+
+  .fitness-bookings-list { gap: 10px; }
+  .fitness-visit-history { gap: 10px; }
+
+  .fitness-avatar-settings { padding: 20px; margin-bottom: 16px; }
+
+  .fitness-avatar-setting-item {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .fitness-avatar-setting-preview {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .fitness-avatar-preview-image {
+    width: 100px;
+    height: 100px;
+    align-self: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .fitness-avatar-preview-image .fitness-avatar-placeholder {
+    font-size: 36px;
+    /* display none по умолчанию из базовых правил; показывать только .show */
+  }
+
+  .fitness-avatar-setting-info { text-align: center; }
+  .fitness-avatar-setting-actions { width: 100%; min-width: auto; }
+  .fitness-avatar-setting-actions .fitness-btn { width: 100%; }
+
+  .fitness-booking-footer { justify-content: center; gap: 15px; }
+
+  .fitness-club-cancellation-notice {
+    padding: 15px;
+    margin: 12px 0;
+  }
+
+  .fitness-club-cancellation-notice p {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fitness-profile-page { padding: 10px; }
+
+  .fitness-profile-header { padding: 20px; margin-bottom: 16px; }
+
+  .fitness-profile-avatar {
+    width: 100px !important;
+    height: 100px !important;
+    border: none !important;
+  }
+
+  .fitness-profile-avatar img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  /* плейсхолдер — размеры/шрифт, но без display по умолчанию */
+  .fitness-avatar-placeholder {
+    font-size: 36px !important;
+    width: 100px !important;
+    height: 100px !important;
+  }
+  .fitness-avatar-placeholder.show { display: flex !important; }
+
+  .fitness-profile-details h1 { font-size: 20px; }
+
+  .fitness-stat { padding: 0 !important; }
+  .fitness-stat-value { font-size: 20px !important; }
+  .fitness-stat-label { font-size: 12px !important; }
+
+  .fitness-balance-button,
+  .fitness-balance-button:link,
+  .fitness-balance-button:visited {
+    padding: 12px 24px !important;
+    font-size: 14px !important;
+    border-radius: 20px !important;
+    min-width: 180px !important;
+    max-width: 240px !important;
+  }
+
+  .fitness-profile-tabs { gap: 1px; overflow: hidden; margin-bottom: 16px; }
+  .fitness-profile-tab { padding: 10px 8px; text-indent: -9999px; }
+  .fitness-profile-tab::before { font-size: 12px; }
+
+  .fitness-booking-card,
+  .fitness-visit-card { padding: 15px; }
+
+  .fitness-booking-info h3 { font-size: 18px; }
+  .fitness-visit-info h3 { font-size: 16px; }
+
+  .fitness-telegram-settings,
+  .fitness-settings-form { padding: 15px; }
+
+  .fitness-empty-state { padding: 40px 15px; }
+  .fitness-empty-state svg { width: 60px; height: 60px; }
+  .fitness-empty-state h3 { font-size: 20px; }
+
+  .fitness-modal-header,
+  .fitness-modal-content,
+  .fitness-modal-actions {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .fitness-telegram-setting-info h4 { font-size: 13px; }
+  .fitness-telegram-setting-info p { font-size: 12px; }
+
+  .fitness-telegram-disabled .fitness-btn-sm {
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+  }
+
+  .fitness-bookings-list { gap: 8px; }
+  .fitness-visit-history { gap: 8px; }
+
+  .fitness-telegram-settings { margin-bottom: 16px; }
+  .fitness-profile-section h2 { margin-bottom: 10px; }
+
+  .fitness-club-cancellation-notice { padding: 12px; }
+  .fitness-club-cancellation-notice p {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .fitness-avatar-settings { padding: 15px; margin-bottom: 16px; }
+  .fitness-avatar-setting-item { padding: 12px; }
+
+  .fitness-avatar-preview-image { width: 80px; height: 80px; }
+  .fitness-avatar-preview-image .fitness-avatar-placeholder { font-size: 28px; }
+
+  .fitness-avatar-setting-info h4 { font-size: 14px; }
+  .fitness-avatar-setting-info p { font-size: 13px; }
+}
+
+/* ДОПОЛНИТЕЛЬНЫЕ ПРИНУДИТЕЛЬНЫЕ ПРАВИЛА */
+@media screen and (max-width: 768px) {
+  /* убираем любые границы у аватара/плейсхолдера */
+  .fitness-profile-avatar *,
+  .fitness-avatar-placeholder *,
+  .fitness-profile-avatar::after,
+  .fitness-profile-avatar::before,
+  .fitness-avatar-placeholder::after,
+  .fitness-avatar-placeholder::before {
+    border: none !important;
+    outline: none !important;
+  }
+
+  .fitness-profile-avatar,
+  .fitness-profile-avatar:hover,
+  .fitness-profile-avatar:focus,
+  .fitness-profile-avatar:active {
+    border: none !important;
+    outline: none !important;
+  }
+
+  /* принудительно скрыть кнопку отвязки Telegram */
+  .fitness-telegram-unlink-btn,
+  button.fitness-telegram-unlink-btn {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+/* ТОЧНАЯ ЗАЩИТА ОТ ТЕМНОЙ ТЕМЫ - СОХРАНЯЕМ ОРИГИНАЛЬНЫЙ ДИЗАЙН */
+:root {
+  color-scheme: light only;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* ПЕРЕОПРЕДЕЛЯЕМ CSS ПЕРЕМЕННЫЕ НА ОРИГИНАЛЬНЫЕ ЗНАЧЕНИЯ */
+  :root {
+    --fitness-accent: #F5F5F5 !important;
+    --fitness-primary: #FF6933 !important;
+    --fitness-secondary: #F5F5F5 !important;
+    --fitness-text: #293241 !important;
+    --fitness-bg: #ffffff !important;
+  }
+
+  /* ВОССТАНАВЛИВАЕМ ТОЧНЫЕ ОРИГИНАЛЬНЫЕ ЦВЕТА */
+  .fitness-profile-page {
+    background-color: #ffffff !important;
+  }
+
+  .fitness-profile-header {
+    background: #F5F5F5 !important;
+    border: 2px solid #F5F5F5 !important;
+  }
+
+  .fitness-profile-tabs {
+    background: #ffffff !important;
+    border-bottom: 2px solid #F5F5F5 !important;
+  }
+
+  .fitness-profile-tab {
+    background: transparent !important;
+    color: #666 !important;
+  }
+
+  .fitness-profile-tab:hover {
+    color: #FF6933 !important;
+    background: #F5F5F5 !important;
+  }
+
+  .fitness-profile-tab.active {
+    color: #ffffff !important;
+    background: #FF6933 !important;
+  }
+
+  .fitness-avatar-settings,
+  .fitness-settings-section,
+  .fitness-activity-section,
+  .fitness-telegram-settings,
+  .fitness-settings-form {
+    background: #F5F5F5 !important;
+  }
+
+  .fitness-avatar-setting-item,
+  .fitness-settings-item,
+  .fitness-activity-card,
+  .fitness-telegram-setting-item {
+    background: #ffffff !important;
+  }
+
+  .fitness-booking-card,
+  .fitness-visit-card {
+    background: #F5F5F5 !important;
+  }
+
+  .fitness-booking-date,
+  .fitness-booking-time,
+  .fitness-booking-trainer,
+  .fitness-visit-date,
+  .fitness-visit-time,
+  .fitness-visit-trainer {
+    background: #ffffff !important;
+    color: #293241 !important;
+  }
+
+  .fitness-auth-card {
+    background: #ffffff !important;
+    border: 2px solid #F5F5F5 !important;
+  }
+
+  .fitness-benefit-item {
+    background: #F5F5F5 !important;
+  }
+
+  .fitness-modal {
+    background: #ffffff !important;
+  }
+
+  .fitness-modal-header {
+    border-bottom: 2px solid #F5F5F5 !important;
+  }
+
+  .fitness-modal-actions {
+    border-top: 2px solid #F5F5F5 !important;
+  }
+
+  .fitness-form-group input,
+  .fitness-form-group select {
+    background: #ffffff !important;
+    color: #293241 !important;
+    border: 2px solid #E0E0E0 !important;
+  }
+
+  .fitness-form-group input:focus,
+  .fitness-form-group select:focus {
+    background: #ffffff !important;
+    color: #293241 !important;
+    border-color: #FF6933 !important;
+  }
+
+  .fitness-form-group input:disabled {
+    background: #F5F5F5 !important;
+  }
+
+  /* ТЕКСТОВЫЕ ЦВЕТА ОСТАЮТСЯ КАК В ОРИГИНАЛЕ */
+  .fitness-profile-details h1,
+  .fitness-avatar-setting-info h4,
+  .fitness-settings-item label,
+  .fitness-telegram-setting-info h4,
+  .fitness-activity-header h4,
+  .fitness-booking-info h3,
+  .fitness-visit-info h3,
+  .fitness-profile-section h2,
+  .fitness-empty-state h3,
+  .fitness-modal-header h3,
+  .fitness-auth-card h2,
+  .fitness-alert-message {
+    color: #293241 !important;
+  }
+
+  .fitness-profile-email,
+  .fitness-stat-label,
+  .fitness-avatar-setting-info p,
+  .fitness-telegram-setting-info p,
+  .fitness-activity-details,
+  .fitness-visit-rating p,
+  .fitness-visit-feedback,
+  .fitness-empty-state,
+  .fitness-auth-card p,
+  .fitness-telegram-disabled .fitness-status-text {
+    color: #666 !important;
+  }
+
+  .fitness-activity-date {
+    color: #999 !important;
+  }
+
+  /* АКЦЕНТНЫЕ ЦВЕТА СОХРАНЯЮТСЯ */
+  .fitness-stat-value,
+  .fitness-booking-club,
+  .fitness-visit-club,
+  .fitness-current-photo-status,
+  .fitness-telegram-status,
+  .fitness-telegram-enabled .fitness-status-text,
+  .fitness-telegram-setting-info small {
+    color: #FF6933 !important;
+  }
+
+  .fitness-star.filled {
+    color: #FF6933 !important;
+  }
+
+  .fitness-star {
+    color: #B8B8B8 !important;
+  }
+
+  /* СПЕЦИАЛЬНЫЕ ЭЛЕМЕНТЫ */
+  .fitness-avatar-placeholder,
+  .fitness-avatar-preview-image .fitness-avatar-placeholder {
+    background: #FF6933 !important;
+    color: #ffffff !important;
+  }
+
+  .fitness-club-cancellation-notice {
+    background: linear-gradient(135deg, rgba(184, 184, 184, 0.08) 0%, rgba(184, 184, 184, 0.12) 100%) !important;
+    border: 2px solid #B8B8B8 !important;
+  }
+
+  .fitness-club-cancellation-notice p {
+    color: #293241 !important;
+  }
+
+  .fitness-club-cancellation-notice p:last-child {
+    color: #666 !important;
+  }
+
+  /* КНОПКИ СОХРАНЯЮТ ОРИГИНАЛЬНЫЕ СТИЛИ */
+  .fitness-btn-primary,
+  .fitness-balance-button,
+  .fitness-telegram-link-btn {
+    background: #FF6933 !important;
+    color: #ffffff !important;
+    border-color: #FF6933 !important;
+  }
+
+  .fitness-btn-secondary {
+    background: #F5F5F5 !important;
+    color: #293241 !important;
+    border-color: #F5F5F5 !important;
+  }
+
+  .fitness-btn-danger {
+    background: #293241 !important;
+    color: #ffffff !important;
+    border-color: #293241 !important;
+  }
+
+  /* ИСПРАВЛЯЕМ ЭЛЕМЕНТЫ С var(--fitness-accent) */
+  [style*="var(--fitness-accent)"],
+  *[style*="background: var(--fitness-accent)"] {
+    background: #F5F5F5 !important;
+  }
+}

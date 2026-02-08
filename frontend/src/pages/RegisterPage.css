@@ -1,0 +1,531 @@
+/* Подключение шрифта Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* FitnessHub RegisterPage CSS - Уникальные префиксы */
+:root {
+  --fh-rp-primary: #FF6B35;
+  --fh-rp-secondary: #E55A2B;
+  --fh-rp-accent: #FFF9F7;
+  --fh-rp-text-dark: #1a1a1a;
+  --fh-rp-text-gray: #666666;
+  --fh-rp-white: #ffffff;
+  --fh-rp-gradient: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%);
+  --fh-rp-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  --fh-rp-shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.12);
+  --fh-rp-border-radius: 16px;
+  --fh-rp-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fh-rp__page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--fh-rp-white);
+}
+
+.fh-rp__auth-container {
+  flex: 0 0 500px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--fh-rp-white);
+  box-sizing: border-box;
+}
+
+.fh-rp__info-panel {
+  flex: 1;
+  background: var(--fh-rp-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 80px 60px;
+  position: relative;
+  overflow: hidden;
+  color: var(--fh-rp-white);
+}
+
+.fh-rp__info-panel::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.fh-rp__info-panel::after {
+  content: '';
+  position: absolute;
+  bottom: -5%;
+  left: -5%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.fh-rp__info-content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  width: 100%;
+  color: var(--fh-rp-white);
+}
+
+.fh-rp__info-content h2 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  margin-bottom: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--fh-rp-white);
+}
+
+.fh-rp__info-content > p {
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  margin-bottom: 50px;
+  opacity: 0.95;
+  line-height: 1.5;
+  color: var(--fh-rp-white);
+}
+
+.fh-rp__features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 35px;
+}
+
+.fh-rp__feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.fh-rp__feature-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--fh-rp-white);
+}
+
+.fh-rp__feature-icon svg {
+  width: 28px;
+  height: 28px;
+  color: var(--fh-rp-white);
+}
+
+.fh-rp__feature-text {
+  color: var(--fh-rp-white);
+}
+
+.fh-rp__feature-text h3 {
+  font-size: clamp(1.2rem, 1.3vw, 1.4rem);
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--fh-rp-white);
+}
+
+.fh-rp__feature-text p {
+  font-size: clamp(1rem, 1.1vw, 1.1rem);
+  opacity: 0.9;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--fh-rp-white);
+}
+
+.fh-rp__header-section {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.fh-rp__header-section h1 {
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  margin-bottom: 12px;
+  color: var(--fh-rp-text-dark);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.fh-rp__header-section p {
+  color: var(--fh-rp-text-gray);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.fh-rp__steps-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
+.fh-rp__step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fh-rp__step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e8eaed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-bottom: 6px;
+  transition: var(--fh-rp-transition);
+  color: var(--fh-rp-text-gray);
+  font-size: 0.9rem;
+}
+
+.fh-rp__step-item--active .fh-rp__step-number {
+  background-color: var(--fh-rp-primary);
+  color: var(--fh-rp-white);
+}
+
+.fh-rp__step-text {
+  font-size: 0.85rem;
+  color: var(--fh-rp-text-gray);
+  font-weight: 500;
+}
+
+.fh-rp__step-item--active .fh-rp__step-text {
+  color: var(--fh-rp-text-dark);
+  font-weight: 600;
+}
+
+.fh-rp__step-connector {
+  height: 2px;
+  background-color: #e8eaed;
+  flex: 1;
+  margin: 0 15px;
+  position: relative;
+  max-width: 70px;
+}
+
+.fh-rp__step-connector::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--fh-rp-primary);
+  transition: width 0.3s ease;
+}
+
+.fh-rp__step-item--active + .fh-rp__step-connector::after {
+  width: 100%;
+}
+
+.fh-rp__auth-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fh-rp__form-step {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fh-rp__form-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fh-rp__input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.fh-rp__input-group--terms {
+  margin-top: 8px;
+}
+
+.fh-rp__input-group label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--fh-rp-text-dark);
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+
+.fh-rp__input-group input {
+  padding: 14px 16px;
+  border: 2px solid #e8eaed;
+  border-radius: var(--fh-rp-border-radius);
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  transition: var(--fh-rp-transition);
+  background: var(--fh-rp-white);
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.fh-rp__input-group input:focus {
+  border-color: var(--fh-rp-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.fh-rp__input--error {
+  border-color: #f44336 !important;
+}
+
+.fh-rp__input-group input::placeholder {
+  color: #999;
+}
+
+.fh-rp__error-msg {
+  color: #f44336;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.fh-rp__error-msg--general {
+  background-color: #ffebee;
+  padding: 12px 16px;
+  border-radius: var(--fh-rp-border-radius);
+  margin-bottom: 24px;
+  text-align: center;
+  border-left: 4px solid #f44336;
+}
+
+.fh-rp__error-text {
+  color: #f44336;
+}
+
+.fh-rp__checkbox-wrapper {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--fh-rp-text-gray);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.fh-rp__checkbox-wrapper input {
+  margin-right: 10px;
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--fh-rp-primary);
+  flex-shrink: 0;
+}
+
+.fh-rp__checkbox-wrapper a {
+  color: var(--fh-rp-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.fh-rp__checkbox-wrapper a:hover {
+  text-decoration: underline;
+}
+
+.fh-rp__form-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.fh-rp__next-btn, .fh-rp__submit-btn {
+  background: var(--fh-rp-gradient);
+  color: var(--fh-rp-white);
+  border: none;
+  padding: 16px 24px;
+  border-radius: var(--fh-rp-border-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--fh-rp-transition);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+  flex: 1;
+}
+
+.fh-rp__next-btn:hover, .fh-rp__submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+}
+
+.fh-rp__back-btn {
+  background: transparent;
+  color: var(--fh-rp-text-gray);
+  border: 2px solid #e8eaed;
+  padding: 16px 24px;
+  border-radius: var(--fh-rp-border-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--fh-rp-transition);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+
+.fh-rp__back-btn:hover {
+  border-color: var(--fh-rp-primary);
+  color: var(--fh-rp-primary);
+}
+
+.fh-rp__submit-btn:disabled, .fh-rp__next-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.fh-rp__login-section {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 0.95rem;
+}
+
+.fh-rp__login-section p {
+  color: var(--fh-rp-text-gray);
+  margin: 0;
+}
+
+.fh-rp__login-section a {
+  color: var(--fh-rp-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--fh-rp-transition);
+}
+
+.fh-rp__login-section a:hover {
+  color: var(--fh-rp-secondary);
+  text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .fh-rp__info-panel {
+    display: none;
+  }
+  
+  .fh-rp__auth-container {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fh-rp__auth-container {
+    padding: 40px 20px;
+  }
+  
+  .fh-rp__form-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .fh-rp__form-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .fh-rp__steps-indicator {
+    margin-bottom: 30px;
+  }
+  
+  .fh-rp__step-connector {
+    max-width: 60px;
+    margin: 0 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fh-rp__auth-container {
+    padding: 30px 16px;
+  }
+  
+  .fh-rp__header-section {
+    margin-bottom: 25px;
+  }
+  
+  .fh-rp__steps-indicator {
+    margin-bottom: 25px;
+  }
+  
+  .fh-rp__form-step {
+    gap: 18px;
+  }
+  
+  .fh-rp__step-number {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+  
+  .fh-rp__step-text {
+    font-size: 0.8rem;
+  }
+  
+  .fh-rp__step-connector {
+    max-width: 50px;
+    margin: 0 10px;
+  }
+}
+
+/* Улучшения для мобильных */
+@media (max-width: 576px) {
+  .fh-rp__page-wrapper {
+    min-height: calc(100vh - 70px);
+  }
+}
+
+/* Дополнительные стили для больших экранов */
+@media (min-width: 1200px) {
+  .fh-rp__auth-container {
+    flex: 0 0 600px;
+    padding: 60px 50px;
+  }
+  
+  .fh-rp__info-panel {
+    padding: 100px 80px;
+  }
+  
+  .fh-rp__info-content {
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .fh-rp__info-panel {
+    padding: 120px 100px;
+  }
+  
+  .fh-rp__info-content {
+    max-width: 800px;
+  }
+}

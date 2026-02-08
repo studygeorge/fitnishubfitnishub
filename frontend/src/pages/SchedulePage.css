@@ -1,0 +1,2105 @@
+/* Подключение шрифта Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ОТКЛЮЧЕНИЕ АВТОМАТИЧЕСКОЙ ТЕМНОЙ ТЕМЫ БРАУЗЕРА */
+html, body {
+  color-scheme: light only;
+}
+
+.fitness-schedule-page {
+  color-scheme: light only;
+}
+
+/* SchedulePage.css - С уникальными префиксами SCHD для блока занятий */
+:root {
+  --fitness-primary: #FF6B35;
+  --fitness-secondary: #E55A2B;
+  --fitness-accent: #FFF9F7;
+  --fitness-text-dark: #1a1a1a;
+  --fitness-text-gray: #666666;
+  --fitness-white: #ffffff;
+  --fitness-gradient: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%);
+  --fitness-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --fitness-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --fitness-border-radius: 12px;
+  --fitness-transition: all 0.2s ease;
+}
+
+/* ПРИНУДИТЕЛЬНОЕ СОХРАНЕНИЕ СВЕТЛОЙ ТЕМЫ - ИСПОЛЬЗУЕМ ПРЯМЫЕ ЦВЕТА */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+  }
+  
+  .fitness-schedule-page {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+  }
+  
+  /* Заголовки и текст */
+  .fitness-page-header h1 {
+    color: #1a1a1a !important;
+  }
+  
+  .fitness-page-header p {
+    color: #666666 !important;
+  }
+  
+  /* Баланс пользователя */
+  .fitness-user-balance {
+    background: #FFF9F7 !important;
+    color: #FF6B35 !important;
+    border-color: rgba(255, 107, 53, 0.2) !important;
+  }
+  
+  .fitness-balance-amount {
+    color: #FF6B35 !important;
+  }
+  
+  /* КНОПКА ДАТЫ - БЕЛЫЙ ТЕКСТ НА ГРАДИЕНТЕ */
+  .fitness-date-button {
+    color: #ffffff !important;
+  }
+  
+  .fitness-date-text,
+  .fitness-date-full {
+    color: #ffffff !important;
+  }
+  
+  /* ВСЕ КНОПКИ С ГРАДИЕНТОМ ОСТАЮТСЯ С БЕЛЫМ ТЕКСТОМ */
+  .fitness-btn-primary,
+  .schd-book-btn {
+    color: #ffffff !important;
+  }
+  
+  .fitness-btn-primary:hover:not(:disabled) {
+    color: #ffffff !important;
+  }
+  
+  .schd-book-btn:hover:not(.disabled) {
+    color: #ffffff !important;
+  }
+  
+  /* ЗАГОЛОВКИ КЛУБОВ - БЕЛЫЙ ТЕКСТ НА ГРАДИЕНТЕ */
+  .schd-club-title {
+    color: #ffffff !important;
+  }
+  
+  /* БЛОК КОДА ПОСЕЩЕНИЯ - БЕЛЫЙ ТЕКСТ */
+  .fitness-visit-code-block {
+    color: #ffffff !important;
+  }
+  
+  .fitness-visit-code-header,
+  .fitness-visit-code-header h4,
+  .fitness-visit-code,
+  .fitness-visit-code-instruction {
+    color: #ffffff !important;
+  }
+  
+  /* УСПЕШНАЯ ИКОНКА - БЕЛЫЙ ТЕКСТ */
+  .fitness-success-icon {
+    color: #ffffff !important;
+  }
+  
+  /* ALERT ИКОНКИ - БЕЛЫЙ ТЕКСТ */
+  .fitness-alert-icon {
+    color: #ffffff !important;
+  }
+  
+  /* Фильтры */
+  .fitness-schedule-filters {
+    background: #ffffff !important;
+    border-color: rgba(255, 107, 53, 0.08) !important;
+  }
+  
+  /* Селекты и кнопки фильтров */
+  .fitness-filter-select {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+    border-color: #e0e0e0 !important;
+  }
+  
+  .fitness-filter-icon {
+    color: #666666 !important;
+  }
+  
+  /* Быстрые даты */
+  .fitness-quick-date {
+    background: #ffffff !important;
+    color: #666666 !important;
+    border-color: #e0e0e0 !important;
+  }
+  
+  .fitness-quick-date:hover {
+    border-color: #FF6B35 !important;
+    color: #FF6B35 !important;
+  }
+  
+  .fitness-quick-date.active {
+    background: #FF6B35 !important;
+    color: #ffffff !important;
+    border-color: #FF6B35 !important;
+  }
+  
+  /* Календарь */
+  .fitness-mini-calendar {
+    background: #ffffff !important;
+    border-color: rgba(255, 107, 53, 0.08) !important;
+  }
+  
+  .fitness-calendar-header h3 {
+    color: #1a1a1a !important;
+  }
+  
+  .fitness-nav-btn {
+    background: #FFF9F7 !important;
+    color: #FF6B35 !important;
+  }
+  
+  .fitness-nav-btn:hover {
+    background: #FF6B35 !important;
+    color: #ffffff !important;
+  }
+  
+  .fitness-weekday {
+    color: #666666 !important;
+  }
+  
+  .fitness-calendar-day {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+  }
+  
+  .fitness-calendar-day:hover:not(.past):not(.other-month) {
+    background: #FFF9F7 !important;
+    color: #FF6B35 !important;
+    border-color: #FF6B35 !important;
+  }
+  
+  .fitness-calendar-day.today {
+    background: #e3f2fd !important;
+    color: #1976d2 !important;
+  }
+  
+  .fitness-calendar-day.selected {
+    background: #FF6B35 !important;
+    color: #ffffff !important;
+  }
+  
+  .fitness-calendar-day.other-month,
+  .fitness-calendar-day.past {
+    color: #dee2e6 !important;
+  }
+  
+  /* Состояния */
+  .fitness-loading-state,
+  .fitness-error-state,
+  .fitness-empty-state {
+    background: #ffffff !important;
+    border-color: rgba(255, 107, 53, 0.08) !important;
+  }
+  
+  .fitness-loading-state h2,
+  .fitness-error-state h2,
+  .fitness-empty-state h3 {
+    color: #1a1a1a !important;
+  }
+  
+  .fitness-loading-state p,
+  .fitness-error-state p,
+  .fitness-empty-state p {
+    color: #666666 !important;
+  }
+  
+  .fitness-error-icon,
+  .fitness-empty-icon {
+    color: #666666 !important;
+  }
+  
+  /* Блок занятий с префиксом SCHD */
+  .schd-club-section {
+    background: #ffffff !important;
+    border-color: rgba(255, 107, 53, 0.08) !important;
+  }
+  
+  .schd-class-item {
+    background: #ffffff !important;
+    border-color: #f5f5f5 !important;
+  }
+  
+  .schd-time-main {
+    color: #FF6B35 !important;
+  }
+  
+  .schd-time-duration,
+  .schd-time-end {
+    color: #666666 !important;
+  }
+  
+  .schd-class-name {
+    color: #1a1a1a !important;
+  }
+  
+  .schd-class-trainer,
+  .schd-class-description {
+    color: #666666 !important;
+  }
+  
+  .schd-class-category {
+    background: #FFF9F7 !important;
+    color: #FF6B35 !important;
+  }
+  
+  .schd-spots-available {
+    color: #666666 !important;
+  }
+  
+  .schd-class-price {
+    color: #27ae60 !important;
+  }
+  
+  .schd-booking-status {
+    background: #d4edda !important;
+    color: #155724 !important;
+    border-color: #c3e6cb !important;
+  }
+  
+  /* Модальные окна */
+  .fitness-modal {
+    background: #ffffff !important;
+    border-color: rgba(255, 107, 53, 0.08) !important;
+  }
+  
+  .fitness-modal-header h3 {
+    color: #1a1a1a !important;
+  }
+  
+  .fitness-modal-close {
+    background: #FFF9F7 !important;
+    color: #666666 !important;
+  }
+  
+  .fitness-modal-close:hover {
+    background: #e9ecef !important;
+    color: #1a1a1a !important;
+  }
+  
+  .fitness-modal-actions {
+    background: #fafbfc !important;
+    border-color: #e9ecef !important;
+  }
+  
+  .fitness-btn-secondary {
+    background: #ffffff !important;
+    color: #666666 !important;
+    border-color: #e0e0e0 !important;
+  }
+  
+  .fitness-btn-secondary:hover:not(:disabled) {
+    border-color: #FF6B35 !important;
+    color: #FF6B35 !important;
+  }
+  
+  /* Информационные блоки */
+  .fitness-booking-info p,
+  .fitness-balance-info p,
+  .fitness-success-info p {
+    color: #1a1a1a !important;
+  }
+  
+  .fitness-booking-info strong,
+  .fitness-balance-info strong,
+  .fitness-success-info strong {
+    color: #1a1a1a !important;
+  }
+  
+  .fitness-balance-info {
+    background: #FFF9F7 !important;
+    border-color: rgba(255, 107, 53, 0.1) !important;
+  }
+  
+  .fitness-balance-info strong {
+    color: #FF6B35 !important;
+  }
+  
+  .fitness-success-info {
+    background: #f0f8f0 !important;
+    border-color: #c3e6cb !important;
+  }
+  
+  .fitness-amount-red {
+    color: #dc3545 !important;
+  }
+  
+  .fitness-amount-green {
+    color: #28a745 !important;
+  }
+  
+  /* Alert сообщения */
+  .fitness-alert-message {
+    color: #1a1a1a !important;
+  }
+  
+  /* Политика отмены */
+  .fitness-cancellation-policy {
+    background: #fff3cd !important;
+    border-color: #ffeaa7 !important;
+  }
+  
+  .fitness-policy-header {
+    color: #856404 !important;
+  }
+  
+  .fitness-policy-list {
+    color: #856404 !important;
+  }
+  
+  .fitness-policy-success {
+    color: #155724 !important;
+  }
+  
+  .fitness-policy-warning {
+    color: #721c24 !important;
+  }
+  
+  /* Заметки об успехе */
+  .fitness-success-note {
+    background: #fff3cd !important;
+    border-color: #ffeaa7 !important;
+  }
+  
+  .fitness-note-item {
+    color: #856404 !important;
+  }
+  
+  .fitness-note-item svg {
+    color: #FF6B35 !important;
+  }
+}
+
+.fitness-schedule-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  min-height: 100vh;
+  background: var(--fitness-white);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Заголовок страницы */
+.fitness-page-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.fitness-page-header h1 {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 600;
+  color: var(--fitness-text-dark);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.fitness-page-header p {
+  color: var(--fitness-text-gray);
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Баланс пользователя */
+.fitness-user-balance {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--fitness-accent);
+  color: var(--fitness-primary);
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.fitness-user-balance svg {
+  width: 18px;
+  height: 18px;
+}
+
+.fitness-balance-amount {
+  color: var(--fitness-primary);
+  font-weight: 700;
+}
+
+/* Фильтры */
+.fitness-schedule-filters {
+  background: var(--fitness-white);
+  border-radius: var(--fitness-border-radius);
+  padding: 28px;
+  margin-bottom: 32px;
+  box-shadow: var(--fitness-shadow);
+  border: 1px solid rgba(255, 107, 53, 0.08);
+}
+
+/* Селектор даты */
+.fitness-date-selector {
+  margin-bottom: 20px;
+}
+
+.fitness-date-button {
+  display: flex;
+  align-items: center;
+  gap:14px;
+  width: 100%;
+  padding: 16px 20px;
+  background: var(--fitness-gradient);
+  color: var(--fitness-white);
+  border: none;
+  border-radius: var(--fitness-border-radius);
+  cursor: pointer;
+  transition: var(--fitness-transition);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
+}
+
+.fitness-date-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
+}
+
+.fitness-date-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.fitness-date-text {
+  flex: 1;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.fitness-date-full {
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+.fitness-chevron {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.fitness-date-button[aria-expanded="true"] .fitness-chevron {
+  transform: rotate(180deg);
+}
+
+/* Быстрый выбор дат - СКРЫВАЕМ НА МОБИЛЬНЫХ */
+.fitness-quick-dates {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.fitness-quick-date {
+  padding: 8px 14px;
+  background: var(--fitness-white);
+  color: var(--fitness-text-gray);
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--fitness-transition);
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+}
+
+.fitness-quick-date:hover {
+  border-color: var(--fitness-primary);
+  color: var(--fitness-primary);
+}
+
+.fitness-quick-date.active {
+  background: var(--fitness-primary);
+  color: var(--fitness-white);
+  border-color: var(--fitness-primary);
+  font-weight: 600;
+}
+
+/* Контролы фильтров */
+.fitness-filter-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.fitness-filter-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.fitness-filter-icon {
+  position: absolute;
+  left: 14px;
+  width: 18px;
+  height: 18px;
+  color: var(--fitness-text-gray);
+  z-index: 1;
+}
+
+.fitness-filter-select {
+  width: 100%;
+  padding: 12px 14px 12px 44px;
+  border: 1px solid #e0e0e0;
+  border-radius: var(--fitness-border-radius);
+  background: var(--fitness-white);
+  font-size: 0.95rem;
+  color: var(--fitness-text-dark);
+  cursor: pointer;
+  transition: var(--fitness-transition);
+  font-family: 'Inter', sans-serif;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px;
+}
+
+.fitness-filter-select:focus {
+  outline: none;
+  border-color: var(--fitness-primary);
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.1);
+}
+
+/* Выпадающий календарь */
+.fitness-calendar-dropdown {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.fitness-mini-calendar {
+  background: var(--fitness-white);
+  border-radius: var(--fitness-border-radius);
+  padding: 20px;
+  box-shadow: var(--fitness-shadow-hover);
+  border: 1px solid rgba(255, 107, 53, 0.08);
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.fitness-calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.fitness-calendar-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--fitness-text-dark);
+  text-transform: capitalize;
+}
+
+.fitness-nav-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--fitness-accent);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fitness-primary);
+  transition: var(--fitness-transition);
+}
+
+.fitness-nav-btn:hover {
+  background: var(--fitness-primary);
+  color: var(--fitness-white);
+}
+
+.fitness-nav-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.fitness-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 8px;
+}
+
+.fitness-weekday {
+  text-align: center;
+  padding: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--fitness-text-gray);
+}
+
+.fitness-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.fitness-calendar-day {
+  aspect-ratio: 1;
+  border: none;
+  background: var(--fitness-white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  transition: var(--fitness-transition);
+  color: var(--fitness-text-dark);
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+.fitness-calendar-day:hover:not(.past):not(.other-month) {
+  background: var(--fitness-accent);
+  color: var(--fitness-primary);
+  border-color: var(--fitness-primary);
+}
+
+.fitness-calendar-day.today {
+  background: #e3f2fd;
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.fitness-calendar-day.selected {
+  background: var(--fitness-primary);
+  color: var(--fitness-white);
+  font-weight: 700;
+}
+
+.fitness-calendar-day.other-month {
+  color: #dee2e6;
+}
+
+.fitness-calendar-day.past {
+  color: #dee2e6;
+  cursor: not-allowed;
+}
+
+.fitness-calendar-footer {
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Состояния загрузки и ошибок */
+.fitness-loading-state,
+.fitness-error-state,
+.fitness-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 30px;
+  text-align: center;
+  background: var(--fitness-white);
+  border-radius: var(--fitness-border-radius);
+  box-shadow: var(--fitness-shadow);
+  border: 1px solid rgba(255, 107, 53, 0.08);
+}
+
+.fitness-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--fitness-accent);
+  border-top: 3px solid var(--fitness-primary);
+  border-radius: 50%;
+  animation: fitness-spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes fitness-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.fitness-loading-state h2,
+.fitness-error-state h2,
+.fitness-empty-state h3 {
+  color: var(--fitness-text-dark);
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.fitness-loading-state p,
+.fitness-error-state p,
+.fitness-empty-state p {
+  color: var(--fitness-text-gray);
+  max-width: 400px;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.fitness-error-icon,
+.fitness-empty-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  color: var(--fitness-text-gray);
+  opacity: 0.4;
+}
+
+.fitness-error-icon svg,
+.fitness-empty-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ====== БЛОК ЗАНЯТИЙ С УНИКАЛЬНЫМИ ПРЕФИКСАМИ SCHD ====== */
+
+/* Контейнер занятий */
+.schd-classes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Секция клуба */
+.schd-club-section {
+  background: var(--fitness-white);
+  border-radius: var(--fitness-border-radius);
+  overflow: hidden;
+  box-shadow: var(--fitness-shadow);
+  border: 1px solid rgba(255, 107, 53, 0.08);
+}
+
+.schd-club-title {
+  background: var(--fitness-gradient);
+  color: var(--fitness-white);
+  padding: 16px 20px;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Список занятий - УНИКАЛЬНЫЕ ПРЕФИКСЫ SCHD */
+.schd-classes-list {
+  padding: 0;
+  border-radius: 0;
+}
+
+/* ОСНОВНОЙ ЭЛЕМЕНТ ЗАНЯТИЯ - БЕЗ HOVER ЭФФЕКТОВ */
+.schd-class-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-bottom: 1px solid #f5f5f5;
+  position: relative;
+  cursor: pointer;
+  background: var(--fitness-white);
+  /* НИКАКИХ transitions и hover эффектов */
+}
+
+.schd-class-item:last-child {
+  border-bottom: none;
+}
+
+/* Блок времени */
+.schd-class-time-block {
+  text-align: center;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.schd-time-main {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--fitness-primary);
+  line-height: 1;
+}
+
+.schd-time-duration {
+  font-size: 0.8rem;
+  color: var(--fitness-text-gray);
+  margin-top: 3px;
+}
+
+.schd-time-end {
+  font-size: 0.75rem;
+  color: var(--fitness-text-gray);
+  margin-top: 3px;
+}
+
+/* Детали занятия */
+.schd-class-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.schd-class-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--fitness-text-dark);
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.schd-class-trainer {
+  font-size: 0.9rem;
+  color: var(--fitness-text-gray);
+  margin: 0 0 6px 0;
+}
+
+/* Категория без hover эффектов */
+.schd-class-category {
+  display: inline-block;
+  padding: 3px 10px;
+  background: var(--fitness-accent);
+  color: var(--fitness-primary);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  /* БЕЗ transition */
+}
+
+.schd-class-description {
+  font-size: 0.85rem;
+  color: var(--fitness-text-gray);
+  margin: 6px 0 0 0;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.schd-booking-status {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.schd-booking-status svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Блок бронирования */
+.schd-class-booking {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  min-width: 130px;
+  flex-shrink: 0;
+}
+
+.schd-spots-info {
+  text-align: right;
+  width: 100%;
+}
+
+.schd-spots-available {
+  font-size: 0.85rem;
+  color: var(--fitness-text-gray);
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.schd-spots-bar {
+  width: 100px;
+  height: 4px;
+  background: #e9ecef;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-left: auto;
+}
+
+.schd-spots-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.schd-spots-fill[style*="100%"] {
+  background: linear-gradient(90deg, #e74c3c, #c0392b);
+}
+
+.schd-booking-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.schd-class-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #27ae60;
+  white-space: nowrap;
+  text-align: center;
+  min-width: fit-content;
+}
+
+/* КНОПКА ЗАПИСИ - С АНИМАЦИЯМИ */
+.schd-book-btn {
+  padding: 10px 16px;
+  background: var(--fitness-gradient);
+  color: var(--fitness-white);
+  border: none;
+  border-radius: var(--fitness-border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--fitness-transition);
+  font-size: 0.9rem;
+  min-width: 100px;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ОСТАВЛЯЕМ АНИМАЦИИ ТОЛЬКО ДЛЯ КНОПКИ */
+.schd-book-btn:hover:not(.disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
+}
+
+.schd-book-btn:active:not(.disabled) {
+  transform: translateY(0);
+}
+
+.schd-book-btn.disabled {
+  background: #dee2e6;
+  color: var(--fitness-text-gray);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ====== КОНЕЦ БЛОКА С УНИКАЛЬНЫМИ ПРЕФИКСАМИ ====== */
+
+/* ====== МОДАЛЬНЫЕ ОКНА - ИСПРАВЛЕННЫЕ ДЛЯ МОБИЛЬНЫХ ====== */
+
+/* Модальные окна - учет нижнего меню */
+.fitness-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center; /* Изменено с flex-start на center */
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fitness-fadeIn 0.2s ease;
+  backdrop-filter: blur(2px);
+  overflow-y: auto;
+  /* Учитываем высоту нижнего меню на мобильных */
+  padding-bottom: 90px; /* 70px меню + 20px отступ */
+}
+
+@keyframes fitness-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fitness-modal {
+  background: var(--fitness-white);
+  border-radius: var(--fitness-border-radius);
+  width: 100%;
+  max-width: 480px;
+  /* УБИРАЕМ max-height для мобильных */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: fitness-modalSlideIn 0.2s ease;
+  border: 1px solid rgba(255, 107, 53, 0.08);
+  margin: 0;
+  /* Убираем overflow-y: auto для предотвращения скролла */
+}
+
+.fitness-success-modal {
+  max-width: 480px; /* Уменьшено с 550px */
+}
+
+.fitness-success-modal .fitness-modal-header {
+  padding: 24px 20px 16px; /* Уменьшено */
+}
+
+.fitness-success-modal .fitness-modal-content {
+  padding: 16px 20px; /* Уменьшено */
+}
+
+.fitness-success-modal .fitness-modal-actions {
+  padding: 16px 20px; /* Уменьшено */
+}
+
+@keyframes fitness-modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Компактный заголовок модального окна */
+.fitness-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px; /* Уменьшено с 20px */
+  border-bottom: 1px solid #e9ecef;
+  position: relative;
+}
+
+.fitness-modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem; /* Уменьшено с 1.3rem */
+  color: var(--fitness-text-dark);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.fitness-success-modal .fitness-modal-header {
+  flex-direction: column;
+  text-align: center;
+  gap: 12px;
+  padding: 28px 20px 20px;
+}
+
+/* Успешная иконка */
+.fitness-success-icon {
+  width: 60px;
+  height: 40px;
+  background: var(--fitness-gradient);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fitness-white);
+  animation: fitness-bounce 0.4s ease;
+}
+
+.fitness-success-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+@keyframes fitness-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.fitness-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--fitness-accent);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fitness-text-gray);
+  transition: var(--fitness-transition);
+}
+
+.fitness-modal-close:hover {
+  background: #e9ecef;
+  color: var(--fitness-text-dark);
+}
+
+.fitness-modal-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Компактный контент */
+.fitness-modal-content {
+  padding: 16px 20px; /* Уменьшено с 20px */
+}
+
+/* Компактная информация о бронировании */
+.fitness-booking-info {
+  margin-bottom: 16px; /* Уменьшено с 20px */
+}
+
+.fitness-booking-info p {
+  margin: 4px 0; /* Уменьшено с 6px */
+  font-size: 0.9rem; /* Уменьшено с 0.95rem */
+  line-height: 1.4; /* Уменьшено с 1.5 */
+}
+
+.fitness-booking-info strong {
+  color: var(--fitness-text-dark);
+  font-weight: 600;
+}
+
+/* Компактная информация о балансе */
+.fitness-balance-info {
+  background: var(--fitness-accent);
+  border-radius: var(--fitness-border-radius);
+  padding: 12px; /* Уменьшено с 16px */
+  margin-bottom: 12px; /* Уменьшено с 16px */
+  position: relative;
+  border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.fitness-balance-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--fitness-gradient);
+  border-radius: var(--fitness-border-radius) var(--fitness-border-radius) 0 0;
+}
+
+.fitness-balance-info p {
+  margin: 4px 0; /* Уменьшено с 6px */
+  font-size: 0.9rem; /* Уменьшено с 0.95rem */
+}
+
+/* Кастомные alert модальные окна */
+.fitness-alert-modal {
+  max-width: 350px; /* Уменьшено с 380px */
+}
+
+.fitness-alert-modal .fitness-modal-header {
+  flex-direction: column;
+  text-align: center;
+  gap: 10px; /* Уменьшено с 12px */
+  padding: 20px 16px 16px; /* Уменьшено */
+}
+
+/* Иконки alert'ов */
+.fitness-alert-icon {
+  width: 60px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fitness-white);
+  animation: fitness-bounce 0.4s ease;
+}
+
+.fitness-alert-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.fitness-alert-icon-info {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.fitness-alert-icon-success {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+}
+
+.fitness-alert-icon-warning {
+  background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.fitness-alert-icon-error {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.fitness-alert-message {
+  font-size: 0.9rem; /* Уменьшено с 0.95rem */
+  line-height: 1.4; /* Уменьшено с 1.5 */
+  color: var(--fitness-text-dark);
+  text-align: center;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.fitness-alert-modal .fitness-modal-content {
+  padding: 10px 16px 16px; /* Уменьшено */
+}
+
+.fitness-alert-modal .fitness-modal-actions {
+  padding: 10px 16px 16px; /* Уменьшено */
+  background: transparent;
+  border-top: 1px solid #e9ecef;
+}
+
+.fitness-balance-info strong {
+  color: var(--fitness-primary);
+  font-weight: 700;
+}
+
+/* Компактная информация об успешном бронировании */
+.fitness-success-info {
+  background: #f0f8f0;
+  border: 1px solid #c3e6cb;
+  border-radius: var(--fitness-border-radius);
+  padding: 12px; /* Уменьшено с 16px */
+  margin-bottom: 12px; /* Уменьшено с 16px */
+  position: relative;
+}
+
+.fitness-success-info::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+  border-radius: var(--fitness-border-radius) var(--fitness-border-radius) 0 0;
+}
+
+.fitness-success-info p {
+  margin: 4px 0; /* Уменьшено с 6px */
+  font-size: 0.9rem; /* Уменьшено с 0.95rem */
+}
+
+.fitness-success-info strong {
+  font-weight: 600;
+}
+
+.fitness-amount-red {
+  color: #dc3545;
+  font-weight: 700;
+}
+
+.fitness-amount-green {
+  color: #28a745;
+  font-weight: 700;
+}
+
+/* Компактный блок кода посещения */
+.fitness-visit-code-block {
+  background: var(--fitness-gradient);
+  border-radius: var(--fitness-border-radius);
+  padding: 16px; /* Уменьшено с 20px */
+  margin: 16px 0; /* Уменьшено с 20px 0 */
+  text-align: center;
+  color: var(--fitness-white);
+}
+
+.fitness-visit-code-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Уменьшено с 10px */
+  margin-bottom: 12px; /* Уменьшено с 16px */
+}
+
+.fitness-visit-code-header svg {
+  width: 20px;
+  height: 20px;
+}
+
+.fitness-visit-code-header h4 {
+  margin: 0;
+  font-size: 1rem; /* Уменьшено с 1.1rem */
+  font-weight: 700;
+}
+
+.fitness-visit-code-display {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 12px; /* Уменьшено с 16px */
+  margin-bottom: 10px; /* Уменьшено с 12px */
+}
+
+.fitness-visit-code {
+  font-family: 'Monaco', 'Consolas', monospace;
+  font-size: 1.4rem; /* Уменьшено с 1.6rem */
+  font-weight: 700;
+  letter-spacing: 0.12em; /* Уменьшено с 0.15em */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.fitness-visit-code-instruction {
+  font-size: 0.85rem; /* Уменьшено с 0.9rem */
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.3; /* Уменьшено с 1.4 */
+}
+
+/* Заметки об успехе */
+.fitness-success-note {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: var(--fitness-border-radius);
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.fitness-note-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: #856404;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.fitness-note-item:last-child {
+  margin-bottom: 0;
+}
+
+.fitness-note-item svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--fitness-primary);
+}
+
+/* Компактные действия модального окна */
+.fitness-modal-actions {
+  display: flex;
+  gap: 10px; /* Уменьшено с 12px */
+  padding: 16px 20px; /* Уменьшено с 20px */
+  border-top: 1px solid #e9ecef;
+  background: #fafbfc;
+  border-radius: 0 0 var(--fitness-border-radius) var(--fitness-border-radius);
+}
+
+.fitness-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px; /* Уменьшено с 12px 20px */
+  border: none;
+  border-radius: var(--fitness-border-radius);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--fitness-transition);
+  font-size: 0.85rem; /* Уменьшено с 0.9rem */
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+  box-sizing: border-box;
+  min-height: 40px; /* Уменьшено с 44px */
+}
+
+.fitness-btn-primary {
+  background: var(--fitness-gradient);
+  color: var(--fitness-white);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.2);
+  flex: 1;
+}
+
+.fitness-btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.25);
+  color: var(--fitness-white);
+  text-decoration: none;
+}
+
+.fitness-btn-secondary {
+  background: var(--fitness-white);
+  color: var(--fitness-text-gray);
+  border: 1px solid #e0e0e0;
+  flex: 1;
+}
+
+.fitness-btn-secondary:hover:not(:disabled) {
+  border-color: var(--fitness-primary);
+  color: var(--fitness-primary);
+  text-decoration: none;
+}
+
+.fitness-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Прошедшие даты в календаре - серые */
+.fitness-calendar-day.past {
+  color: #c0c0c0 !important; /* Светло-серый цвет */
+  cursor: not-allowed;
+  background: #f8f9fa !important; /* Светло-серый фон */
+}
+
+.fitness-calendar-day.past:hover {
+  color: #c0c0c0 !important;
+  background: #f8f9fa !important;
+  border-color: transparent !important;
+}
+
+/* Скрываем ближайшие даты на мобильных */
+@media (max-width: 768px) {
+  .fitness-quick-dates-desktop {
+    display: none !important;
+  }
+}
+
+/* Показываем ближайшие даты только на десктопе */
+@media (min-width: 769px) {
+  .fitness-quick-dates-desktop {
+    display: flex !important;
+  }
+}
+
+/* Принудительное сохранение серого цвета для прошедших дат в темной теме */
+@media (prefers-color-scheme: dark) {
+  .fitness-calendar-day.past {
+    color: #c0c0c0 !important;
+    background: #f8f9fa !important;
+  }
+  
+  .fitness-calendar-day.past:hover {
+    color: #c0c0c0 !important;
+    background: #f8f9fa !important;
+    border-color: transparent !important;
+  }
+}
+
+/* КОМПАКТНЫЙ блок условий отмены */
+.fitness-cancellation-policy {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: var(--fitness-border-radius);
+  padding: 12px; /* Уменьшено с 16px */
+  margin: 12px 0; /* Уменьшено с 16px 0 */
+}
+
+.fitness-policy-header {
+  font-size: 0.9rem; /* Уменьшено с 1rem */
+  font-weight: 600;
+  color: #856404;
+  margin: 0 0 6px 0; /* Уменьшено с 8px */
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Уменьшено с 8px */
+}
+
+.fitness-policy-header svg {
+  width: 16px; /* Уменьшено с 18px */
+  height: 16px;
+}
+
+.fitness-policy-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #856404;
+  font-size: 0.8rem; /* УМЕНЬШЕНО с 0.9rem */
+  line-height: 1.3; /* Уменьшено с 1.4 */
+}
+
+.fitness-policy-list li {
+  margin-bottom: 3px; /* Уменьшено с 4px */
+}
+
+.fitness-policy-list li:last-child {
+  margin-bottom: 0;
+}
+
+.fitness-policy-success {
+  color: #155724;
+  font-weight: 600;
+}
+
+.fitness-policy-warning {
+  color: #721c24;
+  font-weight: 600;
+}
+
+/* ====== МОБИЛЬНАЯ АДАПТАЦИЯ ====== */
+
+@media (max-width: 768px) {
+  /* СКРЫВАЕМ БЫСТРЫЙ ВЫБОР ДАТ НА МОБИЛЬНЫХ */
+  .fitness-quick-dates {
+    display: none !important;
+  }
+  
+  .fitness-modal-overlay {
+    padding: 16px;
+    /* Увеличиваем отступ снизу для нижнего меню */
+    padding-bottom: 100px; /* 70px меню + 30px отступ */
+    /* Изменяем выравнивание для мобильных */
+    align-items: flex-start;
+    padding-top: 40px;
+  }
+  
+  .fitness-modal {
+    max-width: 100%;
+    /* Убираем border-radius снизу для мобильных */
+    border-radius: var(--fitness-border-radius);
+    /* Ограничиваем максимальную высоту */
+    max-height: calc(100vh - 140px); /* Учитываем меню и отступы */
+    overflow-y: auto;
+  }
+  
+  /* Еще более компактные отступы на мобильных */
+  .fitness-modal-header {
+    padding: 12px 16px;
+  }
+  
+  .fitness-modal-content {
+    padding: 12px 16px;
+  }
+  
+  .fitness-modal-actions {
+    padding: 12px 16px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .fitness-modal-actions .fitness-btn {
+    flex: none;
+    min-height: 42px;
+  }
+  
+  /* Компактный код посещения на мобильных */
+  .fitness-visit-code {
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+  }
+  
+  .fitness-visit-code-block {
+    padding: 12px;
+    margin: 12px 0;
+  }
+  
+  /* Успешная модалка на мобильных */
+  .fitness-success-modal .fitness-modal-header {
+    padding: 16px 16px 12px;
+  }
+  
+  .fitness-success-modal .fitness-modal-content {
+    padding: 12px 16px;
+  }
+  
+  .fitness-success-modal .fitness-modal-actions {
+    padding: 12px 16px;
+  }
+  
+  /* АДАПТИВНОСТЬ ДЛЯ БЛОКА ЗАНЯТИЙ С ПРЕФИКСОМ SCHD */
+  .schd-class-item {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 14px;
+    padding: 16px;
+  }
+  
+  .schd-class-time-block {
+    min-width: auto;
+  }
+  
+  .schd-class-booking {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: auto;
+  }
+  
+  .schd-spots-info {
+    text-align: left;
+  }
+  
+  .schd-spots-bar {
+    margin-left: 0;
+    width: 90px;
+  }
+  
+  .schd-booking-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    min-width: 120px;
+  }
+  
+  .schd-class-price {
+    font-size: 1rem;
+    padding: 4px 8px;
+    white-space: nowrap;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  
+  .schd-book-btn {
+    min-width: 80px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .fitness-schedule-page {
+    padding: 16px 12px;
+  }
+  
+  .fitness-schedule-filters {
+    padding: 20px 16px;
+  }
+  
+  /* УБИРАЕМ ОТСТУП ДЛЯ СЕЛЕКТОРА ДАТ */
+  .fitness-date-selector {
+    margin-bottom: 16px; /* Уменьшено с 20px */
+  }
+  
+  .fitness-filter-controls {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  
+  /* КАЛЕНДАРЬ НА МОБИЛЬНЫХ - БОЛЕЕ КОМПАКТНЫЙ */
+  .fitness-mini-calendar {
+    padding: 16px;
+    max-width: 100%;
+  }
+  
+  .fitness-calendar-day {
+    font-size: 0.8rem;
+    aspect-ratio: 1;
+    min-height: 36px;
+  }
+  
+  .fitness-calendar-weekdays {
+    margin-bottom: 6px;
+  }
+  
+  .fitness-weekday {
+    padding: 4px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fitness-modal-overlay {
+    padding: 12px;
+    /* Еще больше места для маленьких экранов */
+    padding-bottom: 110px; /* 70px меню + 40px отступ */
+    padding-top: 30px;
+  }
+  
+  .fitness-modal {
+    /* Максимальная высота для очень маленьких экранов */
+    max-height: calc(100vh - 140px);
+  }
+  
+  /* Супер компактные отступы */
+  .fitness-modal-header {
+    padding: 10px 12px;
+  }
+  
+  .fitness-modal-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .fitness-modal-content {
+    padding: 10px 12px;
+  }
+  
+  .fitness-modal-actions {
+    padding: 10px 12px;
+    gap: 6px;
+  }
+  
+  .fitness-btn {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    min-height: 38px;
+  }
+  
+  /* Очень компактные элементы */
+  .fitness-booking-info p,
+  .fitness-balance-info p,
+  .fitness-success-info p {
+    font-size: 0.85rem;
+    margin: 3px 0;
+  }
+  
+  .fitness-policy-list {
+    font-size: 0.75rem; /* ЕЩЕ МЕНЬШЕ для условий отмены */
+    line-height: 1.2;
+  }
+  
+  .fitness-cancellation-policy {
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  .fitness-policy-header {
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+  }
+  
+  .fitness-visit-code {
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+  }
+  
+  .fitness-visit-code-instruction {
+    font-size: 0.8rem;
+  }
+  
+  /* Компактные иконки */
+  .fitness-success-icon,
+  .fitness-alert-icon {
+    width: 45px;
+    height: 30px;
+  }
+  
+  .fitness-success-icon svg,
+  .fitness-alert-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Alert модалки еще компактнее */
+  .fitness-alert-modal {
+    max-width: 100%;
+  }
+  
+  .fitness-alert-modal .fitness-modal-header {
+    padding: 16px 12px 12px;
+  }
+  
+  .fitness-alert-modal .fitness-modal-content {
+    padding: 8px 12px 12px;
+  }
+  
+  .fitness-alert-modal .fitness-modal-actions {
+    padding: 8px 12px 12px;
+  }
+  
+  .fitness-page-header h1 {
+    font-size: 1.7rem;
+  }
+  
+  .fitness-page-header p {
+    font-size: 1rem;
+  }
+  
+  .fitness-schedule-filters {
+    padding: 16px 12px;
+  }
+  
+  .fitness-date-button {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+  
+  /* АДАПТИВНОСТЬ ДЛЯ БЛОКА ЗАНЯТИЙ НА МАЛЫХ ЭКРАНАХ */
+  .schd-class-item {
+    padding: 14px;
+  }
+  
+  .schd-class-name {
+    font-size: 1rem;
+  }
+  
+  .schd-time-main {
+    font-size: 1.1rem;
+  }
+  
+  .schd-club-title {
+    padding: 14px 16px;
+    font-size: 1.1rem;
+  }
+  
+  .fitness-mini-calendar {
+    padding: 12px;
+  }
+  
+  .fitness-calendar-day {
+    font-size: 0.75rem;
+    min-height: 32px;
+  }
+  
+  .schd-spots-bar {
+    width: 70px;
+  }
+  
+  .schd-class-booking {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .schd-booking-action {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .schd-class-price {
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: auto;
+  }
+  
+  .schd-book-btn {
+    flex: 1;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* Экстра маленькие экраны */
+@media (max-width: 360px) {
+  .fitness-modal-overlay {
+    padding: 8px;
+    padding-bottom: 120px; /* Еще больше места для меню */
+    padding-top: 20px;
+  }
+  
+  .fitness-modal {
+    max-height: calc(100vh - 130px);
+  }
+  
+  .fitness-visit-code {
+    font-size: 1rem;
+  }
+  
+  .fitness-policy-list {
+    font-size: 0.7rem; /* МИНИМАЛЬНЫЙ размер для условий отмены */
+  }
+  
+  .fitness-btn {
+    font-size: 0.75rem;
+    padding: 7px 10px;
+    min-height: 36px;
+  }
+  
+  .schd-class-price {
+    font-size: 0.85rem;
+    padding: 3px 6px;
+    letter-spacing: -0.3px;
+  }
+  
+  .schd-book-btn {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .fitness-calendar-day {
+    font-size: 0.7rem;
+    min-height: 30px;
+  }
+}
+
+/* Ландшафтная ориентация на мобильных */
+@media (max-width: 768px) and (orientation: landscape) {
+  .fitness-modal-overlay {
+    padding-top: 20px;
+    padding-bottom: 90px;
+  }
+  
+  .fitness-modal {
+    max-height: calc(100vh - 110px);
+  }
+}
+
+/* Поддержка safe-area для устройств с вырезом */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .fitness-modal-overlay {
+    padding-bottom: max(90px, calc(70px + env(safe-area-inset-bottom) + 20px));
+  }
+  
+  @media (max-width: 480px) {
+    .fitness-modal-overlay {
+      padding-bottom: max(110px, calc(70px + env(safe-area-inset-bottom) + 40px));
+    }
+  }
+  
+  @media (max-width: 360px) {
+    .fitness-modal-overlay {
+      padding-bottom: max(120px, calc(70px + env(safe-area-inset-bottom) + 50px));
+    }
+  }
+}
+
+/* Улучшения доступности */
+.schd-book-btn:focus,
+.fitness-date-button:focus,
+.fitness-filter-select:focus,
+.fitness-calendar-day:focus,
+.fitness-btn:focus {
+  outline: 2px solid rgba(255, 107, 53, 0.5);
+  outline-offset: 2px;
+}
+
+.schd-book-btn.disabled:focus {
+  outline: 2px solid rgba(108, 117, 125, 0.5);
+}
+
+.fitness-modal-close:focus {
+  outline: 2px solid var(--fitness-primary);
+  outline-offset: 1px;
+}
+
+/* Высокая контрастность */
+@media (prefers-contrast: high) {
+  .schd-class-item {
+    border: 1px solid var(--fitness-text-dark);
+  }
+  
+  .schd-book-btn {
+    border: 1px solid var(--fitness-text-dark);
+  }
+  
+  .fitness-filter-select {
+    border: 1px solid var(--fitness-text-dark);
+  }
+  
+  .fitness-modal {
+    border: 2px solid var(--fitness-text-dark);
+  }
+  
+  .fitness-btn {
+    border: 1px solid var(--fitness-text-dark);
+  }
+}
+
+/* Уменьшенная анимация */
+@media (prefers-reduced-motion: reduce) {
+  .schd-class-item,
+  .schd-book-btn,
+  .fitness-date-button,
+  .fitness-quick-date,
+  .fitness-calendar-day,
+  .schd-spots-fill,
+  .fitness-loading-spinner,
+  .fitness-modal-overlay,
+  .fitness-modal,
+  .fitness-success-icon,
+  .fitness-alert-icon {
+    transition: none;
+    animation: none;
+  }
+  
+  .schd-book-btn:hover:not(.disabled),
+  .fitness-date-button:hover,
+  .fitness-btn-primary:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* Плавная прокрутка */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Улучшенные переходы */
+* {
+  box-sizing: border-box;
+}
+
+.fitness-schedule-page * {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Touch устройства */
+@media (pointer: coarse) {
+  .schd-book-btn,
+  .fitness-btn-primary,
+  .fitness-btn-secondary,
+  .fitness-modal-close {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .schd-book-btn {
+    min-width: 100px;
+  }
+}
+
+/* Печать */
+@media print {
+  .fitness-modal-overlay,
+  .fitness-modal {
+    display: none !important;
+  }
+  
+  .schd-class-item {
+    box-shadow: none;
+    border: 1px solid #000;
+    margin-bottom: 16px;
+    break-inside: avoid;
+  }
+  
+  .schd-club-title {
+    background: #f5f5f5 !important;
+    color: #000 !important;
+  }
+  
+  .schd-book-btn {
+    display: none;
+  }
+  
+  .fitness-quick-dates {
+    display: none !important;
+  }
+  
+  .fitness-date-button {
+    background: #f5f5f5 !important;
+    color: #000 !important;
+  }
+}

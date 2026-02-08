@@ -1,0 +1,1330 @@
+/* Подключение шрифта Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Club Profile Page - FitnesHub Style */
+:root {
+  --fitness-primary: #FF6B35;
+  --fitness-secondary: #E55A2B;
+  --fitness-accent: #FFF9F7;
+  --fitness-text-dark: #1a1a1a;
+  --fitness-text-gray: #666666;
+  --fitness-white: #ffffff;
+  --fitness-gradient: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%);
+  --fitness-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  --fitness-shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.12);
+  --fitness-border-radius: 16px;
+  --fitness-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --fitness-success: #27ae60;
+  --fitness-error: #e74c3c;
+  --fitness-warning: #f39c12;
+}
+
+/* Main Profile Page */
+.fitness-profile-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background: var(--fitness-white);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Loading State */
+.fitness-profile-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  text-align: center;
+  background: var(--fitness-white);
+  border-radius: var(--fitness-border-radius);
+  box-shadow: var(--fitness-shadow);
+  border: 1px solid rgba(255, 107, 53, 0.1);
+  max-width: 600px;
+  margin: 100px auto;
+}
+
+.fitness-loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--fitness-accent);
+  border-top: 4px solid var(--fitness-primary);
+  border-radius: 50%;
+  animation: fitness-spin 1s linear infinite;
+  margin-bottom: 24px;
+}
+
+@keyframes fitness-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.fitness-profile-loading p {
+  color: var(--fitness-text-gray);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Profile Header */
+.fitness-profile-header {
+  background: var(--fitness-white);
+  border-radius: var(--fitness-border-radius);
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--fitness-shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.fitness-profile-info {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.fitness-profile-avatar img,
+.fitness-avatar-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--fitness-primary);
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+}
+
+.fitness-avatar-placeholder {
+  background: var(--fitness-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--fitness-white);
+}
+
+.fitness-profile-details h1 {
+  font-size: 2rem;
+  color: var(--fitness-text-dark);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.fitness-profile-email {
+  color: var(--fitness-text-gray);
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.fitness-user-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.fitness-stat {
+  text-align: center;
+}
+
+.fitness-stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--fitness-primary);
+}
+
+.fitness-stat-label {
+  font-size: 0.9rem;
+  color: var(--fitness-text-gray);
+  margin-top: 4px;
+}
+
+.fitness-status-badge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.fitness-status-confirmed {
+  background: var(--fitness-success);
+  color: var(--fitness-white);
+}
+
+/* Profile Tabs */
+.fitness-profile-tabs {
+  display: flex;
+  background: var(--fitness-white);
+  border-radius: var(--fitness-border-radius);
+  padding: 8px;
+  margin-bottom: 16px;
+  box-shadow: var(--fitness-shadow);
+  gap: 4px;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.fitness-profile-tab {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  background: transparent;
+  border-radius: var(--fitness-border-radius);
+  font-weight: 600;
+  transition: var(--fitness-transition);
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--fitness-text-gray);
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.fitness-profile-tab:hover {
+  background: var(--fitness-accent);
+  color: var(--fitness-primary);
+}
+
+.fitness-profile-tab.active {
+  background: var(--fitness-gradient);
+  color: var(--fitness-white);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+}
+
+/* Profile Content */
+.fitness-profile-content {
+  min-height: 400px;
+}
+
+.fitness-profile-section {
+  background: var(--fitness-white);
+  border-radius: var(--fitness-border-radius);
+  padding: 16px;
+  box-shadow: var(--fitness-shadow);
+  border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.fitness-profile-section h2 {
+  color: var(--fitness-text-dark);
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.fitness-profile-section > p {
+  color: var(--fitness-text-gray);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* Form Elements */
+.fitness-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.fitness-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.fitness-form-group label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--fitness-text-dark);
+  font-size: 0.9rem;
+}
+
+.fitness-form-group input,
+.fitness-form-group select,
+.fitness-form-group textarea {
+  padding: 12px 16px;
+  border: 2px solid #e8eaed;
+  border-radius: var(--fitness-border-radius);
+  font-size: 1rem;
+  transition: var(--fitness-transition);
+  background: var(--fitness-white);
+  color: var(--fitness-text-dark);
+  font-family: 'Inter', sans-serif;
+}
+
+.fitness-form-group input:focus,
+.fitness-form-group select:focus,
+.fitness-form-group textarea:focus {
+  outline: none;
+  border-color: var(--fitness-primary);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.fitness-form-group input.error,
+.fitness-form-group select.error,
+.fitness-form-group textarea.error {
+  border-color: var(--fitness-error);
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.fitness-form-help {
+  font-size: 0.8rem;
+  color: var(--fitness-text-gray);
+  margin-top: 4px;
+}
+
+.fitness-error-message {
+  font-size: 0.8rem;
+  color: var(--fitness-error);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.fitness-form-actions {
+  margin-top: 16px;
+  padding-top: 24px;
+  border-top: 1px solid #e8eaed;
+  text-align: center;
+}
+
+/* Basic Info Styles */
+.fitness-profile-basic h3 {
+  color: var(--fitness-text-dark);
+  margin: 16px 0 16px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.fitness-profile-stats {
+  margin-top: 16px;
+}
+
+.fitness-stats-card {
+  background: var(--fitness-accent);
+  border-radius: var(--fitness-border-radius);
+  padding: 24px;
+  border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.fitness-stats-progress {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.fitness-progress-bar {
+  flex: 1;
+  height: 8px;
+  background: #e8eaed;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fitness-progress-fill {
+  height: 100%;
+  background: var(--fitness-gradient);
+  transition: var(--fitness-transition);
+}
+
+.fitness-progress-text {
+  font-weight: 600;
+  color: var(--fitness-primary);
+  white-space: nowrap;
+}
+
+/* Contact Info Styles */
+.fitness-profile-contact h3 {
+  color: var(--fitness-text-dark);
+  margin: 16px 0 16px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.fitness-contact-preview {
+  margin-top: 16px;
+}
+
+.fitness-contact-card {
+  background: var(--fitness-accent);
+  border-radius: var(--fitness-border-radius);
+  padding: 24px;
+  border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.fitness-contact-header {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.fitness-contact-header h4 {
+  margin: 0 0 8px 0;
+  font-size: 1.3rem;
+  color: var(--fitness-text-dark);
+  font-weight: 700;
+}
+
+.fitness-contact-category {
+  color: var(--fitness-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.fitness-contact-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fitness-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fitness-contact-label {
+  font-weight: 600;
+  color: var(--fitness-text-dark);
+  min-width: 80px;
+}
+
+/* Gallery Styles */
+.fitness-profile-gallery h3 {
+  color: var(--fitness-text-dark);
+  margin: 24px 0 16px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.fitness-gallery-navigation {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  background: var(--fitness-accent);
+  padding: 8px;
+  border-radius: var(--fitness-border-radius);
+}
+
+.fitness-gallery-nav-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  border-radius: calc(var(--fitness-border-radius) - 4px);
+  font-weight: 600;
+  transition: var(--fitness-transition);
+  cursor: pointer;
+  color: var(--fitness-text-gray);
+  font-family: 'Inter', sans-serif;
+}
+
+.fitness-gallery-nav-btn:hover {
+  background: var(--fitness-white);
+  color: var(--fitness-primary);
+}
+
+.fitness-gallery-nav-btn.active {
+  background: var(--fitness-primary);
+  color: var(--fitness-white);
+  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+}
+
+.fitness-gallery-section {
+  margin-bottom: 16px;
+}
+
+.fitness-media-upload {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.fitness-media-preview {
+  position: relative;
+  margin-bottom: 16px;
+  border-radius: var(--fitness-border-radius);
+  overflow: hidden;
+  display: inline-block;
+}
+
+.fitness-media-preview img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.fitness-banner-preview img {
+  width: 400px;
+  height: 133px;
+}
+
+.fitness-media-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--fitness-transition);
+}
+
+.fitness-media-preview:hover .fitness-media-overlay {
+  opacity: 1;
+}
+
+.fitness-media-placeholder {
+  width: 200px;
+  height: 200px;
+  background: var(--fitness-accent);
+  border-radius: var(--fitness-border-radius);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border: 2px dashed rgba(255, 107, 53, 0.3);
+}
+
+.fitness-banner-placeholder {
+  width: 400px;
+  height: 133px;
+}
+
+.fitness-placeholder-text {
+  color: var(--fitness-text-gray);
+  font-weight: 500;
+}
+
+.fitness-upload-area {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  border: 2px dashed rgba(255, 107, 53, 0.3);
+  border-radius: var(--fitness-border-radius);
+  cursor: pointer;
+  transition: var(--fitness-transition);
+  color: var(--fitness-text-gray);
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.fitness-upload-area:hover {
+  border-color: var(--fitness-primary);
+  background: var(--fitness-accent);
+  color: var(--fitness-primary);
+}
+
+.fitness-upload-text {
+  font-weight: 600;
+}
+
+.fitness-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.fitness-gallery-item {
+  position: relative;
+  border-radius: var(--fitness-border-radius);
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+
+.fitness-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--fitness-transition);
+}
+
+.fitness-gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--fitness-transition);
+}
+
+.fitness-gallery-item:hover .fitness-gallery-overlay {
+  opacity: 1;
+}
+
+.fitness-gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.fitness-empty-gallery {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--fitness-text-gray);
+  background: var(--fitness-accent);
+  border-radius: var(--fitness-border-radius);
+  margin-bottom: 24px;
+}
+
+.fitness-empty-gallery h4 {
+  color: var(--fitness-text-dark);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.fitness-media-guidelines {
+  background: var(--fitness-accent);
+  border-radius: var(--fitness-border-radius);
+  padding: 20px;
+  border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.fitness-media-guidelines h4 {
+  color: var(--fitness-text-dark);
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.fitness-media-guidelines ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--fitness-text-gray);
+}
+
+.fitness-media-guidelines li {
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+
+/* Amenities Styles */
+.fitness-profile-amenities h3 {
+  color: var(--fitness-text-dark);
+  margin: 16px 0 16px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.fitness-amenities-search {
+  margin-bottom: 24px;
+}
+
+.fitness-search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e8eaed;
+  border-radius: var(--fitness-border-radius);
+  font-size: 1rem;
+  transition: var(--fitness-transition);
+  background: var(--fitness-white);
+  color: var(--fitness-text-dark);
+  font-family: 'Inter', sans-serif;
+}
+
+.fitness-search-input:focus {
+  outline: none;
+  border-color: var(--fitness-primary);
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.fitness-amenities-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fitness-amenities-category h3 {
+  color: var(--fitness-text-dark);
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.fitness-amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.fitness-amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 2px solid #e8eaed;
+  border-radius: var(--fitness-border-radius);
+  cursor: pointer;
+  transition: var(--fitness-transition);
+  position: relative;
+  background: var(--fitness-white);
+}
+
+.fitness-amenity-item:hover {
+  background: var(--fitness-accent);
+  border-color: var(--fitness-primary);
+}
+
+.fitness-amenity-item.selected {
+  background: var(--fitness-accent);
+  border-color: var(--fitness-primary);
+}
+
+.fitness-amenity-checkbox {
+  display: none;
+}
+
+.fitness-amenity-label {
+  flex: 1;
+  font-weight: 500;
+  color: var(--fitness-text-dark);
+}
+
+.fitness-amenity-check {
+  color: var(--fitness-primary);
+  font-weight: 600;
+  opacity: 0;
+  transition: var(--fitness-transition);
+}
+
+.fitness-amenity-item.selected .fitness-amenity-check {
+  opacity: 1;
+}
+
+.fitness-selected-amenities {
+  margin-top: 16px;
+  background: var(--fitness-accent);
+  border-radius: var(--fitness-border-radius);
+  padding: 24px;
+  border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.fitness-amenities-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.fitness-amenities-summary h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--fitness-text-dark);
+}
+
+.fitness-amenities-count {
+  color: var(--fitness-text-gray);
+}
+
+.fitness-amenities-count strong {
+  color: var(--fitness-primary);
+}
+
+.fitness-selected-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fitness-selected-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--fitness-primary);
+  color: var(--fitness-white);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.fitness-remove-tag {
+  background: none;
+  border: none;
+  color: var(--fitness-white);
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0;
+  margin-left: 4px;
+}
+
+.fitness-remove-tag:hover {
+  opacity: 0.7;
+}
+
+/* Opening Hours Styles */
+.fitness-profile-hours h3 {
+  color: var(--fitness-text-dark);
+  margin: 16px 0 16px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.fitness-hours-quick-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.fitness-hours-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.fitness-day-hours {
+  background: var(--fitness-accent);
+  border-radius: var(--fitness-border-radius);
+  padding: 20px;
+  border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.fitness-day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.fitness-day-label {
+  font-weight: 600;
+  color: var(--fitness-text-dark);
+  font-size: 1rem;
+}
+
+.fitness-closed-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--fitness-text-gray);
+  font-size: 0.9rem;
+}
+
+.fitness-closed-toggle input {
+  margin: 0;
+}
+
+.fitness-hours-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.fitness-hours-controls.disabled {
+  opacity: 0.5;
+}
+
+.fitness-time-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fitness-time-group label {
+  font-size: 0.8rem;
+  color: var(--fitness-text-gray);
+  font-weight: 500;
+}
+
+.fitness-time-group input[type="time"] {
+  padding: 8px 12px;
+  border: 2px solid #e8eaed;
+  border-radius: var(--fitness-border-radius);
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.fitness-time-group input[type="time"]:focus {
+  outline: none;
+  border-color: var(--fitness-primary);
+  box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.1);
+}
+
+.fitness-time-group input[type="time"]:disabled {
+  background: #f8f9fa;
+  color: var(--fitness-text-gray);
+}
+
+.fitness-time-separator {
+  color: var(--fitness-text-gray);
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.fitness-copy-hours-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--fitness-primary);
+  background: var(--fitness-white);
+  color: var(--fitness-primary);
+  border-radius: var(--fitness-border-radius);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--fitness-transition);
+  font-family: 'Inter', sans-serif;
+}
+
+.fitness-copy-hours-btn:hover:not(:disabled) {
+  background: var(--fitness-primary);
+  color: var(--fitness-white);
+}
+
+.fitness-copy-hours-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fitness-hours-preview {
+  background: var(--fitness-accent);
+  border-radius: var(--fitness-border-radius);
+  padding: 24px;
+  border: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.fitness-hours-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fitness-hours-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.fitness-hours-item:last-child {
+  border-bottom: none;
+}
+
+.fitness-hours-day {
+  font-weight: 600;
+  color: var(--fitness-text-dark);
+}
+
+.fitness-hours-time {
+  color: var(--fitness-text-gray);
+}
+
+/* Buttons */
+.fitness-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--fitness-border-radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--fitness-transition);
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em;
+  box-sizing: border-box;
+  min-height: 44px;
+}
+
+.fitness-btn-primary {
+  background: var(--fitness-gradient);
+  color: var(--fitness-white);
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+}
+
+.fitness-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+  color: var(--fitness-white);
+  text-decoration: none;
+}
+
+.fitness-btn-secondary {
+  background: var(--fitness-white);
+  color: var(--fitness-primary);
+  border: 2px solid var(--fitness-primary);
+}
+
+.fitness-btn-secondary:hover:not(:disabled) {
+  background: var(--fitness-primary);
+  color: var(--fitness-white);
+  text-decoration: none;
+}
+
+.fitness-btn-danger {
+  background: var(--fitness-error);
+  color: var(--fitness-white);
+  box-shadow: 0 4px 16px rgba(231, 76, 60, 0.3);
+}
+
+.fitness-btn-danger:hover:not(:disabled) {
+  background: #c0392b;
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.fitness-btn-sm {
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  min-height: 36px;
+}
+
+.fitness-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.fitness-btn.loading {
+  position: relative;
+  color: transparent;
+}
+
+.fitness-btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: fitness-spin 1s linear infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .fitness-profile-page {
+    padding: 20px 16px;
+  }
+
+  .fitness-profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .fitness-profile-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .fitness-profile-avatar img,
+  .fitness-avatar-placeholder {
+    width: 80px;
+    height: 80px;
+  }
+
+  .fitness-profile-details h1 {
+    font-size: 1.5rem;
+  }
+
+  .fitness-user-stats {
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .fitness-profile-tabs {
+    overflow-x: auto;
+    padding: 6px;
+  }
+
+  .fitness-profile-tab {
+    min-width: 120px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  .fitness-profile-section {
+    padding: 24px 20px;
+  }
+
+  .fitness-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .fitness-gallery-navigation {
+    flex-direction: column;
+  }
+
+  .fitness-media-preview img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .fitness-banner-preview img {
+    width: 300px;
+    height: 100px;
+  }
+
+  .fitness-media-placeholder {
+    width: 150px;
+    height: 150px;
+  }
+
+  .fitness-banner-placeholder {
+    width: 300px;
+    height: 100px;
+  }
+
+  .fitness-amenities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fitness-amenities-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .fitness-hours-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .fitness-time-group {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .fitness-time-group input[type="time"] {
+    flex: 1;
+    max-width: 120px;
+  }
+
+  .fitness-copy-hours-btn {
+    align-self: center;
+  }
+
+  .fitness-hours-quick-actions {
+    flex-direction: column;
+  }
+
+  .fitness-hours-quick-actions .fitness-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .fitness-profile-page {
+    padding: 16px 12px;
+  }
+
+  .fitness-profile-header,
+  .fitness-profile-section {
+    padding: 20px 16px;
+  }
+
+  .fitness-profile-details h1 {
+    font-size: 1.3rem;
+  }
+
+  .fitness-user-stats {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .fitness-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 12px;
+    background: var(--fitness-white);
+    border-radius: var(--fitness-border-radius);
+    border: 1px solid rgba(255, 107, 53, 0.1);
+  }
+
+  .fitness-stat-value {
+    font-size: 1.2rem;
+  }
+
+  .fitness-profile-tabs {
+    padding: 4px;
+  }
+
+  .fitness-profile-tab {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    min-width: 100px;
+  }
+
+  .fitness-gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .fitness-media-preview img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .fitness-banner-preview img {
+    width: 240px;
+    height: 80px;
+  }
+
+  .fitness-media-placeholder {
+    width: 120px;
+    height: 120px;
+  }
+
+  .fitness-banner-placeholder {
+    width: 240px;
+    height: 80px;
+  }
+
+  .fitness-upload-area {
+    padding: 16px 20px;
+  }
+
+  .fitness-day-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .fitness-hours-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .fitness-btn {
+    width: 100%;
+  }
+
+  .fitness-form-actions .fitness-btn {
+    width: 100%;
+  }
+}
+
+/* Focus states for accessibility */
+.fitness-btn:focus,
+.fitness-profile-tab:focus,
+.fitness-form-group input:focus,
+.fitness-form-group select:focus,
+.fitness-form-group textarea:focus {
+  outline: 3px solid rgba(255, 107, 53, 0.5);
+  outline-offset: 2px;
+}
+
+.fitness-amenity-item:focus-within {
+  outline: 2px solid var(--fitness-primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .fitness-profile-section,
+  .fitness-amenity-item,
+  .fitness-day-hours {
+    border: 2px solid var(--fitness-text-dark);
+  }
+  
+  .fitness-btn {
+    border: 2px solid var(--fitness-text-dark);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fitness-btn,
+  .fitness-amenity-item,
+  .fitness-gallery-item img,
+  .fitness-loading-spinner {
+    transition: none;
+    animation: none;
+  }
+  
+  .fitness-btn:hover,
+  .fitness-btn-primary:hover {
+    transform: none;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fitness-text-dark: #ffffff;
+    --fitness-text-gray: #b0b0b0;
+    --fitness-white: #2d2d2d;
+    --fitness-accent: #3a3a3a;
+  }
+  
+  .fitness-form-group input,
+  .fitness-form-group select,
+  .fitness-form-group textarea,
+  .fitness-search-input,
+  .fitness-time-group input[type="time"] {
+    background: #3a3a3a;
+    border-color: #555;
+    color: #ffffff;
+  }
+  
+  .fitness-form-group input:focus,
+  .fitness-form-group select:focus,
+  .fitness-form-group textarea:focus,
+  .fitness-search-input:focus,
+  .fitness-time-group input[type="time"]:focus {
+    border-color: var(--fitness-primary);
+    background: #404040;
+  }
+}
+
+/* Print styles */
+@media print {
+  .fitness-profile-tabs,
+  .fitness-form-actions,
+  .fitness-media-overlay,
+  .fitness-gallery-overlay,
+  .fitness-btn {
+    display: none !important;
+  }
+  
+  .fitness-profile-section {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    page-break-inside: avoid;
+  }
+  
+  .fitness-profile-page {
+    padding: 0;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Improved transitions */
+* {
+  box-sizing: border-box;
+}
+
+.fitness-profile-page * {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}

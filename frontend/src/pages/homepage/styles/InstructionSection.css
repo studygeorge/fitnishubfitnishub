@@ -1,0 +1,210 @@
+/* Основная секция */
+.instruction-section {
+  position: relative;
+}
+
+/* Заголовок */
+.instruction-header-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.instruction-title {
+  color: #FFFFFF; /* БЕЛЫЙ ЦВЕТ НА ОРАНЖЕВОМ ФОНЕ */
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Подзаголовок */
+.instruction-subtitle-container {
+  max-width: 561px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
+
+.instruction-subtitle {
+  color: #FFFFFF; /* БЕЛЫЙ ЦВЕТ НА ОРАНЖЕВОМ ФОНЕ */
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  opacity: 0.9; /* Немного прозрачности для иерархии */
+}
+
+/* Контейнер на всю ширину блока с максимальной шириной */
+.instruction-full-width-cards {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 20px;
+}
+
+/* Сетка карточек инструкций */
+.instruction-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Основные стили карточек */
+.instruction-card {
+  position: relative;
+  height: 915px; /* ДОБАВИЛ +15px (было 900px) */
+  border-radius: 30px;
+  background: #FFFFFF; /* БЕЛЫЙ ФОН ВМЕСТО СИНЕГО */
+  padding: 40px 35px 30px 35px;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Контент карточки */
+.instruction-content {
+  text-align: center;
+  margin-bottom: 35px;
+  flex-shrink: 0;
+}
+
+.instruction-card-title {
+  color: #1D2939; /* ТЕМНО-СИНИЙ НА БЕЛОМ ФОНЕ */
+  font-size: clamp(30px, 3.2vw, 42px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 18px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Контейнеры описаний для разных карточек */
+.instruction-card-description-container {
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+.instruction-card-description {
+  color: #293241; /* ТЕМНО-СЕРЫЙ НА БЕЛОМ ФОНЕ */
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+/* Контейнеры мокапов */
+.instruction-mockup-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+/* СТИЛИ ДЛЯ ИЗОБРАЖЕНИЙ МОКАПОВ */
+.instruction-mockup-image {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Адаптивные стили для планшетов */
+@media (max-width: 992px) {
+  .instruction-full-width-cards {
+    padding: 0 20px;
+  }
+  
+  .instruction-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .instruction-card {
+    height: 835px; /* ДОБАВИЛ +15px (было 820px) */
+    padding: 35px 30px 25px 30px;
+  }
+  
+  .instruction-mockup-container {
+    padding-top: 25px;
+  }
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+  .instruction-full-width-cards {
+    padding: 0 20px;
+  }
+  
+  .instruction-cards-grid {
+    grid-template-columns: 1fr; /* По одному блоку в строке */
+    gap: 40px;
+  }
+  
+  .instruction-card {
+    height: 795px; /* ДОБАВИЛ +15px (было 780px) */
+    padding: 35px 25px 25px 25px;
+  }
+  
+  .instruction-mockup-container {
+    padding-top: 25px;
+  }
+  
+  .instruction-card-title {
+    font-size: clamp(26px, 6vw, 34px);
+  }
+  
+  .instruction-card-description {
+    font-size: clamp(16px, 4.5vw, 22px);
+  }
+}
+
+@media (max-width: 480px) {
+  .instruction-full-width-cards {
+    padding: 0 15px;
+  }
+  
+  .instruction-card {
+    height: 735px; /* ДОБАВИЛ +15px (было 720px) */
+    padding: 30px 20px 20px 20px;
+  }
+  
+  .instruction-mockup-container {
+    padding-top: 20px;
+  }
+  
+  .instruction-card-title {
+    font-size: clamp(24px, 6vw, 30px);
+  }
+  
+  .instruction-card-description {
+    font-size: clamp(15px, 4.5vw, 20px);
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+  .instruction-card {
+    height: 695px; /* ДОБАВИЛ +15px (было 680px) */
+    padding: 25px 15px 15px 15px;
+  }
+  
+  .instruction-cards-grid {
+    gap: 35px;
+  }
+}
+
+/* Focus states для доступности */
+.instruction-card:focus {
+  outline: 2px solid #FF6933;
+  outline-offset: 2px;
+}

@@ -1,0 +1,363 @@
+.club-login-page {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: var(--light-bg);
+}
+
+.club-login-page .login-container {
+  max-width: 500px;
+  width: 100%;
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 40px;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-header h1 {
+  color: var(--text-color);
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.login-header p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.error-message.general {
+  background-color: #FFEBEE;
+  color: #F44336;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.form-group input {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 127, 80, 0.1);
+}
+
+.form-group input.error {
+  border-color: #f44336;
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Стили для блока согласия с договором оферты */
+.terms-agreement {
+  margin: 20px 0;
+  padding: 18px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.terms-agreement::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-color) 0%, #FF6347 100%);
+  border-radius: 8px 8px 0 0;
+}
+
+.terms-checkbox {
+  margin-bottom: 0;
+  align-items: flex-start;
+  line-height: 1.4;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.terms-text {
+  font-size: 14px;
+  color: #495057;
+  margin-left: 8px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.terms-link {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.terms-link:hover {
+  color: #FF6347;
+  border-bottom-color: #FF6347;
+  text-decoration: none;
+}
+
+/* Стили для ошибки чекбокса согласия */
+.terms-checkbox input.error + .checkmark {
+  border-color: #dc3545;
+  background-color: #ffe6e6;
+  animation: shake 0.3s ease-in-out;
+}
+
+.terms-agreement .error-message {
+  margin-top: 10px;
+  display: block;
+  font-size: 12px;
+  color: #dc3545;
+  margin-left: 26px;
+  font-weight: 500;
+  background-color: rgba(220, 53, 69, 0.1);
+  padding: 6px 10px;
+  border-radius: 4px;
+  border-left: 3px solid #dc3545;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.checkbox-container input {
+  margin-right: 8px;
+}
+
+.forgot-password {
+  color: var(--accent-color);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.forgot-password:hover {
+  color: #FF6347;
+  text-decoration: underline;
+}
+
+.login-button {
+  background: linear-gradient(135deg, var(--accent-color) 0%, #FF6347 100%);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(255, 127, 80, 0.3);
+}
+
+.login-button:hover {
+  background: linear-gradient(135deg, #FF6347 0%, #e55a2b 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 127, 80, 0.4);
+}
+
+.login-button:active {
+  transform: translateY(-1px);
+}
+
+.login-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.register-link, .login-help {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+.register-link a, .login-help a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.register-link a:hover, .login-help a:hover {
+  color: #FF6347;
+  text-decoration: underline;
+}
+
+/* Компонент для чекбокса */
+.checkmark {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  margin-right: 8px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.checkbox-container:hover .checkmark {
+  border-color: var(--accent-color);
+}
+
+.checkbox-container input:checked + .checkmark {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.checkbox-container input:checked + .checkmark:after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Анимация для ошибки */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Адаптивные стили */
+@media (max-width: 600px) {
+  .club-login-page {
+    padding: 20px 15px;
+  }
+  
+  .club-login-page .login-container {
+    padding: 30px 20px;
+  }
+  
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .login-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .terms-agreement {
+    margin: 16px 0;
+    padding: 16px;
+  }
+  
+  .terms-text {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  
+  .terms-agreement .error-message {
+    margin-left: 22px;
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+  
+  .login-button {
+    padding: 16px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .club-login-page .login-container {
+    padding: 25px 15px;
+  }
+  
+  .login-header h1 {
+    font-size: 1.6rem;
+  }
+  
+  .terms-agreement {
+    padding: 14px;
+  }
+  
+  .terms-text {
+    font-size: 12px;
+  }
+}
+
+/* Дополнительные улучшения для темной темы */
+@media (prefers-color-scheme: dark) {
+  .terms-agreement {
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+    border-color: #4a5568;
+  }
+  
+  .terms-text {
+    color: #e2e8f0;
+  }
+  
+  .terms-agreement .error-message {
+    background-color: rgba(220, 53, 69, 0.2);
+    color: #feb2b2;
+  }
+}

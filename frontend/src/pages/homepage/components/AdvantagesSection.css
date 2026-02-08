@@ -1,0 +1,391 @@
+/* AdvantagesSection.css - Уникальные стили с префиксом adv- */
+
+/* ОТКЛЮЧЕНИЕ АВТОМАТИЧЕСКОЙ ТЕМНОЙ ТЕМЫ БРАУЗЕРА */
+.adv-section {
+  color-scheme: light only;
+}
+
+/* Основная секция */
+.adv-section {
+  background-color: var(--fitness-white, #ffffff);
+  position: relative;
+}
+
+/* ПРИНУДИТЕЛЬНОЕ СОХРАНЕНИЕ СВЕТЛОЙ ТЕМЫ - ИСПОЛЬЗУЕМ ПРЯМЫЕ ЦВЕТА */
+@media (prefers-color-scheme: dark) {
+  .adv-section {
+    background-color: #ffffff !important; /* ПРЯМОЙ БЕЛЫЙ ЦВЕТ */
+    color: #1D2939 !important; /* ПРЯМОЙ ТЕМНЫЙ ЦВЕТ */
+  }
+  
+  .adv-title {
+    color: #1D2939 !important; /* ПРЯМОЙ ТЕМНЫЙ ЦВЕТ */
+  }
+  
+  .adv-subtitle {
+    color: #828282 !important; /* ПРЯМОЙ СЕРЫЙ ЦВЕТ */
+  }
+  
+  /* Карточки преимуществ остаются с оранжевым градиентом */
+  .adv-benefit-card {
+    background: linear-gradient(180deg, #FF6B35 0%, #FFB380 100%) !important;
+  }
+  
+  .adv-benefit-title,
+  .adv-benefit-description {
+    color: white !important; /* БЕЛЫЙ ТЕКСТ НА ОРАНЖЕВОМ ФОНЕ */
+  }
+  
+  /* Социальные иконки остаются белыми */
+  .adv-benefit-social-icon {
+    background: white !important;
+  }
+}
+
+/* Заголовок */
+.adv-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.adv-title {
+  color: #1D2939;
+  font-size: clamp(2.2rem, 4vw, 3.2rem); /* Увеличил шрифт */
+  font-weight: 700;
+  line-height: 1.1;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Подзаголовок */
+.adv-subtitle-container {
+  max-width: 561px;
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
+
+.adv-subtitle {
+  color: #828282;
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem); /* Увеличил шрифт */
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Иконки активностей */
+.adv-icons {
+  display: flex;
+  align-items: flex-end;
+  gap: 23px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.adv-icons svg {
+  flex-shrink: 0;
+}
+
+/* Контейнер на всю ширину блока с максимальной шириной */
+.adv-full-width-cards {
+  width: 100%;
+  max-width: 1500px; /* Максимальная ширина 1500px */
+  margin: 0 auto; /* Центрируем контейнер */
+  position: relative;
+  padding: 0 20px;
+}
+
+/* Сетка карточек преимуществ */
+.adv-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Основные стили карточек */
+.adv-benefit-card {
+  position: relative;
+  height: 768px; /* Увеличил высоту на 20% (640px * 1.2 = 768px) */
+  border-radius: 30px;
+  background: linear-gradient(180deg, #FF6B35 0%, #FFB380 100%);
+  padding-top: 47px;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Контент карточки */
+.adv-benefit-content {
+  padding: 0 25px;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.adv-benefit-title {
+  color: white;
+  font-size: clamp(28px, 3vw, 38px); /* Увеличил шрифт */
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 15px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Контейнеры описаний для разных карточек */
+.adv-benefit-description-container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.adv-benefit-description-container.adv-variety {
+  padding: 0 10%;
+}
+
+.adv-benefit-description-container.adv-payment {
+  padding: 0 8%;
+}
+
+.adv-benefit-description-container.adv-convenience {
+  padding: 0 12%;
+}
+
+.adv-benefit-description {
+  color: white;
+  font-size: clamp(16px, 1.8vw, 22px); /* Увеличил шрифт */
+  font-weight: 400;
+  line-height: 1.4;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+/* Контейнеры изображений - УВЕЛИЧЕНЫ ЕЩЕ НА 10% */
+.adv-benefit-image-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.adv-benefit-image-container.adv-variety-image {
+  width: 100%; /* Увеличил с 92% на 8% (до максимума) */
+  height: 90%; /* Увеличил с 75% на 8% */
+}
+
+.adv-benefit-image-container.adv-payment-image {
+  width: 100%; /* Увеличил с 97% на 3% (до максимума) */
+  height: 80%; /* Увеличил с 88% на 9% */
+}
+
+.adv-benefit-image-container.adv-convenience-image {
+  width: 96%; /* Увеличил с 87% на 9% */
+  height: 80%; /* Увеличил с 75% на 8% */
+}
+
+.adv-benefit-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Социальные иконки - адаптивные размеры */
+.adv-benefit-social-icons {
+  position: absolute;
+  bottom: 8%;
+  left: 7%;
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(12px, 2vw, 20px);
+  z-index: 3;
+}
+
+.adv-benefit-social-icon {
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.adv-benefit-social-icon.adv-large {
+  width: clamp(95px, 9vw, 130px); /* Увеличил размеры иконок */
+  height: clamp(95px, 9vw, 130px);
+}
+
+.adv-benefit-social-icon.adv-medium {
+  width: clamp(85px, 8vw, 115px);
+  height: clamp(85px, 8vw, 115px);
+}
+
+.adv-benefit-social-icon.adv-small {
+  width: clamp(75px, 7vw, 100px);
+  height: clamp(75px, 7vw, 100px);
+}
+
+/* Адаптивные стили для планшетов */
+@media (max-width: 992px) {
+  .adv-full-width-cards {
+    padding: 0 15px;
+  }
+  
+  .adv-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .adv-benefit-card {
+    height: 696px; /* Увеличил высоту на 20% (580px * 1.2 = 696px) */
+    border-radius: 30px;
+  }
+  
+  .adv-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .adv-benefit-title {
+    font-size: clamp(26px, 3vw, 34px);
+  }
+  
+  .adv-benefit-description {
+    font-size: clamp(15px, 1.8vw, 20px);
+  }
+  
+  /* Увеличенные на 10% фото для планшетов */
+  .adv-benefit-image-container.adv-variety-image {
+    width: 99%; /* Увеличил с 90% на 9% */
+    height: 80%; /* Увеличил с 73% на 7% */
+  }
+  
+  .adv-benefit-image-container.adv-payment-image {
+    width: 100%; /* Увеличил с 95% на 5% (максимум) */
+    height: 95%; /* Увеличил с 86% на 9% */
+  }
+  
+  .adv-benefit-image-container.adv-convenience-image {
+    width: 94%; /* Увеличил с 85% на 9% */
+    height: 80%; /* Увеличил с 73% на 7% */
+  }
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+  .adv-full-width-cards {
+    padding: 0 10px;
+  }
+  
+  .adv-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .adv-benefit-card {
+    height: 624px; /* Увеличил высоту на 20% (520px * 1.2 = 624px) */
+    border-radius: 30px;
+  }
+  
+  .adv-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin-bottom: 30px;
+  }
+  
+  .adv-subtitle-container {
+    margin-bottom: 30px;
+  }
+  
+  .adv-subtitle {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+  
+  .adv-icons {
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+  
+  .adv-icons svg {
+    width: 32px; /* Увеличил размер иконок */
+    height: 32px;
+  }
+  
+  .adv-benefit-title {
+    font-size: clamp(24px, 3vw, 32px);
+  }
+  
+  .adv-benefit-description {
+    font-size: clamp(15px, 1.8vw, 19px);
+  }
+  
+  /* Увеличенные на 10% фото для мобильных */
+  .adv-benefit-image-container.adv-variety-image {
+    width: 98%; /* Увеличил с 89% на 9% */
+    height: 79%; /* Увеличил с 72% на 7% */
+  }
+  
+  .adv-benefit-image-container.adv-payment-image {
+    width: 100%; /* Увеличил с 94% на 6% (максимум) */
+    height: 94%; /* Увеличил с 85% на 9% */
+  }
+  
+  .adv-benefit-image-container.adv-convenience-image {
+    width: 92%; /* Увеличил с 84% на 8% */
+    height: 79%; /* Увеличил с 72% на 7% */
+  }
+}
+
+/* Дополнительные стили для очень маленьких экранов */
+@media (max-width: 480px) {
+  .adv-full-width-cards {
+    padding: 0 8px;
+  }
+  
+  .adv-benefit-card {
+    height: 576px; /* Увеличил высоту на 20% (480px * 1.2 = 576px) */
+    border-radius: 30px;
+  }
+  
+  .adv-title {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+  
+  .adv-subtitle {
+    font-size: 16px;
+  }
+  
+  .adv-benefit-title {
+    font-size: 26px;
+  }
+  
+  .adv-benefit-description {
+    font-size: 16px;
+  }
+  
+  /* Увеличенные на 10% фото для маленьких экранов */
+  .adv-benefit-image-container.adv-variety-image {
+    width: 96%; /* Увеличил с 87% на 9% */
+    height: 77%; /* Увеличил с 70% на 7% */
+  }
+  
+  .adv-benefit-image-container.adv-payment-image {
+    width: 100%; /* Увеличил с 92% на 8% (максимум) */
+    height: 91%; /* Увеличил с 83% на 8% */
+  }
+  
+  .adv-benefit-image-container.adv-convenience-image {
+    width: 90%; /* Увеличил с 82% на 8% */
+    height: 77%; /* Увеличил с 70% на 7% */
+  }
+}
+
+/* Focus states для доступности */
+.adv-benefit-card:focus,
+.adv-benefit-social-icon:focus {
+  outline: 2px solid #FF6B35;
+  outline-offset: 2px;
+}

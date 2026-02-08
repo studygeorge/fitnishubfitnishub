@@ -1,0 +1,87 @@
+/* src/components/Layout/Layout.css - Обновленная версия */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.layout.desktop {
+  flex-direction: row;
+}
+
+/* Десктоп версия */
+.layout.desktop .main-content {
+  padding-top: 80px;
+  margin-left: 0;
+}
+
+/* Мобильная версия - адаптируем под новую высоту навигации */
+.layout.mobile {
+  padding-top: 0;
+  padding-bottom: 70px;
+}
+
+/* Основной контент */
+.main-content {
+  flex: 1;
+  background-color: transparent; /* Убираем фон чтобы страницы сами управляли */
+  min-height: calc(100vh - 70px);
+  width: 100%;
+  margin: 0;
+  padding: 0; /* Убираем padding чтобы страницы сами управляли */
+}
+
+.layout.desktop .main-content {
+  min-height: calc(100vh - 80px);
+}
+
+/* Мобильная адаптация с учетом safe-area */
+@media (max-width: 768px) {
+  .layout.desktop .main-content {
+    padding-top: 0;
+  }
+  
+  .main-content {
+    min-height: calc(100vh - 70px);
+  }
+}
+
+/* Специально для iPhone с safe-area */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  @media (max-width: 768px) {
+    .layout.mobile {
+      padding-bottom: calc(70px + max(4px, env(safe-area-inset-bottom)));
+    }
+    
+    .main-content {
+      min-height: calc(100vh - 70px - max(4px, env(safe-area-inset-bottom)));
+    }
+  }
+}
+
+/* Для маленьких экранов */
+@media (max-width: 480px) {
+  .layout.mobile {
+    padding-bottom: 60px;
+  }
+  
+  .main-content {
+    min-height: calc(100vh - 60px);
+  }
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  @media (max-width: 480px) {
+    .layout.mobile {
+      padding-bottom: calc(60px + max(4px, env(safe-area-inset-bottom)));
+    }
+    
+    .main-content {
+      min-height: calc(100vh - 60px - max(4px, env(safe-area-inset-bottom)));
+    }
+  }
+}

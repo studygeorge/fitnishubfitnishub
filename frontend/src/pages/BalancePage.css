@@ -1,0 +1,1036 @@
+/* BalancePage.css - Уникальные стили с префиксом balpg- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* CSS переменные */
+:root {
+  --balpg-primary: #FF6B35;
+  --balpg-primary-dark: #E55A2B;
+  --balpg-primary-light: #FF8A5C;
+  --balpg-accent: #FFF9F7;
+  --balpg-text-dark: #1a1a1a;
+  --balpg-text-gray: #666666;
+  --balpg-text-light: #999999;
+  --balpg-white: #ffffff;
+  --balpg-bg: #ffffff;
+  --balpg-border: #e8eaed;
+  --balpg-border-light: #f0f1f3;
+  --balpg-gradient: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%);
+  --balpg-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --balpg-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --balpg-shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.12);
+  --balpg-shadow-primary: 0 4px 16px rgba(255, 107, 53, 0.3);
+  --balpg-radius-sm: 8px;
+  --balpg-radius-md: 12px;
+  --balpg-radius-lg: 16px;
+  --balpg-radius-xl: 20px;
+  --balpg-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --balpg-success: #10b981;
+  --balpg-error: #ef4444;
+  --balpg-warning: #f59e0b;
+  --balpg-info: #3b82f6;
+}
+
+/* Основной контейнер */
+.balpg-container {
+  min-height: 100vh;
+  background: var(--balpg-bg);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Заголовок страницы */
+.balpg-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.balpg-header-content {
+  margin-bottom: 32px;
+}
+
+.balpg-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--balpg-text-dark);
+  margin: 0 0 16px 0;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.balpg-subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: var(--balpg-text-gray);
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Карточка баланса */
+.balpg-balance-card {
+  display: inline-block;
+  background: var(--balpg-gradient);
+  border-radius: var(--balpg-radius-xl);
+  padding: 24px 40px;
+  box-shadow: var(--balpg-shadow-primary);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.balpg-balance-info {
+  color: var(--balpg-white);
+  text-align: center;
+}
+
+.balpg-balance-label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.balpg-balance-amount {
+  display: block;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  transition: var(--balpg-transition);
+}
+
+.balpg-balance-amount.balpg-balance-updated {
+  animation: balpg-balance-bounce 0.6s ease-in-out;
+}
+
+@keyframes balpg-balance-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Основной контент */
+.balpg-main {
+  margin-bottom: 60px;
+}
+
+/* ЕДИНСТВЕННАЯ СЕКЦИЯ НА ВСЮ ШИРИНУ */
+.balpg-section {
+  background: var(--balpg-white);
+  border-radius: var(--balpg-radius-lg);
+  border: 1px solid var(--balpg-border-light);
+  box-shadow: var(--balpg-shadow-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Специальный класс для единственной секции */
+.balpg-single-section {
+  max-width: 800px; /* Ограничиваем ширину для лучшего восприятия */
+  margin: 0 auto; /* Центрируем */
+}
+
+.balpg-section-header {
+  padding: 32px 40px;
+  border-bottom: 1px solid var(--balpg-border-light);
+  background: linear-gradient(135deg, var(--balpg-accent), var(--balpg-white));
+  text-align: center; /* Центрируем заголовок */
+}
+
+.balpg-section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--balpg-text-dark);
+  margin: 0;
+  display: inline-flex; /* Изменяем на inline-flex для центрирования */
+  align-items: center;
+  gap: 12px;
+  justify-content: center; /* Центрируем содержимое */
+}
+
+.balpg-section-title::before {
+  content: '';
+  width: 4px;
+  height: 28px;
+  background: var(--balpg-primary);
+  border-radius: 2px;
+}
+
+.balpg-section-title::after {
+  content: '';
+  width: 4px;
+  height: 28px;
+  background: var(--balpg-primary);
+  border-radius: 2px;
+}
+
+/* Форма пополнения - улучшенная для единственной секции */
+.balpg-deposit-form {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Выбор суммы - улучшенная сетка */
+.balpg-amount-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.balpg-amount-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto; /* Центрируем сетку */
+}
+
+.balpg-amount-btn {
+  padding: 20px 16px;
+  background: var(--balpg-white);
+  border: 2px solid var(--balpg-border);
+  border-radius: var(--balpg-radius-md);
+  color: var(--balpg-text-dark);
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--balpg-transition);
+  text-align: center;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.balpg-amount-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  transition: left 0.5s;
+}
+
+.balpg-amount-btn:hover {
+  border-color: var(--balpg-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--balpg-shadow-md);
+}
+
+.balpg-amount-btn:hover::before {
+  left: 100%;
+}
+
+.balpg-amount-btn.balpg-amount-btn-active {
+  background: var(--balpg-gradient);
+  color: var(--balpg-white);
+  border-color: var(--balpg-primary);
+  box-shadow: var(--balpg-shadow-primary);
+  transform: scale(1.05);
+}
+
+/* Кастомная сумма - улучшенная */
+.balpg-custom-amount {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto; /* Центрируем */
+}
+
+.balpg-custom-input {
+  width: 100%;
+  padding: 20px 28px;
+  border: 2px solid var(--balpg-border);
+  border-radius: var(--balpg-radius-md);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--balpg-text-dark);
+  background: var(--balpg-white);
+  transition: var(--balpg-transition);
+  font-family: inherit;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.balpg-custom-input:focus {
+  outline: none;
+  border-color: var(--balpg-primary);
+  box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+  transform: scale(1.02);
+}
+
+.balpg-custom-input::placeholder {
+  color: var(--balpg-text-light);
+  font-weight: 400;
+}
+
+/* Способы оплаты - улучшенные */
+.balpg-payment-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 500px;
+  margin: 0 auto; /* Центрируем */
+}
+
+.balpg-payment-option {
+  display: flex;
+  align-items: center;
+  padding: 24px 28px;
+  background: var(--balpg-accent);
+  border: 2px solid transparent;
+  border-radius: var(--balpg-radius-md);
+  cursor: pointer;
+  transition: var(--balpg-transition);
+  position: relative;
+  justify-content: center; /* Центрируем содержимое */
+}
+
+.balpg-payment-option:hover {
+  border-color: var(--balpg-primary);
+  background: rgba(255, 107, 53, 0.05);
+  transform: translateY(-1px);
+  box-shadow: var(--balpg-shadow-sm);
+}
+
+.balpg-payment-radio {
+  width: 22px;
+  height: 22px;
+  margin: 0 20px 0 0;
+  accent-color: var(--balpg-primary);
+}
+
+.balpg-payment-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.balpg-payment-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--balpg-primary);
+  flex-shrink: 0;
+}
+
+.balpg-payment-text {
+  font-weight: 600;
+  color: var(--balpg-text-dark);
+  font-size: 1.1rem;
+}
+
+/* Итоговая сумма - улучшенная */
+.balpg-summary {
+  padding: 28px 32px;
+  background: linear-gradient(135deg, var(--balpg-accent), #f8f9fa);
+  border-radius: var(--balpg-radius-md);
+  border: 2px solid var(--balpg-border-light);
+  max-width: 400px;
+  margin: 0 auto; /* Центрируем */
+}
+
+.balpg-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.balpg-summary-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--balpg-text-dark);
+}
+
+.balpg-summary-amount {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--balpg-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Кнопки - улучшенные */
+.balpg-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 40px;
+  border: none;
+  border-radius: var(--balpg-radius-md);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--balpg-transition);
+  font-family: inherit;
+  letter-spacing: -0.01em;
+  min-height: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.balpg-btn-primary {
+  background: var(--balpg-gradient);
+  color: var(--balpg-white);
+  box-shadow: var(--balpg-shadow-primary);
+}
+
+.balpg-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+.balpg-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: var(--balpg-shadow-sm) !important;
+}
+
+.balpg-btn-loading {
+  pointer-events: none;
+}
+
+.balpg-btn-spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid var(--balpg-white);
+  border-radius: 50%;
+  animation: balpg-spin 1s linear infinite;
+}
+
+@keyframes balpg-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.balpg-submit-btn {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto; /* Центрируем кнопку */
+  font-size: 1.2rem;
+  padding: 22px 48px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+/* Футер */
+.balpg-footer {
+  text-align: center;
+  padding-top: 40px;
+  border-top: 1px solid var(--balpg-border-light);
+  position: relative;
+}
+
+.balpg-footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.balpg-footer-link {
+  color: var(--balpg-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border-radius: var(--balpg-radius-sm);
+  transition: var(--balpg-transition);
+}
+
+.balpg-footer-link:hover {
+  color: var(--balpg-primary-dark);
+  background: var(--balpg-accent);
+  text-decoration: none;
+}
+
+.balpg-footer-info {
+  color: var(--balpg-text-gray);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.balpg-footer-info p {
+  margin: 8px 0;
+}
+
+/* ЛОГОТИПЫ ПАРТНЕРОВ В ФУТЕРЕ */
+.balpg-footer-partners {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--balpg-border-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.balpg-footer-partners-image {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  opacity: 0.7;
+  filter: grayscale(30%);
+  transition: var(--balpg-transition);
+}
+
+.balpg-footer-partners-image:hover {
+  opacity: 0.9;
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+
+/* Состояния загрузки и ошибки */
+.balpg-loading-wrapper,
+.balpg-error-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.balpg-loading-content,
+.balpg-error-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--balpg-white);
+  padding: 60px 40px;
+  border-radius: var(--balpg-radius-lg);
+  box-shadow: var(--balpg-shadow-lg);
+  border: 1px solid var(--balpg-border-light);
+  max-width: 500px;
+  width: 100%;
+}
+
+.balpg-loading-spinner {
+  width: 64px;
+  height: 64px;
+  border: 4px solid var(--balpg-border-light);
+  border-top: 4px solid var(--balpg-primary);
+  border-radius: 50%;
+  animation: balpg-spin 1s linear infinite;
+  margin-bottom: 32px;
+}
+
+.balpg-loading-text {
+  color: var(--balpg-text-gray);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.balpg-error-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 32px;
+  color: var(--balpg-error);
+  opacity: 0.8;
+}
+
+.balpg-error-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.balpg-error-title {
+  color: var(--balpg-text-dark);
+  margin: 0 0 16px 0;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.balpg-error-message {
+  color: var(--balpg-text-gray);
+  max-width: 400px;
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+  font-size: 1rem;
+}
+
+/* Модальные окна */
+.balpg-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: balpg-fade-in 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+@keyframes balpg-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.balpg-modal {
+  background: var(--balpg-white);
+  border-radius: var(--balpg-radius-lg);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 75px rgba(0, 0, 0, 0.3);
+  animation: balpg-modal-slide-in 0.3s ease;
+  border: 1px solid var(--balpg-border-light);
+}
+
+@keyframes balpg-modal-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.balpg-modal-header {
+  position: relative;
+  padding: 40px 32px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--balpg-border-light);
+}
+
+.balpg-alert-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: var(--balpg-white);
+  animation: balpg-bounce 0.6s ease;
+}
+
+.balpg-alert-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.balpg-alert-icon-info {
+  background: var(--balpg-info);
+}
+
+.balpg-alert-icon-success {
+  background: var(--balpg-success);
+}
+
+.balpg-alert-icon-warning {
+  background: var(--balpg-warning);
+}
+
+.balpg-alert-icon-error {
+  background: var(--balpg-error);
+}
+
+@keyframes balpg-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+.balpg-modal-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--balpg-text-dark);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.balpg-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: var(--balpg-border-light);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--balpg-text-gray);
+  transition: var(--balpg-transition);
+}
+
+.balpg-modal-close:hover {
+  background: var(--balpg-border);
+  color: var(--balpg-text-dark);
+  transform: scale(1.1);
+}
+
+.balpg-modal-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.balpg-modal-content {
+  padding: 24px 32px;
+}
+
+.balpg-alert-message {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--balpg-text-dark);
+  text-align: center;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.balpg-modal-actions {
+  padding: 28px 32px 32px;
+  border-top: 1px solid var(--balpg-border-light);
+  background: var(--balpg-white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.balpg-modal-actions .balpg-btn {
+  min-width: 220px;
+  width: 100%;
+  max-width: 320px;
+  padding: 20px 40px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--balpg-radius-md);
+}
+
+.balpg-modal-actions .balpg-btn-primary {
+  background: var(--balpg-gradient);
+  color: var(--balpg-white);
+  box-shadow: var(--balpg-shadow-primary);
+  animation: balpg-pulse 2.5s infinite;
+}
+
+.balpg-modal-actions .balpg-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(255, 107, 53, 0.5);
+  animation: none;
+}
+
+@keyframes balpg-pulse {
+  0% {
+    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 8px 28px rgba(255, 107, 53, 0.5);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 4px 16px rgba(255, 107, 53, 0.3);
+    transform: scale(1);
+  }
+}
+
+.balpg-modal-actions .balpg-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.balpg-modal-actions .balpg-btn:hover::before {
+  left: 100%;
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ ПЛАНШЕТОВ */
+@media (max-width: 1024px) {
+  .balpg-single-section {
+    max-width: 700px;
+  }
+  
+  .balpg-section-header {
+    padding: 28px 32px;
+  }
+
+  .balpg-deposit-form {
+    padding: 32px;
+    gap: 28px;
+  }
+
+  .balpg-amount-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+  }
+
+  .balpg-amount-btn {
+    padding: 16px 12px;
+    font-size: 1rem;
+    min-height: 56px;
+  }
+
+  .balpg-footer-partners-image {
+    max-width: 320px;
+  }
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
+@media (max-width: 768px) {
+  .balpg-container {
+    padding: 16px;
+  }
+
+  .balpg-single-section {
+    max-width: 100%;
+  }
+
+  .balpg-balance-card {
+    padding: 20px 32px;
+  }
+
+  .balpg-section-header {
+    padding: 24px;
+  }
+
+  .balpg-deposit-form {
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .balpg-amount-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 100%;
+  }
+
+  .balpg-custom-amount,
+  .balpg-payment-wrapper,
+  .balpg-summary {
+    max-width: 100%;
+  }
+
+  .balpg-submit-btn {
+    max-width: 100%;
+    font-size: 1.1rem;
+    padding: 18px 32px;
+  }
+
+  .balpg-footer-links {
+    gap: 16px;
+  }
+
+  .balpg-modal {
+    max-width: 100%;
+    margin: 20px;
+  }
+
+  .balpg-modal-header,
+  .balpg-modal-content,
+  .balpg-modal-actions {
+    padding: 24px;
+  }
+
+  .balpg-modal-actions .balpg-btn {
+    min-width: 100%;
+    max-width: 100%;
+    padding: 18px 32px;
+    font-size: 1.1rem;
+  }
+
+  .balpg-footer-partners-image {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .balpg-container {
+    padding: 12px;
+  }
+
+  .balpg-header {
+    margin-bottom: 32px;
+  }
+
+  .balpg-balance-card {
+    padding: 16px 24px;
+  }
+
+  .balpg-section-header {
+    padding: 20px;
+  }
+
+  .balpg-section-title {
+    font-size: 1.4rem;
+  }
+
+  .balpg-section-title::before,
+  .balpg-section-title::after {
+    height: 24px;
+  }
+
+  .balpg-deposit-form {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .balpg-amount-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .balpg-amount-btn {
+    padding: 14px;
+    font-size: 0.95rem;
+    min-height: 52px;
+  }
+
+  .balpg-custom-input {
+    padding: 16px 20px;
+    font-size: 1rem;
+  }
+
+  .balpg-payment-option {
+    padding: 20px 24px;
+  }
+
+  .balpg-payment-text {
+    font-size: 1rem;
+  }
+
+  .balpg-summary {
+    padding: 20px 24px;
+  }
+
+  .balpg-summary-label {
+    font-size: 1.1rem;
+  }
+
+  .balpg-summary-amount {
+    font-size: 1.3rem;
+  }
+
+  .balpg-submit-btn {
+    font-size: 1rem;
+    padding: 16px 24px;
+    letter-spacing: 0.5px;
+  }
+
+  .balpg-footer-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .balpg-modal {
+    margin: 12px;
+  }
+
+  .balpg-modal-header,
+  .balpg-modal-content,
+  .balpg-modal-actions {
+    padding: 20px;
+  }
+
+  .balpg-alert-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .balpg-alert-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .balpg-modal-actions .balpg-btn {
+    padding: 16px 24px;
+    font-size: 1rem;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .balpg-footer-partners-image {
+    max-width: 240px;
+  }
+}
+
+/* УЛУЧШЕНИЯ ДОСТУПНОСТИ */
+.balpg-btn:focus,
+.balpg-amount-btn:focus,
+.balpg-custom-input:focus,
+.balpg-footer-link:focus {
+  outline: 3px solid rgba(255, 107, 53, 0.5);
+  outline-offset: 2px;
+}
+
+.balpg-modal-close:focus {
+  outline: 2px solid var(--balpg-primary);
+  outline-offset: 2px;
+}
+
+/* ВЫСОКАЯ КОНТРАСТНОСТЬ */
+@media (prefers-contrast: high) {
+  .balpg-section {
+    border: 2px solid var(--balpg-text-dark);
+  }
+  
+  .balpg-btn {
+    border: 2px solid var(--balpg-text-dark);
+  }
+  
+  .balpg-modal {
+    border: 3px solid var(--balpg-text-dark);
+  }
+}
+
+/* УМЕНЬШЕННАЯ АНИМАЦИЯ */
+@media (prefers-reduced-motion: reduce) {
+  .balpg-amount-btn,
+  .balpg-btn,
+  .balpg-balance-amount,
+  .balpg-modal-overlay,
+  .balpg-modal,
+  .balpg-alert-icon,
+  .balpg-footer-partners-image,
+  .balpg-payment-option,
+  .balpg-custom-input {
+    transition: none;
+    animation: none;
+  }
+  
+  .balpg-btn:hover:not(:disabled),
+  .balpg-amount-btn:hover,
+  .balpg-footer-partners-image:hover,
+  .balpg-payment-option:hover,
+  .balpg-custom-input:focus,
+  .balpg-amount-btn.balpg-amount-btn-active {
+    transform: none;
+  }
+
+  .balpg-modal-actions .balpg-btn-primary {
+    animation: none;
+  }
+}

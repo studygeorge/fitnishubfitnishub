@@ -1,0 +1,395 @@
+/* TELEGRAM MODAL STYLES */
+.telegram-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.telegram-modal {
+  background: #ffffff;
+  border-radius: 20px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.telegram-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 30px 20px;
+  border-bottom: 2px solid #F5F5F5;
+}
+
+.telegram-modal-header h3 {
+  margin: 0;
+  color: #293241;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.telegram-modal-content {
+  padding: 25px 30px;
+}
+
+.telegram-step {
+  text-align: center;
+}
+
+.telegram-step-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.telegram-step-number {
+  width: 40px;
+  height: 40px;
+  background: #FF6933;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.telegram-step-success {
+  width: 40px;
+  height: 40px;
+  background: #FF6933; /* ИСПРАВЛЕНО: Заменил зеленый на оранжевый */
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.telegram-step-header h4 {
+  margin: 0;
+  color: #293241;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.telegram-step-content {
+  text-align: left;
+}
+
+.telegram-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #F5F5F5;
+  border-top: 3px solid #FF6933;
+  border-radius: 50%;
+  animation: telegram-spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes telegram-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ИНФОРМАЦИОННЫЕ БЛОКИ */
+.telegram-info-block {
+  background: #F5F5F5;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.telegram-info-block p {
+  margin: 0 0 15px 0;
+  color: #293241;
+  font-weight: 600;
+}
+
+.telegram-info-block ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #666;
+}
+
+.telegram-info-block ol {
+  margin: 0;
+  padding-left: 20px;
+  color: #666;
+}
+
+.telegram-info-block li {
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.telegram-code-block {
+  margin: 25px 0;
+  text-align: center;
+}
+
+.telegram-code {
+  background: #293241;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  font-family: 'Monaco', 'Consolas', monospace;
+}
+
+.telegram-code code {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #FF6933;
+  margin-bottom: 15px;
+  word-break: break-all;
+}
+
+.telegram-code-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.telegram-copy-btn,
+.telegram-bot-btn {
+  background: #FF6933 !important;
+  color: #ffffff !important;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.telegram-copy-btn:hover,
+.telegram-bot-btn:hover {
+  background: #B8B8B8 !important;
+  color: #FF6933 !important;
+}
+
+.telegram-linking-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  padding: 20px;
+  background: #F5F5F5;
+  border-radius: 15px;
+}
+
+.telegram-linking-status .telegram-loading-spinner {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+  margin: 0;
+}
+
+.telegram-linking-status span {
+  color: #666;
+  font-size: 14px;
+}
+
+.telegram-success-info {
+  background: #F5F5F5; /* ИСПРАВЛЕНО: Заменил зеленый на серый */
+  border: 1px solid #B8B8B8; /* ИСПРАВЛЕНО: Заменил зеленый на серый */
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.telegram-success-info h5 {
+  color: #293241; /* ИСПРАВЛЕНО: Заменил зеленый на темно-серый */
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  font-weight: 600;
+  /* ИСПРАВЛЕНО: Добавлен CSS для правильного переноса */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.telegram-success-info ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #666; /* ИСПРАВЛЕНО: Заменил зеленый на серый */
+}
+
+.telegram-success-info li {
+  margin-bottom: 8px;
+  line-height: 1.4;
+  /* ИСПРАВЛЕНО: Добавлен CSS для правильного переноса */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.telegram-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(220, 53, 69, 0.1);
+  border: 1px solid #dc3545;
+  color: #dc3545;
+  padding: 15px 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.telegram-error-icon {
+  width: 20px;
+  height: 20px;
+  background: #dc3545;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .telegram-modal {
+    margin: 10px;
+    max-height: calc(100vh - 40px);
+  }
+
+  .telegram-modal-header,
+  .telegram-modal-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .telegram-code {
+    padding: 15px;
+  }
+
+  .telegram-code code {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .telegram-code-buttons {
+    gap: 8px;
+  }
+
+  .telegram-copy-btn,
+  .telegram-bot-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .telegram-step-header h4 {
+    font-size: 18px;
+  }
+
+  .telegram-info-block,
+  .telegram-success-info {
+    padding: 15px;
+  }
+
+  /* ИСПРАВЛЕНО: Улучшенный перенос для мобильных устройств */
+  .telegram-success-info h5 {
+    font-size: 14px;
+    line-height: 1.3;
+    word-spacing: -0.1em; /* Уменьшаем расстояние между словами */
+  }
+
+  .telegram-success-info li {
+    font-size: 13px;
+    line-height: 1.3;
+  }
+}
+
+@media (max-width: 480px) {
+  .telegram-modal-header,
+  .telegram-modal-content {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .telegram-step-header {
+    gap: 10px;
+  }
+
+  .telegram-step-number,
+  .telegram-step-success {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .telegram-step-success {
+    font-size: 20px;
+  }
+
+  .telegram-step-header h4 {
+    font-size: 16px;
+  }
+
+  .telegram-code {
+    padding: 12px;
+  }
+
+  .telegram-code code {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .telegram-code-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .telegram-copy-btn,
+  .telegram-bot-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+    width: 100%;
+  }
+
+  /* ИСПРАВЛЕНО: Еще более точный перенос для очень маленьких экранов */
+  .telegram-success-info h5 {
+    font-size: 13px;
+    line-height: 1.2;
+    /* Принудительный перенос после "уведомления" */
+    white-space: pre-line;
+  }
+
+  .telegram-success-info li {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+}
+
+/* ИСПРАВЛЕНО: Дополнительные правила для правильного переноса текста */
+@media (max-width: 360px) {
+  .telegram-success-info h5 {
+    /* Можно добавить принудительный перенос через CSS content если нужно */
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,329 @@
+/* src/pages/homepage/styles/HeroSection.css */
+
+/* Обёртка */
+.fitness-hero-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Карточка (дефолт: десктопный макет) */
+.fitness-hero-card {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  height: 676px;
+  background: linear-gradient(123deg, #FF7300 0%, #FFCD61 100%);
+  border-radius: 28px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Заголовок/подзаголовок/кнопка — пиксель-перфект на десктопе */
+.fitness-hero-title {
+  position: absolute;
+  left: 68px;
+  top: 66px;
+  right: 160px;
+  color: #fff;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 900;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  z-index: 2;
+}
+
+.fitness-hero-subtitle {
+  position: absolute;
+  left: 68px;
+  top: 200px;
+  right: 160px;
+  max-width: 489px;
+  color: #fff;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 500;
+  font-size: clamp(16px, 2vw, 24px);
+  line-height: 1.45;
+  margin: 0;
+  z-index: 2;
+}
+
+.fitness-hero-buttons {
+  position: absolute;
+  left: 68px;
+  top: 320px;
+  z-index: 2;
+}
+
+.fitness-hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  background: #ffffff;
+  color: #FF6933;
+  text-decoration: none;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: clamp(14px, 1.5vw, 16px);
+  line-height: 1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+  white-space: nowrap;
+}
+
+.fitness-hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+  background: #F5F5F5;
+}
+
+.fitness-btn-arrow {
+  transition: transform 0.25s ease;
+  font-size: 1.2rem;
+}
+
+.fitness-hero-btn-primary:hover .fitness-btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Фото справа на десктопе - ПРИЖАТО К НИЗУ */
+.fitness-hero-image {
+  position: absolute;
+  right: 68px;
+  bottom: 0;
+  width: clamp(300px, 35vw, 473px);
+  height: clamp(400px, 85%, 631px);
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+  z-index: 1;
+  border-radius: 0;
+}
+
+/* Планшеты */
+@media (max-width: 1024px) {
+  .fitness-hero-wrapper { padding: 12px; }
+  .fitness-hero-card { height: clamp(520px, 62vh, 620px); border-radius: 24px; }
+
+  .fitness-hero-title { left: 40px; top: 40px; right: 40px; font-size: clamp(24px, 4vw, 36px); }
+  .fitness-hero-subtitle { left: 40px; top: 150px; right: 40px; font-size: clamp(14px, 2vw, 18px); }
+  .fitness-hero-buttons { left: 40px; top: 240px; }
+
+  .fitness-hero-image {
+    right: 40px; 
+    bottom: 0;
+    top: auto;
+    width: clamp(250px, 30vw, 360px);
+    height: clamp(360px, 74%, 460px);
+    object-position: center bottom;
+  }
+}
+
+/* МОБИЛЬНЫЕ ≤768px — СТЕК в колонку, высота авто, фото прижато к низу */
+@media (max-width: 768px) {
+  .fitness-hero-wrapper { padding: 8px; }
+
+  /* Переключаем карточку на flex-колонку */
+  .fitness-hero-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    min-height: 0;
+    padding: 20px 16px 0;
+    border-radius: 20px;
+  }
+
+  /* Сбрасываем absolute у текста и кнопок -> обычный поток */
+  .fitness-hero-title,
+  .fitness-hero-subtitle,
+  .fitness-hero-buttons {
+    position: static;
+    left: auto; right: auto; top: auto; bottom: auto;
+    width: 100%;
+  }
+
+  .fitness-hero-title {
+    text-align: center;
+    font-size: clamp(22px, 6vw, 30px);
+    margin: 4px 0 10px;
+  }
+
+  .fitness-hero-subtitle {
+    text-align: center;
+    font-size: clamp(14px, 3.6vw, 17px);
+    margin: 0 auto 14px;
+    max-width: 640px;
+  }
+
+  .fitness-hero-buttons {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 12px;
+  }
+
+  /* Обёртка для картинки: растягивается на остаток и прижимает фото к низу */
+  .fitness-hero-image {
+    position: static;
+    margin-top: auto;
+    align-self: center;
+    width: min(92%, 360px);
+    height: auto;
+    max-height: 52vh;
+    object-fit: contain;
+    object-position: center bottom;
+    display: block;
+    border-radius: 0 0 20px 20px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+/* Маленькие мобильные ≤480px */
+@media (max-width: 480px) {
+  .fitness-hero-wrapper { padding: 5px; }
+
+  .fitness-hero-card {
+    border-radius: 16px;
+    padding: 16px 12px 0;
+  }
+
+  .fitness-hero-title { font-size: clamp(20px, 6vw, 26px); margin: 2px 0 8px; }
+  .fitness-hero-subtitle { font-size: clamp(13px, 3.8vw, 15.5px); margin-bottom: 12px; }
+
+  .fitness-hero-btn-primary { padding: 12px 20px; font-size: 14px; }
+
+  .fitness-hero-image {
+    width: min(94%, 320px);
+    max-height: 48vh;
+    border-radius: 0 0 16px 16px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+/* Очень широкие экраны - ИСПРАВЛЕНО ПОЗИЦИОНИРОВАНИЕ */
+@media (min-width: 1400px) {
+  .fitness-hero-wrapper { padding: 20px; }
+  .fitness-hero-card { height: 720px; } /* увеличиваем высоту контейнера */
+  
+  .fitness-hero-title { left: 80px; font-size: 52px; }
+  .fitness-hero-subtitle { left: 80px; font-size: 26px; }
+  .fitness-hero-buttons { left: 80px; }
+  
+  .fitness-hero-image { 
+    right: 80px; 
+    bottom: 0; 
+    top: auto;
+    width: 480px;  /* немного уменьшили */
+    height: 600px; /* уменьшили высоту */
+    max-height: 90%; /* добавили ограничение */
+    object-fit: contain;
+    object-position: center bottom;
+  }
+}
+
+@media (min-width: 1600px) {
+  .fitness-hero-card { height: 760px; } /* еще больше высота контейнера */
+  
+  .fitness-hero-image { 
+    width: 520px; 
+    height: 640px; 
+    max-height: 88%; 
+  }
+}
+
+@media (min-width: 1800px) {
+  .fitness-hero-card { height: 800px; } /* максимальная высота контейнера */
+  
+  .fitness-hero-title { left: 120px; font-size: 56px; }
+  .fitness-hero-subtitle { left: 120px; font-size: 28px; }
+  .fitness-hero-buttons { left: 120px; }
+  
+  .fitness-hero-image { 
+    right: 120px; 
+    bottom: 0; 
+    top: auto;
+    width: 550px; 
+    height: 680px; /* уменьшили с 700px */
+    max-height: 85%; /* строгое ограничение */
+    object-fit: contain;
+    object-position: center bottom;
+  }
+}
+
+/* Сверхширокие экраны (4K и больше) */
+@media (min-width: 2400px) {
+  .fitness-hero-card { height: 900px; }
+  
+  .fitness-hero-image { 
+    width: 600px; 
+    height: 750px; 
+    max-height: 83%; 
+  }
+}
+
+/* ===== Dekor: только для десктопа ===== */
+@media (min-width: 1025px) {
+  .fitness-hero-card {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Мягкое свечение за моделью (правее/ниже центра) */
+  .fitness-hero-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        40% 45% at 82% 68%,
+        rgba(255,255,255,0.45) 0%,
+        rgba(255,255,255,0.22) 25%,
+        rgba(255,255,255,0.10) 45%,
+        rgba(255,255,255,0.00) 70%
+      );
+    mix-blend-mode: screen;
+  }
+
+  /* Паттерн/дуги справа — лёгкие, полупрозрачные */
+  .fitness-hero-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background:
+      conic-gradient(from 200deg at 85% 55%,
+        rgba(255,255,255,0.12) 0 35deg,
+        rgba(255,255,255,0.00) 35deg 360deg),
+      conic-gradient(from 210deg at 88% 60%,
+        rgba(255,255,255,0.10) 0 25deg,
+        rgba(255,255,255,0.00) 25deg 360deg),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(255,255,255,0.10) 0 2px,
+        rgba(255,255,255,0.00) 2px 14px
+      );
+
+    -webkit-mask-image: linear-gradient(to right, transparent 0 47%, #000 62% 100%);
+            mask-image: linear-gradient(to right, transparent 0 47%, #000 62% 100%);
+  }
+}
+
+/* отключаем декор на планшетах/мобилках */
+@media (max-width: 1024px) {
+  .fitness-hero-card::before,
+  .fitness-hero-card::after {
+    content: none;
+  }
+}

@@ -1,0 +1,103 @@
+.admin-login-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    padding: 20px;
+  }
+  
+  .admin-login-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+  }
+  
+  .admin-login-logo {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .admin-login-logo h1 {
+    margin: 0;
+    color: var(--accent-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  
+  .admin-login-logo p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-top: 5px;
+  }
+  
+  .admin-login-form {
+    margin-bottom: 20px;
+  }
+  
+  .admin-login-error {
+    background-color: #FFEBEE;
+    color: #F44336;
+    padding: 12px 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+  }
+  
+  .admin-form-group {
+    margin-bottom: 20px;
+  }
+  
+  .admin-form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #444;
+  }
+  
+  .admin-form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .admin-form-group input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 127, 80, 0.1);
+  }
+  
+  .admin-login-button {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-login-button:hover {
+    background-color: #FF6347;
+  }
+  
+  .admin-login-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .admin-login-footer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.85rem;
+    color: #888;
+  }
