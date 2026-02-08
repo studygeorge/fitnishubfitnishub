@@ -84,8 +84,9 @@ class AlfaBankService {
 
       console.log('✅ Ответ от Альфа-Банк:', response.data);
 
-      // Проверка на ошибку от банка
-      if (response.data.errorCode) {
+      // ВАЖНО: errorCode приходит как строка!
+      // '0' = успех, любое другое значение = ошибка
+      if (response.data.errorCode && response.data.errorCode !== '0') {
         const errorMsg = response.data.errorMessage || 'Неизвестная ошибка';
         console.error('❌ Ошибка регистрации заказа:', {
           errorCode: response.data.errorCode,
@@ -93,9 +94,9 @@ class AlfaBankService {
         });
         
         // Специфичные сообщения для разных ошибок
-        if (response.data.errorCode === 5) {
+        if (response.data.errorCode === '5') {
           throw new Error('Доступ запрещён. Проверьте логин и пароль в настройках Альфа-Банк.');
-        } else if (response.data.errorCode === 1) {
+        } else if (response.data.errorCode === '1') {
           throw new Error('Неверный формат запроса. Свяжитесь с поддержкой.');
         }
         
@@ -172,7 +173,9 @@ class AlfaBankService {
 
       console.log('📊 Статус от Альфа-Банк:', response.data);
 
-      if (response.data.errorCode) {
+      // ВАЖНО: errorCode приходит как строка!
+      // '0' = успех, любое другое значение = ошибка
+      if (response.data.errorCode && response.data.errorCode !== '0') {
         console.error('❌ Ошибка получения статуса:', {
           errorCode: response.data.errorCode,
           errorMessage: response.data.errorMessage
