@@ -1,5 +1,5 @@
 /* ClubSidebar.css - Clean Orange & White Design */
-@import '../../styles/club-design-system.css';
+@import './club-design-system.css';
 
 .club-sidebar {
   position: fixed;
