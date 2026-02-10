@@ -1,0 +1,138 @@
+/* Modal.css - Clean Modal Component */
+@import '../../styles/club-design-system.css';
+
+.club-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.club-modal {
+  background: var(--club-white);
+  border-radius: var(--club-radius-lg);
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--club-shadow-xl);
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.club-modal-small {
+  max-width: 400px;
+}
+
+.club-modal-medium {
+  max-width: 600px;
+}
+
+.club-modal-large {
+  max-width: 900px;
+}
+
+.club-modal-header {
+  padding: 24px 30px;
+  border-bottom: 1px solid var(--club-gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.club-modal-title {
+  margin: 0;
+  font-size: var(--club-font-size-2xl);
+  font-weight: 600;
+  color: var(--club-black);
+}
+
+.club-modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--club-gray-500);
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--club-radius-sm);
+  transition: var(--club-transition);
+  flex-shrink: 0;
+}
+
+.club-modal-close:hover {
+  background: var(--club-gray-100);
+  color: var(--club-primary);
+}
+
+.club-modal-body {
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.club-modal-footer {
+  padding: 20px 30px;
+  border-top: 1px solid var(--club-gray-200);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: var(--club-gray-50);
+  border-radius: 0 0 var(--club-radius-lg) var(--club-radius-lg);
+  flex-shrink: 0;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .club-modal {
+    max-width: 95%;
+    max-height: 95vh;
+  }
+  
+  .club-modal-header {
+    padding: 20px;
+  }
+  
+  .club-modal-body {
+    padding: 20px;
+  }
+  
+  .club-modal-footer {
+    padding: 16px 20px;
+    flex-direction: column-reverse;
+  }
+  
+  .club-modal-footer .club-btn {
+    width: 100%;
+  }
+}
