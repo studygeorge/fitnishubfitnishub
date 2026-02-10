@@ -1,582 +1,167 @@
-/* Подключение шрифта Inter */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Club Auth - Clean Orange & White Design */
+@import './club-design-system.css';
 
-/* src/club/styles/club-auth.css */
-:root {
-    --fitness-primary: #FF6B35;
-    --fitness-secondary: #E55A2B;
-    --fitness-accent: #FFF9F7;
-    --fitness-text-dark: #1a1a1a;
-    --fitness-text-gray: #666666;
-    --fitness-white: #ffffff;
-    --fitness-gradient: linear-gradient(135deg, #FF6B35 0%, #E55A2B 100%);
-    --fitness-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    --fitness-shadow-hover: 0 12px 35px rgba(0, 0, 0, 0.12);
-    --fitness-border-radius: 16px;
-    --fitness-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --fitness-error: #f44336;
+/* Защита от темной темы */
+@media (prefers-color-scheme: dark) {
+  .club-auth-page,
+  .club-auth-page *,
+  .club-auth-page *::before,
+  .club-auth-page *::after {
+    color-scheme: light !important;
+  }
 }
 
+/* Главный контейнер */
 .club-auth-page {
   min-height: 100vh;
-  background: var(--fitness-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--club-gray-50);
+  padding: var(--club-spacing-xl);
 }
 
-.club-auth-container {
+/* Форма авторизации */
+.auth-container {
   width: 100%;
-  max-width: 450px;
+  max-width: 420px;
 }
 
-.club-auth-card {
-  background: var(--fitness-white);
-  border-radius: var(--fitness-border-radius);
-  box-shadow: var(--fitness-shadow);
-  padding: 40px;
-  border: 1px solid #e8eaed;
+.auth-card {
+  background: var(--club-white);
+  border-radius: var(--club-radius-lg);
+  padding: var(--club-spacing-3xl);
+  box-shadow: var(--club-shadow-lg);
+  border: 1px solid var(--club-gray-200);
 }
 
-.club-auth-header {
+.auth-header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: var(--club-spacing-2xl);
 }
 
-.club-auth-logo {
+.auth-logo {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--club-spacing-lg);
+  background: var(--club-primary-light);
+  border-radius: var(--club-radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.logo-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--fitness-gradient);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-.logo-icon svg {
-  width: 24px;
-  height: 24px;
-}
-
-.logo-text {
-  font-size: 1.5rem;
+  color: var(--club-primary);
+  font-size: 36px;
   font-weight: 700;
-  color: var(--fitness-primary);
-  letter-spacing: -0.02em;
 }
 
-.club-auth-header h1 {
-  color: var(--fitness-text-dark);
-  margin-bottom: 8px;
-  font-size: 1.5rem;
+.auth-title {
+  font-size: var(--club-font-size-3xl);
   font-weight: 600;
-  letter-spacing: -0.01em;
+  color: var(--club-black);
+  margin: 0 0 var(--club-spacing-xs) 0;
 }
 
-.club-auth-header p {
-  color: var(--fitness-text-gray);
-  font-size: 0.95rem;
-  line-height: 1.5;
+.auth-subtitle {
+  font-size: var(--club-font-size-md);
+  color: var(--club-gray-500);
+  margin: 0;
 }
 
-.club-auth-form {
-  margin-bottom: 24px;
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--club-spacing-lg);
 }
 
-.form-group {
-  margin-bottom: 20px;
+.auth-form-group {
+  display: flex;
+  flex-direction: column;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: var(--fitness-text-dark);
-  font-size: 0.9rem;
-  letter-spacing: -0.01em;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 14px 16px;
-  border: 2px solid #e8eaed;
-  border-radius: var(--fitness-border-radius);
-  font-size: 1rem;
-  transition: var(--fitness-transition);
-  background: var(--fitness-white);
-  box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
-}
-
-.form-group input:focus {
-  outline: none;
-  border-color: var(--fitness-primary);
-  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-}
-
-.form-group input.error {
-  border-color: var(--fitness-error);
-}
-
-.form-group input::placeholder {
-  color: #999;
-}
-
-.field-error-message {
-  color: var(--fitness-error);
-  font-size: 0.85rem;
-  margin-top: 6px;
-  display: block;
+.auth-label {
+  font-size: var(--club-font-size-base);
   font-weight: 500;
+  color: var(--club-black);
+  margin-bottom: var(--club-spacing-sm);
 }
 
-/* Блок согласия с договором оферты партнеров */
-.partner-agreement {
-  margin: 24px 0;
-  padding: 20px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 12px;
-  border: 1px solid #dee2e6;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  position: relative;
-  transition: var(--fitness-transition);
+.auth-input {
+  padding: 12px 16px;
+  border: 1px solid var(--club-gray-300);
+  border-radius: var(--club-radius-md);
+  font-size: var(--club-font-size-md);
+  color: var(--club-black);
+  transition: var(--club-transition);
 }
 
-.partner-agreement::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--fitness-gradient);
-  border-radius: 12px 12px 0 0;
+.auth-input:focus {
+  outline: none;
+  border-color: var(--club-primary);
+  box-shadow: 0 0 0 3px var(--club-primary-light);
 }
 
-.partner-agreement:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.auth-input.error {
+  border-color: var(--club-error);
+}
+
+.auth-error {
+  font-size: var(--club-font-size-sm);
+  color: var(--club-error);
+  margin-top: var(--club-spacing-xs);
+}
+
+.auth-button {
+  padding: 14px 24px;
+  background: var(--club-primary);
+  color: var(--club-white);
+  border: none;
+  border-radius: var(--club-radius-md);
+  font-size: var(--club-font-size-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--club-transition);
+  box-shadow: var(--club-shadow-primary);
+  margin-top: var(--club-spacing-md);
+}
+
+.auth-button:hover:not(:disabled) {
+  background: var(--club-primary-hover);
+  box-shadow: var(--club-shadow-primary-hover);
   transform: translateY(-1px);
 }
 
-.partner-checkbox {
-  margin-bottom: 0;
-  align-items: flex-start;
-  line-height: 1.4;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.partner-agreement-text {
-  font-size: 14px;
-  color: #495057;
-  margin-left: 12px;
-  line-height: 1.5;
-  font-weight: 500;
-  font-family: 'Inter', sans-serif;
-}
-
-.partner-agreement-link {
-  color: var(--fitness-primary);
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  border-bottom: 1px solid transparent;
-  position: relative;
-}
-
-.partner-agreement-link:hover {
-  color: var(--fitness-secondary);
-  border-bottom-color: var(--fitness-secondary);
-  text-decoration: none;
-}
-
-.partner-agreement-link::after {
-  content: '↗';
-  margin-left: 4px;
-  font-size: 12px;
-  opacity: 0.7;
-  transition: all 0.2s ease;
-}
-
-.partner-agreement-link:hover::after {
-  opacity: 1;
-  transform: translate(1px, -1px);
-}
-
-/* Стили для ошибки чекбокса согласия с офертой */
-.partner-checkbox input.error + .checkmark {
-  border-color: var(--fitness-error);
-  background-color: rgba(244, 67, 54, 0.1);
-  animation: shake 0.3s ease-in-out;
-}
-
-.partner-agreement .field-error-message {
-  margin-top: 12px;
-  display: block;
-  font-size: 12px;
-  color: var(--fitness-error);
-  margin-left: 32px;
-  font-weight: 500;
-  background-color: rgba(244, 67, 54, 0.1);
-  padding: 8px 12px;
-  border-radius: 8px;
-  border-left: 3px solid var(--fitness-error);
-  font-family: 'Inter', sans-serif;
-}
-
-/* Улучшенные стили для чекбокса */
-.checkmark {
-  position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-color: var(--fitness-white);
-  border: 2px solid #dee2e6;
-  border-radius: 6px;
-  margin-right: 12px;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.checkbox-container:hover .checkmark {
-  border-color: var(--fitness-primary);
-  box-shadow: 0 2px 6px rgba(255, 107, 53, 0.2);
-}
-
-.checkbox-container input:checked + .checkmark {
-  background-color: var(--fitness-primary);
-  border-color: var(--fitness-primary);
-  box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
-}
-
-.checkbox-container input:checked + .checkmark:after {
-  content: '✓';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 1;
-}
-
-.checkbox-container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.checkbox-container {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  user-select: none;
-}
-
-.club-auth-btn {
-  width: 100%;
-  background: var(--fitness-gradient);
-  color: var(--fitness-white);
-  border: none;
-  padding: 16px;
-  border-radius: var(--fitness-border-radius);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--fitness-transition);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
-  font-family: 'Inter', sans-serif;
-  letter-spacing: -0.01em;
-}
-
-.club-auth-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
-}
-
-.club-auth-btn:disabled {
-  opacity: 0.7;
+.auth-button:disabled {
+  opacity: 0.6;
   cursor: not-allowed;
   transform: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.error-message {
-  background: #ffebee;
-  color: var(--fitness-error);
-  padding: 12px 16px;
-  border-radius: var(--fitness-border-radius);
-  margin-bottom: 20px;
-  font-size: 0.9rem;
-  border: 1px solid #ffcdd2;
-  font-weight: 500;
+.auth-footer {
+  margin-top: var(--club-spacing-xl);
   text-align: center;
-  border-left: 4px solid var(--fitness-error);
+  font-size: var(--club-font-size-sm);
+  color: var(--club-gray-500);
 }
 
-.club-auth-footer {
-  text-align: center;
-}
-
-.club-auth-footer p {
-  color: var(--fitness-text-gray);
-  margin-bottom: 12px;
-  font-size: 0.9rem;
-}
-
-.club-auth-link {
-  color: var(--fitness-primary);
+.auth-link {
+  color: var(--club-primary);
   text-decoration: none;
-  font-weight: 600;
-  display: inline-block;
-  padding: 8px 16px;
-  border-radius: var(--fitness-border-radius);
-  transition: var(--fitness-transition);
-}
-
-.club-auth-link:hover {
-  background: var(--fitness-accent);
-  color: var(--fitness-secondary);
-}
-
-/* Загрузка */
-.club-auth-loading {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--fitness-white);
-  font-family: 'Inter', sans-serif;
-}
-
-.club-auth-loading p {
-  color: var(--fitness-text-gray);
-  font-size: 1rem;
   font-weight: 500;
+  transition: var(--club-transition);
 }
 
-.loading-spinner {
-  width: 40px;
-  height: 40px;
-  border: 4px solid var(--fitness-accent);
-  border-top: 4px solid var(--fitness-primary);
-  border-radius: 50%;
-  animation: club-spin 1s linear infinite;
-  margin-bottom: 16px;
+.auth-link:hover {
+  color: var(--club-primary-hover);
+  text-decoration: underline;
 }
 
-@keyframes club-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Анимация для ошибки */
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
-}
-
-/* Анимация для появления блока согласия */
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.partner-agreement {
-  animation: slideInUp 0.4s ease-out;
-}
-
-/* Адаптивность */
+/* Адаптив */
 @media (max-width: 768px) {
-  .partner-agreement {
-    margin: 20px 0;
-    padding: 16px;
+  .auth-card {
+    padding: var(--club-spacing-2xl);
   }
   
-  .partner-agreement-text {
-    font-size: 13px;
-    line-height: 1.6;
-    margin-left: 10px;
-  }
-  
-  .partner-agreement .field-error-message {
-    margin-left: 30px;
-    font-size: 11px;
-    padding: 6px 10px;
-  }
-  
-  .checkmark {
-    width: 18px;
-    height: 18px;
-    margin-right: 10px;
-  }
-  
-  .checkbox-container input:checked + .checkmark:after {
-    font-size: 11px;
-  }
-}
-
-@media (max-width: 480px) {
-  .club-auth-card {
-    padding: 24px 20px;
-  }
-  
-  .club-auth-header h1 {
-    font-size: 1.3rem;
-  }
-  
-  .logo-text {
-    font-size: 1.3rem;
-  }
-  
-  .logo-icon {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .logo-icon svg {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .form-group input {
-    padding: 12px 14px;
-    font-size: 0.95rem;
-  }
-  
-  .club-auth-btn {
-    padding: 14px;
-    font-size: 0.95rem;
-  }
-  
-  .form-group label {
-    font-size: 0.85rem;
-  }
-  
-  .partner-agreement {
-    padding: 14px;
-    margin: 18px 0;
-  }
-  
-  .partner-agreement-text {
-    font-size: 12px;
-    margin-left: 8px;
-  }
-  
-  .checkmark {
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-  }
-  
-  .checkbox-container input:checked + .checkmark:after {
-    font-size: 10px;
-  }
-  
-  .partner-agreement .field-error-message {
-    margin-left: 24px;
-    font-size: 10px;
-    padding: 5px 8px;
-  }
-}
-
-@media (max-width: 320px) {
-  .club-auth-page {
-    padding: 16px;
-  }
-  
-  .club-auth-card {
-    padding: 20px 16px;
-  }
-  
-  .partner-agreement {
-    padding: 12px;
-    margin: 16px 0;
-  }
-  
-  .partner-agreement-text {
-    font-size: 11px;
-  }
-}
-
-/* Улучшения для высоких экранов */
-@media (min-height: 900px) {
-  .club-auth-page {
-    padding: 40px 20px;
-  }
-}
-
-/* Дополнительные улучшения для темной темы */
-@media (prefers-color-scheme: dark) {
-  .partner-agreement {
-    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
-    border-color: #4a5568;
-  }
-  
-  .partner-agreement-text {
-    color: #e2e8f0;
-  }
-  
-  .partner-agreement .field-error-message {
-    background-color: rgba(244, 67, 54, 0.2);
-    color: #feb2b2;
-  }
-  
-  .checkmark {
-    background-color: #2d3748;
-    border-color: #4a5568;
-  }
-  
-  .checkbox-container:hover .checkmark {
-    border-color: var(--fitness-primary);
-  }
-}
-
-/* Фокус для доступности */
-.checkbox-container input:focus + .checkmark {
-  outline: 2px solid var(--fitness-primary);
-  outline-offset: 2px;
-}
-
-.partner-agreement-link:focus {
-  outline: 2px solid var(--fitness-primary);
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-/* Улучшения для печати */
-@media print {
-  .partner-agreement {
-    border: 1px solid #000;
-    background: #fff;
-  }
-  
-  .partner-agreement-link {
-    color: #000;
-    text-decoration: underline;
+  .auth-title {
+    font-size: var(--club-font-size-2xl);
   }
 }

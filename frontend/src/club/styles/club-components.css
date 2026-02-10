@@ -1,796 +1,218 @@
-/* Стили для страницы поддержки и отчетности */
-.club-settings-page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-  
-  /* Навигационные вкладки */
-  .tabs-navigation {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid #e9ecef;
-  }
-  
-  .tab-button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 1.5rem;
-    background: none;
-    border: none;
-    border-bottom: 3px solid transparent;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #6c757d;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-  }
-  
-  .tab-button:hover {
-    color: #F8A284;
-    background: rgba(248, 162, 132, 0.1);
-  }
-  
-  .tab-button.active {
-    color: #F8A284;
-    border-bottom-color: #F8A284;
-    background: rgba(248, 162, 132, 0.1);
-  }
-  
-  .tab-icon {
-    font-size: 1.2rem;
-  }
-  
-  /* Статистика поддержки */
-  .support-stats {
-    margin-bottom: 2rem;
-  }
-  
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-  
-  .stat-card {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    transition: transform 0.2s ease;
-  }
-  
-  .stat-card:hover {
-    transform: translateY(-2px);
-  }
-  
-  .stat-card.highlight {
-    background: linear-gradient(135deg, #F8A284, #E68A73);
-    color: white;
-  }
-  
-  .stat-icon {
-    font-size: 2rem;
-    opacity: 0.8;
-  }
-  
-  .stat-info {
-    flex: 1;
-  }
-  
-  .stat-value {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 0.25rem;
-  }
-  
-  .stat-card.highlight .stat-value {
-    color: white;
-  }
-  
-  .stat-label {
-    font-size: 0.9rem;
-    color: #6c757d;
-  }
-  
-  .stat-card.highlight .stat-label {
-    color: rgba(255, 255, 255, 0.9);
-  }
-  
-  /* Форма создания тикета */
-  .ticket-form {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  }
-  
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #2c3e50;
-  }
-  
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    transition: border-color 0.2s ease;
-  }
-  
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    outline: none;
-    border-color: #F8A284;
-    box-shadow: 0 0 0 3px rgba(248, 162, 132, 0.1);
-  }
-  
-  .form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-  
-  /* Список тикетов */
-  .tickets-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .ticket-item {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    border-left: 4px solid #F8A284;
-  }
-  
-  .ticket-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-  }
-  
-  .ticket-info {
-    flex: 1;
-  }
-  
-  .ticket-subject {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin: 0 0 0.5rem 0;
-  }
-  
-  .ticket-meta {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  
-  .ticket-id {
-    font-family: monospace;
-    font-weight: 600;
-    color: #6c757d;
-  }
-  
-  .ticket-date {
-    color: #6c757d;
-    font-size: 0.9rem;
-  }
-  
-  .ticket-category {
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: white;
-  }
-  
-  .ticket-status {
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center;
-    min-width: 80px;
-  }
-  
-  .ticket-description {
-    color: #495057;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-  
-  .ticket-response {
-    background: #f8f9fa;
-    border-radius: 8px;
-    padding: 1rem;
-    margin-top: 1rem;
-    border-left: 3px solid #28a745;
-  }
-  
-  .response-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-  }
-  
-  .response-header strong {
-    color: #28a745;
-  }
-  
-  .response-date {
-    color: #6c757d;
-    font-size: 0.8rem;
-  }
-  
-  .response-text {
-    color: #495057;
-    line-height: 1.6;
-  }
-  
-  /* Фильтры отчетов */
-  .reports-filters {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  }
-  
-  .filter-group {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .filter-group label {
-    font-weight: 600;
-    color: #2c3e50;
-    white-space: nowrap;
-  }
-  
-  .filter-select {
-    padding: 0.5rem 1rem;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    background: white;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: border-color 0.2s ease;
-  }
-  
-  .filter-select:focus {
-    outline: none;
-    border-color: #F8A284;
-  }
-  
-  /* Отчеты */
-  .report-stats {
-    margin-bottom: 2rem;
-  }
-  
-  /* Аналитика */
-  .analytics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .analytics-card {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease;
-  }
-  
-  .analytics-card:hover {
-    transform: translateY(-2px);
-  }
-  
-  .analytics-card h4 {
-    margin: 0 0 1rem 0;
-    color: #2c3e50;
-    font-size: 1rem;
-  }
-  
-  .analytics-value {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #F8A284;
-    margin-bottom: 0.5rem;
-  }
-  
-  .analytics-card p {
-    margin: 0;
-    color: #6c757d;
-    font-size: 0.9rem;
-  }
-  
-  .traffic-sources,
-  .retention-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .traffic-item,
-  .retention-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #f0f0f0;
-  }
-  
-  .traffic-item:last-child,
-  .retention-item:last-child {
-    border-bottom: none;
-  }
-  
-  .traffic-item span:first-child,
-  .retention-item span:first-child {
-    color: #495057;
-    font-size: 0.9rem;
-  }
-  
-  .traffic-item span:last-child,
-  .retention-item span:last-child {
-    font-weight: 600;
-    color: #F8A284;
-  }
-  
-  /* Рекомендации */
-  .recommendations {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    border-left: 4px solid #28a745;
-  }
-  
-  .recommendations h4 {
-    margin: 0 0 1rem 0;
-    color: #2c3e50;
-  }
-  
-  .recommendations-list {
-    margin: 0;
-    padding-left: 1.5rem;
-  }
-  
-  .recommendations-list li {
-    color: #495057;
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
-  }
-  
-  .recommendations-list li:last-child {
-    margin-bottom: 0;
-  }
-  
-  /* Пустое состояние */
-  .empty-state {
-    text-align: center;
-    padding: 3rem 2rem;
-    color: #6c757d;
-  }
-  
-  .empty-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    opacity: 0.5;
-  }
-  
-  .empty-state h4 {
-    margin: 0 0 0.5rem 0;
-    color: #2c3e50;
-  }
-  
-  .empty-state p {
-    margin: 0;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* Состояние загрузки */
-  .loading-state {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem;
-    text-align: center;
-  }
-  
-  .loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid #f0f0f0;
-    border-top: 4px solid #F8A284;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 1rem;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  /* Кнопки */
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    font-size: 0.95rem;
-    line-height: 1;
-  }
-  
-  .btn-primary {
-    background: linear-gradient(135deg, #F8A284, #E68A73);
-    color: white;
-  }
-  
-  .btn-primary:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(248, 162, 132, 0.3);
-  }
-  
-  .btn-primary:disabled,
-  .btn-primary.loading {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
-  }
-  
-  .btn.loading::before {
-    content: '';
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-top: 2px solid white;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    margin-right: 0.5rem;
-  }
-  
-  /* Секции настроек */
-  .settings-section {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+/* Club Components - Clean Orange & White Design */
+@import './club-design-system.css';
+
+/* Stats Panel */
+.stats-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--club-spacing-lg);
+  margin-bottom: var(--club-spacing-xl);
+}
+
+.stat-card {
+  background: var(--club-white);
+  border: 1px solid var(--club-gray-200);
+  border-radius: var(--club-radius-lg);
+  padding: var(--club-spacing-xl);
+  text-align: center;
+  transition: var(--club-transition);
+}
+
+.stat-card:hover {
+  box-shadow: var(--club-shadow-md);
+  transform: translateY(-2px);
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--club-primary);
+  margin: 0 0 var(--club-spacing-xs) 0;
+}
+
+.stat-label {
+  font-size: var(--club-font-size-sm);
+  color: var(--club-gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.stat-change {
+  font-size: var(--club-font-size-xs);
+  margin-top: var(--club-spacing-xs);
+}
+
+.stat-change.positive {
+  color: var(--club-success);
+}
+
+.stat-change.negative {
+  color: var(--club-error);
+}
+
+/* Section */
+.section {
+  background: var(--club-white);
+  border-radius: var(--club-radius-lg);
+  padding: var(--club-spacing-xl);
+  margin-bottom: var(--club-spacing-xl);
+  border: 1px solid var(--club-gray-200);
+  box-shadow: var(--club-shadow-sm);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--club-spacing-lg);
+  padding-bottom: var(--club-spacing-md);
+  border-bottom: 1px solid var(--club-gray-200);
+}
+
+.section-title {
+  font-size: var(--club-font-size-xl);
+  font-weight: 600;
+  color: var(--club-black);
+  margin: 0;
+}
+
+.section-body {
+  color: var(--club-gray-700);
+}
+
+/* List Item */
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: var(--club-spacing-md);
+  border-radius: var(--club-radius-md);
+  border: 1px solid var(--club-gray-200);
+  background: var(--club-gray-50);
+  margin-bottom: var(--club-spacing-sm);
+  transition: var(--club-transition);
+}
+
+.list-item:hover {
+  background: var(--club-white);
+  box-shadow: var(--club-shadow-sm);
+}
+
+.list-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--club-primary-light);
+  color: var(--club-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-right: var(--club-spacing-md);
+  flex-shrink: 0;
+}
+
+.list-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.list-item-title {
+  font-size: var(--club-font-size-md);
+  font-weight: 600;
+  color: var(--club-black);
+  margin: 0 0 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-item-subtitle {
+  font-size: var(--club-font-size-sm);
+  color: var(--club-gray-500);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-item-meta {
+  font-size: var(--club-font-size-xs);
+  color: var(--club-gray-400);
+  white-space: nowrap;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: var(--club-spacing-lg);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--club-font-size-base);
+  font-weight: 500;
+  color: var(--club-black);
+  margin-bottom: var(--club-spacing-sm);
+}
+
+.form-help {
+  font-size: var(--club-font-size-sm);
+  color: var(--club-gray-500);
+  margin-top: var(--club-spacing-xs);
+}
+
+.form-error {
+  font-size: var(--club-font-size-sm);
+  color: var(--club-error);
+  margin-top: var(--club-spacing-xs);
+}
+
+/* Info Box */
+.info-box {
+  background: var(--club-gray-50);
+  border: 1px solid var(--club-gray-200);
+  border-radius: var(--club-radius-md);
+  padding: var(--club-spacing-lg);
+  margin-bottom: var(--club-spacing-lg);
+}
+
+.info-box.success {
+  background: var(--club-success-light);
+  border-color: var(--club-success);
+}
+
+.info-box.error {
+  background: var(--club-error-light);
+  border-color: var(--club-error);
+}
+
+.info-box.warning {
+  background: var(--club-warning-light);
+  border-color: var(--club-warning);
+}
+
+.info-box-title {
+  font-size: var(--club-font-size-md);
+  font-weight: 600;
+  margin: 0 0 var(--club-spacing-xs) 0;
+}
+
+.info-box-text {
+  font-size: var(--club-font-size-sm);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .stats-panel {
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .section-header {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid #f0f0f0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--club-spacing-md);
   }
-  
-  .section-header h3 {
-    margin: 0 0 0.5rem 0;
-    color: #2c3e50;
-    font-size: 1.3rem;
-  }
-  
-  .section-header p {
-    margin: 0;
-    color: #6c757d;
-    font-size: 0.95rem;
-  }
-  
-  /* Responsive дизайн */
-  @media (max-width: 768px) {
-    .club-settings-page {
-      padding: 1rem;
-    }
-  
-    .tabs-navigation {
-      flex-wrap: wrap;
-      gap: 0.25rem;
-    }
-  
-    .tab-button {
-      padding: 0.75rem 1rem;
-      font-size: 0.9rem;
-    }
-  
-    .stats-grid {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-  
-    .stat-card {
-      padding: 1rem;
-    }
-  
-    .stat-value {
-      font-size: 1.5rem;
-    }
-  
-    .form-row {
-      grid-template-columns: 1fr;
-    }
-  
-    .ticket-header {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 1rem;
-    }
-  
-    .ticket-meta {
-      gap: 0.5rem;
-    }
-  
-    .reports-filters {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 1rem;
-    }
-  
-    .filter-group {
-      justify-content: space-between;
-    }
-  
-    .analytics-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .settings-section {
-      padding: 1.5rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .club-settings-page {
-      padding: 0.5rem;
-    }
-  
-    .tab-button {
-      padding: 0.5rem 0.75rem;
-      font-size: 0.8rem;
-    }
-  
-    .tab-icon {
-      font-size: 1rem;
-    }
-  
-    .stats-grid {
-      grid-template-columns: 1fr;
-    }
-  
-    .stat-card {
-      flex-direction: column;
-      text-align: center;
-      gap: 0.5rem;
-    }
-  
-    .stat-icon {
-      font-size: 1.5rem;
-    }
-  
-    .stat-value {
-      font-size: 1.3rem;
-    }
-  
-    .ticket-form {
-      padding: 1rem;
-    }
-  
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      padding: 0.5rem;
-      font-size: 0.9rem;
-    }
-  
-    .ticket-item {
-      padding: 1rem;
-    }
-  
-    .ticket-subject {
-      font-size: 1rem;
-    }
-  
-    .ticket-meta {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.25rem;
-    }
-  
-    .analytics-card {
-      padding: 1rem;
-    }
-  
-    .analytics-value {
-      font-size: 1.5rem;
-    }
-  
-    .recommendations {
-      padding: 1rem;
-    }
-  
-    .recommendations-list {
-      padding-left: 1rem;
-    }
-  
-    .section-header {
-      padding-bottom: 0.75rem;
-    }
-  
-    .section-header h3 {
-      font-size: 1.1rem;
-    }
-  
-    .section-header p {
-      font-size: 0.85rem;
-    }
-  }
-  
-  /* Темная тема */
-  @media (prefers-color-scheme: dark) {
-    .club-settings-page {
-      background: #1a1a1a;
-      color: #ffffff;
-    }
-  
-    .settings-section,
-    .stat-card,
-    .ticket-item,
-    .analytics-card,
-    .recommendations,
-    .reports-filters,
-    .ticket-form {
-      background: #2d2d2d;
-      color: #ffffff;
-    }
-  
-    .stat-value,
-    .ticket-subject,
-    .section-header h3 {
-      color: #ffffff;
-    }
-  
-    .stat-label,
-    .ticket-date,
-    .section-header p,
-    .empty-state p,
-    .analytics-card p {
-      color: #adb5bd;
-    }
-  
-    .ticket-response {
-      background: #3a3a3a;
-    }
-  
-    .form-group input,
-    .form-group select,
-    .form-group textarea,
-    .filter-select {
-      background: #3a3a3a;
-      border-color: #495057;
-      color: #ffffff;
-    }
-  
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus,
-    .filter-select:focus {
-      border-color: #F8A284;
-    }
-  
-    .tab-button {
-      color: #adb5bd;
-    }
-  
-    .tab-button:hover,
-    .tab-button.active {
-      color: #F8A284;
-      background: rgba(248, 162, 132, 0.1);
-    }
-  
-    .section-header {
-      border-bottom-color: #495057;
-    }
-  
-    .traffic-item,
-    .retention-item {
-      border-bottom-color: #495057;
-    }
-  
-    .empty-state h4 {
-      color: #ffffff;
-    }
-  }
-  
-  /* Accessibility улучшения */
-  .btn:focus,
-  .tab-button:focus,
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    outline: 3px solid rgba(248, 162, 132, 0.5);
-    outline-offset: 2px;
-  }
-  
-  /* Уменьшенная анимация */
-  @media (prefers-reduced-motion: reduce) {
-    .stat-card,
-    .analytics-card,
-    .btn,
-    .tab-button,
-    .loading-spinner {
-      transition: none;
-      animation: none;
-    }
-  
-    .btn-primary:hover:not(:disabled) {
-      transform: none;
-    }
-  }
-  
-  /* Высокая контрастность */
-  @media (prefers-contrast: high) {
-    .settings-section,
-    .stat-card,
-    .ticket-item,
-    .analytics-card {
-      border: 2px solid #000000;
-    }
-  
-    .btn {
-      border: 2px solid #000000;
-    }
-  
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      border: 2px solid #000000;
-    }
-  }
+}
