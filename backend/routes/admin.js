@@ -107,6 +107,38 @@ router.get('/clubs', async (req, res) => {
   }
 });
 
+// Получение детальной информации о клубе для редактирования
+router.get('/clubs/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    // Получаем полную информацию о клубе из модели
+    const club = await getClubById(id);
+    
+    if (!club) {
+      return res.status(404).json({ error: 'Клуб не найден' });
+    }
+    
+    // Получаем информацию о владельце
+    const ownerResult = await pool.query(
+      'SELECT id, first_name, last_name, email, phone FROM users WHERE id = $1',
+      [club.owner_id]
+    );
+    
+    const owner = ownerResult.rows[0];
+    
+    res.json({
+      ...club,
+      owner_name: owner ? `${owner.first_name} ${owner.last_name || ''}`.trim() : 'Неизвестно',
+      owner_email: owner?.email,
+      owner_phone: owner?.phone
+    });
+  } catch (error) {
+    console.error('Ошибка получения клуба:', error);
+    res.status(500).json({ error: 'Ошибка сервера' });
+  }
+});
+
 // Получение всех заявок на создание клубов
 router.get('/applications', async (req, res) => {
   try {
@@ -588,6 +620,130 @@ router.get('/owners', async (req, res) => {
   } catch (error) {
     console.error('Ошибка получения владельцев:', error);
     res.status(500).json({ error: 'Ошибка сервера' });
+  }
+});
+
+// Получение информации о конкретном пользователе
+router.get('/users/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    const result = await pool.query(`
+      SELECT 
+        u.id, u.first_name, u.last_name, u.email, u.phone, 
+        u.balance, u.created_at, u.profile_image,
+        u.is_club_owner, u.is_admin
+      FROM users u
+      WHERE u.id = $1
+    `, [id]);
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Пользователь не найден' });
+    }
+    
+    const user = result.rows[0];
+    res.json({
+      ...user,
+      full_name: `${user.first_name} ${user.last_name || ''}`.trim()
+    });
+  } catch (error) {
+    console.error('Ошибка получения пользователя:', error);
+    res.status(500).json({ error: 'Ошибка сервера' });
+  }
+});
+
+// Обновление данных пользователя
+router.put('/users/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { first_name, last_name, email, phone, balance, is_club_owner, is_admin } = req.body;
+    
+    console.log('📝 Обновление пользователя:', { id, data: req.body });
+    
+    // Проверяем существование пользователя
+    const checkUser = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
+    if (checkUser.rows.length === 0) {
+      return res.status(404).json({ error: 'Пользователь не найден' });
+    }
+    
+    // Проверяем уникальность email (если изменился)
+    if (email && email !== checkUser.rows[0].email) {
+      const emailCheck = await pool.query('SELECT id FROM users WHERE email = $1 AND id != $2', [email, id]);
+      if (emailCheck.rows.length > 0) {
+        return res.status(400).json({ error: 'Пользователь с таким email уже существует' });
+      }
+    }
+    
+    // Обновляем данные
+    const result = await pool.query(`
+      UPDATE users 
+      SET 
+        first_name = COALESCE($1, first_name),
+        last_name = COALESCE($2, last_name),
+        email = COALESCE($3, email),
+        phone = COALESCE($4, phone),
+        balance = COALESCE($5, balance),
+        is_club_owner = COALESCE($6, is_club_owner),
+        is_admin = COALESCE($7, is_admin)
+      WHERE id = $8
+      RETURNING *
+    `, [first_name, last_name, email, phone, balance, is_club_owner, is_admin, id]);
+    
+    const updatedUser = result.rows[0];
+    
+    res.json({
+      success: true,
+      message: 'Данные пользователя успешно обновлены',
+      user: {
+        ...updatedUser,
+        full_name: `${updatedUser.first_name} ${updatedUser.last_name || ''}`.trim()
+      }
+    });
+  } catch (error) {
+    console.error('❌ Ошибка обновления пользователя:', error);
+    res.status(500).json({ 
+      error: 'Ошибка сервера при обновлении пользователя',
+      details: error.message 
+    });
+  }
+});
+
+// Смена пароля пользователя администратором
+router.put('/users/:id/password', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { password } = req.body;
+    
+    console.log('🔐 Смена пароля для пользователя:', id);
+    
+    if (!password || password.length < 6) {
+      return res.status(400).json({ error: 'Пароль должен содержать минимум 6 символов' });
+    }
+    
+    // Проверяем существование пользователя
+    const checkUser = await pool.query('SELECT id, first_name, last_name FROM users WHERE id = $1', [id]);
+    if (checkUser.rows.length === 0) {
+      return res.status(404).json({ error: 'Пользователь не найден' });
+    }
+    
+    // Хешируем новый пароль
+    const hashedPassword = await bcrypt.hash(password, 10);
+    
+    // Обновляем пароль
+    await pool.query('UPDATE users SET password = $1 WHERE id = $2', [hashedPassword, id]);
+    
+    const user = checkUser.rows[0];
+    
+    res.json({
+      success: true,
+      message: `Пароль для пользователя ${user.first_name} ${user.last_name} успешно изменен`
+    });
+  } catch (error) {
+    console.error('❌ Ошибка смены пароля:', error);
+    res.status(500).json({ 
+      error: 'Ошибка сервера при смене пароля',
+      details: error.message 
+    });
   }
 });
 

@@ -1247,6 +1247,52 @@ const api = {
         }
       });
       return handleResponse(response);
+    },
+
+    // Получение информации о конкретном пользователе
+    getUser: async (userId) => {
+      const response = await fetchWithTimeout(`${API_BASE_URL}/admin/users/${userId}`, {
+        headers: {
+          ...getAdminAuthHeader()
+        }
+      });
+      return handleResponse(response);
+    },
+
+    // Обновление данных пользователя
+    updateUser: async (userId, userData) => {
+      const response = await fetchWithTimeout(`${API_BASE_URL}/admin/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          ...getAdminAuthHeader()
+        },
+        body: JSON.stringify(userData)
+      });
+      return handleResponse(response);
+    },
+
+    // Смена пароля пользователя
+    changeUserPassword: async (userId, password) => {
+      const response = await fetchWithTimeout(`${API_BASE_URL}/admin/users/${userId}/password`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          ...getAdminAuthHeader()
+        },
+        body: JSON.stringify({ password })
+      });
+      return handleResponse(response);
+    },
+
+    // Получение детальной информации о клубе
+    getClub: async (clubId) => {
+      const response = await fetchWithTimeout(`${API_BASE_URL}/admin/clubs/${clubId}`, {
+        headers: {
+          ...getAdminAuthHeader()
+        }
+      });
+      return handleResponse(response);
     }
   }
 };

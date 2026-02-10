@@ -12,6 +12,15 @@ const AdminDashboardPage = () => {
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [deleteConfirm, setDeleteConfirm] = useState({ show: false, clubId: null, clubName: '' });
+  const [editUserModal, setEditUserModal] = useState({ show: false, user: null });
+  const [userForm, setUserForm] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone: '',
+    balance: '',
+    new_password: ''
+  });
   
   const navigate = useNavigate();
   
@@ -155,6 +164,81 @@ const AdminDashboardPage = () => {
       setError(`Ошибка при удалении клуба: ${err.message}`);
       console.error('Ошибка при удалении клуба:', err);
       hideDeleteConfirm();
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  // Функция для открытия модального окна редактирования пользователя
+  const handleEditUser = async (userId) => {
+    try {
+      setLoading(true);
+      const userData = await api.admin.getUser(userId);
+      
+      setEditUserModal({ show: true, user: userData });
+      setUserForm({
+        first_name: userData.first_name || '',
+        last_name: userData.last_name || '',
+        email: userData.email || '',
+        phone: userData.phone || '',
+        balance: userData.balance || '0',
+        new_password: ''
+      });
+    } catch (err) {
+      setError(`Ошибка при загрузке данных пользователя: ${err.message}`);
+      console.error('Ошибка загрузки пользователя:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  // Функция для закрытия модального окна
+  const closeEditUserModal = () => {
+    setEditUserModal({ show: false, user: null });
+    setUserForm({
+      first_name: '',
+      last_name: '',
+      email: '',
+      phone: '',
+      balance: '',
+      new_password: ''
+    });
+  };
+  
+  // Функция для сохранения изменений пользователя
+  const handleSaveUser = async (e) => {
+    e.preventDefault();
+    
+    try {
+      setLoading(true);
+      setError('');
+      
+      // Обновляем основные данные
+      const updateData = {
+        first_name: userForm.first_name,
+        last_name: userForm.last_name,
+        email: userForm.email,
+        phone: userForm.phone,
+        balance: parseFloat(userForm.balance) || 0
+      };
+      
+      await api.admin.updateUser(editUserModal.user.id, updateData);
+      
+      // Если указан новый пароль - меняем его
+      if (userForm.new_password && userForm.new_password.length >= 6) {
+        await api.admin.changeUserPassword(editUserModal.user.id, userForm.new_password);
+      }
+      
+      // Обновляем список пользователей
+      const updatedUsers = await api.admin.getAllUsers();
+      setUsers(updatedUsers);
+      
+      closeEditUserModal();
+      showSuccessMessage('Данные пользователя успешно обновлены');
+      
+    } catch (err) {
+      setError(`Ошибка при обновлении данных: ${err.message}`);
+      console.error('Ошибка обновления пользователя:', err);
     } finally {
       setLoading(false);
     }
@@ -307,7 +391,12 @@ const AdminDashboardPage = () => {
                           <td>{user.balance} ₽</td>
                           <td>
                             <div className="table-actions">
-                              <button className="action-edit">Изменить</button>
+                              <button 
+                                className="action-edit"
+                                onClick={() => handleEditUser(user.id)}
+                              >
+                                Изменить
+                              </button>
                               <button className="action-view">Просмотр</button>
                             </div>
                           </td>
@@ -444,6 +533,116 @@ const AdminDashboardPage = () => {
                 {loading ? 'Удаление...' : 'Удалить клуб'}
               </button>
             </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Модальное окно редактирования пользователя */}
+      {editUserModal.show && editUserModal.user && (
+        <div className="admin-modal-overlay" onClick={closeEditUserModal}>
+          <div className="admin-modal admin-modal-large" onClick={(e) => e.stopPropagation()}>
+            <div className="admin-modal-header">
+              <h3>Редактирование пользователя</h3>
+              <button className="admin-modal-close" onClick={closeEditUserModal}>×</button>
+            </div>
+            
+            <form onSubmit={handleSaveUser}>
+              <div className="admin-modal-body">
+                <div className="admin-form-row">
+                  <div className="admin-form-group">
+                    <label>Имя *</label>
+                    <input
+                      type="text"
+                      value={userForm.first_name}
+                      onChange={(e) => setUserForm({...userForm, first_name: e.target.value})}
+                      required
+                    />
+                  </div>
+                  
+                  <div className="admin-form-group">
+                    <label>Фамилия</label>
+                    <input
+                      type="text"
+                      value={userForm.last_name}
+                      onChange={(e) => setUserForm({...userForm, last_name: e.target.value})}
+                    />
+                  </div>
+                </div>
+                
+                <div className="admin-form-row">
+                  <div className="admin-form-group">
+                    <label>Email *</label>
+                    <input
+                      type="email"
+                      value={userForm.email}
+                      onChange={(e) => setUserForm({...userForm, email: e.target.value})}
+                      required
+                    />
+                  </div>
+                  
+                  <div className="admin-form-group">
+                    <label>Телефон</label>
+                    <input
+                      type="tel"
+                      value={userForm.phone}
+                      onChange={(e) => setUserForm({...userForm, phone: e.target.value})}
+                    />
+                  </div>
+                </div>
+                
+                <div className="admin-form-row">
+                  <div className="admin-form-group">
+                    <label>Баланс (₽) *</label>
+                    <input
+                      type="number"
+                      step="0.01"
+                      value={userForm.balance}
+                      onChange={(e) => setUserForm({...userForm, balance: e.target.value})}
+                      required
+                    />
+                  </div>
+                  
+                  <div className="admin-form-group">
+                    <label>Новый пароль (минимум 6 символов)</label>
+                    <input
+                      type="password"
+                      value={userForm.new_password}
+                      onChange={(e) => setUserForm({...userForm, new_password: e.target.value})}
+                      placeholder="Оставьте пустым, чтобы не менять"
+                      minLength="6"
+                    />
+                  </div>
+                </div>
+                
+                <div className="admin-user-info">
+                  <p><strong>ID:</strong> {editUserModal.user.id}</p>
+                  <p><strong>Дата регистрации:</strong> {new Date(editUserModal.user.created_at).toLocaleString('ru-RU')}</p>
+                  <p><strong>Роль:</strong> {
+                    editUserModal.user.is_admin ? 'Администратор' :
+                    editUserModal.user.is_club_owner ? 'Владелец клуба' :
+                    'Клиент'
+                  }</p>
+                </div>
+              </div>
+              
+              <div className="admin-modal-actions">
+                <button 
+                  type="button"
+                  className="admin-btn-cancel"
+                  onClick={closeEditUserModal}
+                  disabled={loading}
+                >
+                  Отмена
+                </button>
+                <button 
+                  type="submit"
+                  className="admin-btn-primary"
+                  disabled={loading}
+                >
+                  {loading ? 'Сохранение...' : 'Сохранить изменения'}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

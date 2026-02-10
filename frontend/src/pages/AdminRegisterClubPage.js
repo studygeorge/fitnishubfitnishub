@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useNavigate, useLocation, useParams, Link } from 'react-router-dom';
 import api from '../services/api';
 import './AdminRegisterClubPage.css';
 
-const AdminRegisterClubPage = () => {
+const AdminRegisterClubPage = ({ isEdit = false }) => {
   const [clubData, setClubData] = useState({
     name: '',
     address: '',
@@ -25,6 +25,7 @@ const AdminRegisterClubPage = () => {
   
   const navigate = useNavigate();
   const location = useLocation();
+  const { id: clubId } = useParams();
   
   // Получаем данные из state (если переходим с создания владельца)
   const preselectedOwner = location.state;
@@ -79,6 +80,35 @@ const AdminRegisterClubPage = () => {
             }));
           }
         }
+        
+        // Если режим редактирования - загружаем данные клуба
+        if (isEdit && clubId) {
+          const clubDetails = await api.admin.getClub(clubId);
+          
+          setClubData({
+            name: clubDetails.name || '',
+            address: clubDetails.address || '',
+            category: clubDetails.category || '',
+            description: clubDetails.description || '',
+            contact_phone: clubDetails.contact_phone || '',
+            contact_email: clubDetails.contact_email || '',
+            website: clubDetails.website || '',
+            owner_id: clubDetails.owner_id?.toString() || '',
+            amenities: clubDetails.amenities || []
+          });
+          
+          if (clubDetails.amenities && Array.isArray(clubDetails.amenities)) {
+            // Если amenities пришли как строка, парсим их
+            if (typeof clubDetails.amenities === 'string') {
+              try {
+                const parsed = JSON.parse(clubDetails.amenities);
+                setClubData(prev => ({ ...prev, amenities: Array.isArray(parsed) ? parsed : [] }));
+              } catch (e) {
+                console.error('Ошибка парсинга amenities:', e);
+              }
+            }
+          }
+        }
       } catch (err) {
         setError('Ошибка при загрузке данных. Пожалуйста, попробуйте позже.');
         console.error('Ошибка загрузки данных:', err);
@@ -88,7 +118,7 @@ const AdminRegisterClubPage = () => {
     };
     
     loadData();
-  }, [requestId, preselectedOwner]);
+  }, [requestId, preselectedOwner, isEdit, clubId]);
   
   const handleInputChange = (e) => {
     const { name, value } = e.target;
