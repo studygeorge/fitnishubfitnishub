@@ -260,6 +260,35 @@ const AdminDashboardPage = () => {
   
   // ===== HANDLERS FOR CLUB EDITING =====
   
+  const handleAddClub = async () => {
+    try {
+      // Загружаем список владельцев, если еще не загружен
+      if (owners.length === 0) {
+        setLoading(true);
+        const ownersData = await api.admin.getOwners();
+        setOwners(ownersData);
+        setLoading(false);
+      }
+      
+      // Открываем модалку в режиме добавления (club = null, isAddMode = true)
+      setEditClubModal({ show: true, club: null });
+      setClubForm({
+        name: '',
+        address: '',
+        category: '',
+        description: '',
+        contact_phone: '',
+        contact_email: '',
+        website: '',
+        owner_id: ''
+      });
+    } catch (err) {
+      setError(`Ошибка при загрузке данных: ${err.message}`);
+      console.error('Ошибка загрузки владельцев:', err);
+      setLoading(false);
+    }
+  };
+  
   const handleEditClub = async (clubId) => {
     try {
       setLoading(true);
@@ -313,7 +342,7 @@ const AdminDashboardPage = () => {
       setLoading(true);
       setError('');
       
-      const updateData = {
+      const clubData = {
         name: clubForm.name,
         address: clubForm.address,
         category: clubForm.category,
@@ -324,18 +353,26 @@ const AdminDashboardPage = () => {
         owner_id: clubForm.owner_id
       };
       
-      await api.admin.updateClub(editClubModal.club.id, updateData);
+      // Если есть club - редактирование, если нет - создание
+      if (editClubModal.club) {
+        // Режим редактирования
+        await api.admin.updateClub(editClubModal.club.id, clubData);
+        showSuccessMessage('Данные клуба успешно обновлены');
+      } else {
+        // Режим добавления
+        await api.admin.registerClub(clubData);
+        showSuccessMessage('Клуб успешно создан');
+      }
       
       // Обновляем список клубов
       const updatedClubs = await api.admin.getAllClubs();
       setClubs(updatedClubs);
       
       closeEditClubModal();
-      showSuccessMessage('Данные клуба успешно обновлены');
       
     } catch (err) {
-      setError(`Ошибка при обновлении данных клуба: ${err.message}`);
-      console.error('Ошибка обновления клуба:', err);
+      setError(`Ошибка при сохранении данных клуба: ${err.message}`);
+      console.error('Ошибка сохранения клуба:', err);
     } finally {
       setLoading(false);
     }
@@ -380,9 +417,13 @@ const AdminDashboardPage = () => {
           
           <div className="admin-header-actions">
             {activeTab === 'clubs' && (
-              <Link to="/admin/clubs/register" className="action-button">
+              <button 
+                onClick={handleAddClub} 
+                className="action-button"
+                disabled={loading}
+              >
                 + Добавить новый клуб
-              </Link>
+              </button>
             )}
           </div>
         </div>
@@ -649,7 +690,7 @@ const AdminDashboardPage = () => {
         />
       )}
       
-      {/* Модальное окно редактирования клуба */}
+      {/* Модальное окно редактирования/добавления клуба */}
       {editClubModal.show && (
         <EditClubModal
           club={editClubModal.club}
@@ -659,6 +700,7 @@ const AdminDashboardPage = () => {
           onClose={closeEditClubModal}
           loading={loading}
           owners={owners}
+          isAddMode={!editClubModal.club}
         />
       )}
     </div>

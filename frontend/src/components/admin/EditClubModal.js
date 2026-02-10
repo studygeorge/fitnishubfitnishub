@@ -8,9 +8,11 @@ const EditClubModal = ({
   onSave, 
   onClose, 
   loading,
-  owners 
+  owners,
+  isAddMode = false  // Новый проп для режима добавления
 }) => {
-  if (!club) return null;
+  // В режиме добавления club может быть null
+  if (!isAddMode && !club) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +23,7 @@ const EditClubModal = ({
     <div className="edit-club-overlay" onClick={onClose}>
       <div className="edit-club-modal" onClick={(e) => e.stopPropagation()}>
         <div className="edit-club-header">
-          <h2>Редактирование клуба</h2>
+          <h2>{isAddMode ? 'Добавление нового клуба' : 'Редактирование клуба'}</h2>
           <button 
             className="edit-club-close" 
             onClick={onClose}
@@ -143,18 +145,20 @@ const EditClubModal = ({
               </div>
             </div>
 
-            <div className="edit-club-info-box">
-              <div className="edit-club-info-item">
-                <span className="edit-club-info-label">ID:</span>
-                <span className="edit-club-info-value">{club.id}</span>
+            {!isAddMode && club && (
+              <div className="edit-club-info-box">
+                <div className="edit-club-info-item">
+                  <span className="edit-club-info-label">ID:</span>
+                  <span className="edit-club-info-value">{club.id}</span>
+                </div>
+                <div className="edit-club-info-item">
+                  <span className="edit-club-info-label">Дата создания:</span>
+                  <span className="edit-club-info-value">
+                    {new Date(club.created_at).toLocaleString('ru-RU')}
+                  </span>
+                </div>
               </div>
-              <div className="edit-club-info-item">
-                <span className="edit-club-info-label">Дата создания:</span>
-                <span className="edit-club-info-value">
-                  {new Date(club.created_at).toLocaleString('ru-RU')}
-                </span>
-              </div>
-            </div>
+            )}
           </div>
 
           <div className="edit-club-footer">
@@ -171,7 +175,7 @@ const EditClubModal = ({
               className="edit-club-btn edit-club-btn-save"
               disabled={loading}
             >
-              {loading ? 'Сохранение...' : 'Сохранить изменения'}
+              {loading ? 'Сохранение...' : (isAddMode ? 'Создать клуб' : 'Сохранить изменения')}
             </button>
           </div>
         </form>
