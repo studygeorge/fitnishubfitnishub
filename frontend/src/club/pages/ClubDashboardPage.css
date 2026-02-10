@@ -1,5 +1,210 @@
-/* ClubDashboardPage.css - использует общую дизайн-систему */
-@import '../styles/club-design-system.css';
+@import '../club-design-system.css';
 
-/* Специфичные стили для страницы дашборда, если нужны */
-/* Все основные стили берутся из club-dashboard.css */
+/* Dashboard Page */
+.fitness-dashboard-page {
+  width: 100%;
+}
+
+/* Header приветствия */
+.fitness-dashboard-header {
+  background: var(--club-white);
+  border-radius: var(--club-radius-lg);
+  padding: var(--club-spacing-2xl);
+  margin-bottom: var(--club-spacing-3xl);
+  box-shadow: var(--club-shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--club-spacing-lg);
+}
+
+.fitness-dashboard-info h1 {
+  margin: 0 0 var(--club-spacing-sm);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--club-black);
+}
+
+.fitness-dashboard-info p {
+  margin: 0;
+  font-size: var(--club-font-size-base);
+  color: var(--club-gray-500);
+}
+
+.fitness-dashboard-info strong {
+  color: var(--club-primary);
+  font-weight: 600;
+}
+
+/* Grid для контента */
+.fitness-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: var(--club-spacing-2xl);
+  margin-bottom: var(--club-spacing-3xl);
+}
+
+/* Быстрые действия */
+.fitness-quick-actions-section {
+  margin-top: var(--club-spacing-3xl);
+}
+
+.fitness-quick-actions-section h2 {
+  font-size: var(--club-font-size-2xl);
+  font-weight: 600;
+  color: var(--club-black);
+  margin-bottom: var(--club-spacing-xl);
+}
+
+.fitness-quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--club-spacing-lg);
+}
+
+/* Карточка действия */
+.fitness-action-card {
+  display: flex;
+  align-items: center;
+  gap: var(--club-spacing-lg);
+  background: var(--club-white);
+  border-radius: var(--club-radius-lg);
+  padding: var(--club-spacing-2xl);
+  box-shadow: var(--club-shadow-sm);
+  transition: var(--club-transition);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.fitness-action-card:hover {
+  box-shadow: var(--club-shadow-md);
+  transform: translateY(-2px);
+}
+
+.fitness-action-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--club-radius-md);
+  background: var(--club-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 28px;
+  transition: var(--club-transition);
+}
+
+.fitness-action-card:hover .fitness-action-icon {
+  transform: scale(1.1);
+}
+
+.fitness-action-content h3 {
+  margin: 0 0 var(--club-spacing-xs);
+  font-size: var(--club-font-size-lg);
+  font-weight: 600;
+  color: var(--club-black);
+}
+
+.fitness-action-content p {
+  margin: 0;
+  font-size: var(--club-font-size-sm);
+  color: var(--club-gray-500);
+}
+
+/* Icons */
+.fitness-schedule-icon::before {
+  content: '📅';
+}
+
+.fitness-bookings-icon::before {
+  content: '📝';
+}
+
+.fitness-templates-icon::before {
+  content: '📋';
+}
+
+.fitness-profile-icon::before {
+  content: '🏢';
+}
+
+.fitness-finances-icon::before {
+  content: '💰';
+}
+
+.fitness-settings-icon::before {
+  content: '⚙️';
+}
+
+/* Loading и empty states */
+.fitness-profile-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: var(--club-spacing-lg);
+}
+
+.fitness-loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--club-gray-200);
+  border-top-color: var(--club-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Адаптив */
+@media (max-width: 1024px) {
+  .fitness-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .fitness-quick-actions-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .fitness-dashboard-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .fitness-dashboard-info h1 {
+    font-size: 24px;
+  }
+  
+  .fitness-dashboard-grid {
+    gap: var(--club-spacing-lg);
+  }
+  
+  .fitness-quick-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--club-spacing-md);
+  }
+  
+  .fitness-action-card {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--club-spacing-lg);
+  }
+  
+  .fitness-action-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fitness-dashboard-info h1 {
+    font-size: 22px;
+  }
+  
+  .fitness-quick-actions-grid {
+    grid-template-columns: 1fr;
+  }
+}

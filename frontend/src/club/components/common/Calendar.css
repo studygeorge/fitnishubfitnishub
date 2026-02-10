@@ -1,0 +1,198 @@
+/* Календарь в едином стиле с системой */
+
+.club-calendar {
+  background: var(--club-white);
+  border-radius: var(--club-radius-lg);
+  padding: var(--club-spacing-2xl);
+  box-shadow: var(--club-shadow-sm);
+}
+
+/* Header календаря */
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--club-spacing-xl);
+}
+
+.calendar-title {
+  font-size: var(--club-font-size-xl);
+  font-weight: 600;
+  color: var(--club-black);
+}
+
+.calendar-nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--club-radius-md);
+  border: 1px solid var(--club-gray-300);
+  background: var(--club-white);
+  color: var(--club-gray-600);
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--club-transition);
+}
+
+.calendar-nav-btn:hover {
+  background: var(--club-gray-50);
+  border-color: var(--club-primary);
+  color: var(--club-primary);
+}
+
+/* Дни недели */
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--club-spacing-sm);
+  margin-bottom: var(--club-spacing-md);
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-size: var(--club-font-size-xs);
+  font-weight: 600;
+  color: var(--club-gray-500);
+  text-transform: uppercase;
+  padding: var(--club-spacing-sm);
+}
+
+/* Сетка дней */
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--club-spacing-sm);
+}
+
+/* Кнопки дней */
+.calendar-day {
+  aspect-ratio: 1;
+  border: none;
+  background: transparent;
+  border-radius: var(--club-radius-md);
+  cursor: pointer;
+  transition: var(--club-transition);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--club-spacing-sm);
+  font-size: var(--club-font-size-base);
+  color: var(--club-black);
+}
+
+.calendar-day:hover:not(.other-month):not(:disabled) {
+  background: var(--club-gray-100);
+}
+
+/* Дни другого месяца */
+.calendar-day.other-month {
+  color: var(--club-gray-400);
+  cursor: default;
+}
+
+/* Сегодняшний день */
+.calendar-day.today:not(.selected) {
+  background: var(--club-primary-light);
+  color: var(--club-primary);
+  font-weight: 600;
+}
+
+/* Выбранный день */
+.calendar-day.selected {
+  background: var(--club-primary);
+  color: var(--club-white);
+  font-weight: 600;
+}
+
+.calendar-day.selected:hover {
+  background: var(--club-primary-hover);
+}
+
+/* Дни с занятиями */
+.calendar-day.has-classes {
+  font-weight: 500;
+}
+
+/* Неактивные дни */
+.calendar-day:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.calendar-day:disabled:hover {
+  background: transparent;
+}
+
+/* Номер дня */
+.calendar-day-number {
+  display: block;
+  line-height: 1;
+}
+
+/* Точки индикаторы занятий */
+.calendar-day-dots {
+  display: flex;
+  gap: 2px;
+  margin-top: 4px;
+  position: absolute;
+  bottom: 4px;
+}
+
+.calendar-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--club-primary);
+}
+
+.calendar-day.selected .calendar-dot {
+  background: var(--club-white);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .club-calendar {
+    padding: var(--club-spacing-lg);
+  }
+  
+  .calendar-title {
+    font-size: var(--club-font-size-lg);
+  }
+  
+  .calendar-nav-btn {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .calendar-days {
+    gap: 4px;
+  }
+  
+  .calendar-day {
+    font-size: var(--club-font-size-sm);
+    padding: 4px;
+  }
+  
+  .calendar-weekday {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-day {
+    font-size: 12px;
+  }
+  
+  .calendar-day-dots {
+    bottom: 2px;
+  }
+  
+  .calendar-dot {
+    width: 3px;
+    height: 3px;
+  }
+}

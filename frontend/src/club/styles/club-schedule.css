@@ -1,109 +1,214 @@
-/* Club Schedule - Clean Orange & White Design */
-@import './club-design-system.css';
+@import '../club-design-system.css';
 
-/* Защита от темной темы */
-@media (prefers-color-scheme: dark) {
-  .schedule-page,
-  .schedule-page *,
-  .schedule-page *::before,
-  .schedule-page *::after {
-    color-scheme: light !important;
-  }
+/* Schedule Page */
+.fitness-schedule-page {
+  width: 100%;
 }
 
-/* Главный контейнер */
-.schedule-page {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0;
-}
-
-/* Заголовок */
-.schedule-header {
+/* Page header */
+.fitness-page-header {
   background: var(--club-white);
-  padding: var(--club-spacing-2xl);
   border-radius: var(--club-radius-lg);
-  margin-bottom: var(--club-spacing-xl);
-  border: 1px solid var(--club-gray-200);
+  padding: var(--club-spacing-2xl);
+  margin-bottom: var(--club-spacing-2xl);
   box-shadow: var(--club-shadow-sm);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
-.schedule-header h1 {
-  font-size: var(--club-font-size-3xl);
+.fitness-header-content h1 {
+  margin: 0 0 var(--club-spacing-sm);
+  font-size: 28px;
   font-weight: 600;
   color: var(--club-black);
+}
+
+.fitness-header-content p {
   margin: 0;
+  font-size: var(--club-font-size-base);
+  color: var(--club-gray-500);
 }
 
-/* Календарь */
-.schedule-calendar {
-  background: var(--club-white);
-  padding: var(--club-spacing-xl);
-  border-radius: var(--club-radius-lg);
-  border: 1px solid var(--club-gray-200);
-  box-shadow: var(--club-shadow-sm);
+.fitness-header-actions {
+  margin-top: var(--club-spacing-lg);
 }
 
-/* Список занятий */
-.schedule-list {
+/* View Toggle */
+.fitness-view-toggle {
   display: flex;
-  flex-direction: column;
-  gap: var(--club-spacing-md);
+  gap: var(--club-spacing-sm);
+  margin-bottom: var(--club-spacing-2xl);
+  background: var(--club-white);
+  padding: var(--club-spacing-sm);
+  border-radius: var(--club-radius-md);
+  box-shadow: var(--club-shadow-sm);
+  width: fit-content;
 }
 
-.schedule-item {
-  background: var(--club-white);
-  border: 1px solid var(--club-gray-200);
-  border-radius: var(--club-radius-lg);
-  padding: var(--club-spacing-xl);
+.fitness-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--club-spacing-sm);
+  padding: var(--club-spacing-md) var(--club-spacing-xl);
+  border: none;
+  border-radius: var(--club-radius-md);
+  background: transparent;
+  color: var(--club-gray-600);
+  font-size: var(--club-font-size-base);
+  font-weight: 500;
+  cursor: pointer;
   transition: var(--club-transition);
 }
 
-.schedule-item:hover {
-  box-shadow: var(--club-shadow-md);
-  border-color: var(--club-primary);
+.fitness-toggle-btn.active {
+  background: var(--club-primary);
+  color: var(--club-white);
 }
 
-.schedule-item-header {
+.fitness-toggle-btn:hover:not(.active) {
+  background: var(--club-gray-100);
+}
+
+.fitness-toggle-icon {
+  font-size: 20px;
+}
+
+.fitness-calendar-toggle-icon::before {
+  content: '📅';
+}
+
+.fitness-list-toggle-icon::before {
+  content: '📋';
+}
+
+/* Schedule Content */
+.fitness-schedule-content {
+  width: 100%;
+}
+
+/* Calendar Section */
+.fitness-calendar-section {
+  background: var(--club-white);
+  border-radius: var(--club-radius-lg);
+  padding: var(--club-spacing-2xl);
+  box-shadow: var(--club-shadow-sm);
+}
+
+/* List Section */
+.fitness-list-section {
+  width: 100%;
+}
+
+.fitness-list-controls {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--club-spacing-md);
+  justify-content: space-between;
+  gap: var(--club-spacing-lg);
+  background: var(--club-white);
+  padding: var(--club-spacing-lg);
+  border-radius: var(--club-radius-lg);
+  margin-bottom: var(--club-spacing-lg);
+  box-shadow: var(--club-shadow-sm);
 }
 
-.schedule-item-title {
-  font-size: var(--club-font-size-lg);
-  font-weight: 600;
-  color: var(--club-black);
-  margin: 0;
-}
-
-.schedule-item-time {
-  font-size: var(--club-font-size-md);
-  color: var(--club-primary);
-  font-weight: 600;
-}
-
-.schedule-item-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+.fitness-date-selector {
+  display: flex;
+  align-items: center;
   gap: var(--club-spacing-md);
-  color: var(--club-gray-600);
+}
+
+.fitness-date-selector label {
+  font-size: var(--club-font-size-base);
+  font-weight: 500;
+  color: var(--club-black);
+}
+
+.fitness-date-select {
+  padding: var(--club-spacing-md) var(--club-spacing-lg);
+  border: 1px solid var(--club-gray-300);
+  border-radius: var(--club-radius-md);
+  font-size: var(--club-font-size-base);
+  color: var(--club-black);
+  background: var(--club-white);
+  cursor: pointer;
+  transition: var(--club-transition);
+}
+
+.fitness-date-select:focus {
+  outline: none;
+  border-color: var(--club-primary);
+  box-shadow: 0 0 0 3px var(--club-primary-light);
+}
+
+.fitness-list-stats {
+  display: flex;
+  gap: var(--club-spacing-xl);
+}
+
+.fitness-stat {
   font-size: var(--club-font-size-sm);
+  color: var(--club-gray-500);
+}
+
+.fitness-stat strong {
+  font-weight: 600;
+  color: var(--club-primary);
+  font-size: var(--club-font-size-base);
+  margin-left: var(--club-spacing-xs);
+}
+
+/* Add Form Section */
+.fitness-add-form-section {
+  background: var(--club-white);
+  border-radius: var(--club-radius-lg);
+  padding: var(--club-spacing-3xl);
+  box-shadow: var(--club-shadow-sm);
 }
 
 /* Адаптив */
 @media (max-width: 768px) {
-  .schedule-header {
-    flex-direction: column;
-    gap: var(--club-spacing-md);
-    align-items: flex-start;
+  .fitness-page-header {
+    text-align: center;
   }
   
-  .schedule-header .club-btn {
+  .fitness-header-content h1 {
+    font-size: 24px;
+  }
+  
+  .fitness-view-toggle {
     width: 100%;
+    justify-content: center;
+  }
+  
+  .fitness-toggle-btn {
+    flex: 1;
+    justify-content: center;
+  }
+  
+  .fitness-list-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .fitness-date-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .fitness-list-stats {
+    justify-content: space-between;
+  }
+  
+  .fitness-add-form-section {
+    padding: var(--club-spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .fitness-header-content h1 {
+    font-size: 22px;
+  }
+  
+  .fitness-toggle-btn {
+    padding: var(--club-spacing-sm) var(--club-spacing-md);
+    font-size: var(--club-font-size-sm);
   }
 }
