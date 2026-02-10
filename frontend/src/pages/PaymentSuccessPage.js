@@ -7,6 +7,7 @@ const PaymentSuccessPage = () => {
   const [status, setStatus] = useState('checking');
   const [paymentInfo, setPaymentInfo] = useState(null);
   const [error, setError] = useState(null);
+  const [retryCount, setRetryCount] = useState(0);
 
   useEffect(() => {
     const checkPaymentStatus = async () => {
@@ -19,9 +20,12 @@ const PaymentSuccessPage = () => {
           return;
         }
 
-        console.log('🔍 Проверяем статус платежа:', orderId);
+        console.log('🔍 Проверяем статус платежа:', orderId, '(попытка', retryCount + 1, ')');
 
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // Первая проверка с задержкой 2 сек, остальные - сразу
+        if (retryCount === 0) {
+          await new Promise(resolve => setTimeout(resolve, 2000));
+        }
 
         const token = localStorage.getItem('token');
         const response = await fetch(`${process.env.REACT_APP_API_URL || '/api'}/balance/payment/check/${orderId}`, {
@@ -80,7 +84,16 @@ const PaymentSuccessPage = () => {
         } else if (data.status === 'failed') {
           setStatus('failed');
           setPaymentInfo(data);
+        } else if (data.status === 'pending' && retryCount < 10) {
+          // Платёж ещё обрабатывается - повторим проверку через 3 секунды
+          console.log('⏳ Платёж обрабатывается, повторим через 3 сек...');
+          setStatus('checking');
+          setPaymentInfo(data);
+          setTimeout(() => {
+            setRetryCount(prev => prev + 1);
+          }, 3000);
         } else {
+          // Достигли лимита попыток или неизвестный статус
           setStatus('checking');
           setPaymentInfo(data);
         }
@@ -93,7 +106,7 @@ const PaymentSuccessPage = () => {
     };
 
     checkPaymentStatus();
-  }, [searchParams]);
+  }, [searchParams, retryCount]);
 
   const handleGoToBalance = async () => {
     // Перед переходом еще раз уведомляем хедер
@@ -145,6 +158,16 @@ const PaymentSuccessPage = () => {
           <p className="text-[#666666] text-base">
             Пожалуйста, подождите...
           </p>
+          {retryCount > 0 && (
+            <p className="text-[#999999] text-sm mt-3">
+              Попытка {retryCount + 1} из 10
+            </p>
+          )}
+          {paymentInfo?.message && (
+            <p className="text-[#FF6B35] text-sm mt-4 font-medium">
+              {paymentInfo.message}
+            </p>
+          )}
         </div>
       </div>
     );
