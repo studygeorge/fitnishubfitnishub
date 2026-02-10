@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
+import EditUserModal from '../components/admin/EditUserModal';
 import './AdminDashboardPage.css';
 
 const AdminDashboardPage = () => {
@@ -538,113 +539,15 @@ const AdminDashboardPage = () => {
       )}
       
       {/* Модальное окно редактирования пользователя */}
-      {editUserModal.show && editUserModal.user && (
-        <div className="admin-modal-overlay" onClick={closeEditUserModal}>
-          <div className="admin-modal admin-modal-large" onClick={(e) => e.stopPropagation()}>
-            <div className="admin-modal-header">
-              <h3>Редактирование пользователя</h3>
-              <button className="admin-modal-close" onClick={closeEditUserModal}>×</button>
-            </div>
-            
-            <form onSubmit={handleSaveUser}>
-              <div className="admin-modal-body">
-                <div className="admin-form-row">
-                  <div className="admin-form-group">
-                    <label>Имя *</label>
-                    <input
-                      type="text"
-                      value={userForm.first_name}
-                      onChange={(e) => setUserForm({...userForm, first_name: e.target.value})}
-                      required
-                    />
-                  </div>
-                  
-                  <div className="admin-form-group">
-                    <label>Фамилия</label>
-                    <input
-                      type="text"
-                      value={userForm.last_name}
-                      onChange={(e) => setUserForm({...userForm, last_name: e.target.value})}
-                    />
-                  </div>
-                </div>
-                
-                <div className="admin-form-row">
-                  <div className="admin-form-group">
-                    <label>Email *</label>
-                    <input
-                      type="email"
-                      value={userForm.email}
-                      onChange={(e) => setUserForm({...userForm, email: e.target.value})}
-                      required
-                    />
-                  </div>
-                  
-                  <div className="admin-form-group">
-                    <label>Телефон</label>
-                    <input
-                      type="tel"
-                      value={userForm.phone}
-                      onChange={(e) => setUserForm({...userForm, phone: e.target.value})}
-                    />
-                  </div>
-                </div>
-                
-                <div className="admin-form-row">
-                  <div className="admin-form-group">
-                    <label>Баланс (₽) *</label>
-                    <input
-                      type="number"
-                      step="0.01"
-                      value={userForm.balance}
-                      onChange={(e) => setUserForm({...userForm, balance: e.target.value})}
-                      required
-                    />
-                  </div>
-                  
-                  <div className="admin-form-group">
-                    <label>Новый пароль (минимум 6 символов)</label>
-                    <input
-                      type="password"
-                      value={userForm.new_password}
-                      onChange={(e) => setUserForm({...userForm, new_password: e.target.value})}
-                      placeholder="Оставьте пустым, чтобы не менять"
-                      minLength="6"
-                    />
-                  </div>
-                </div>
-                
-                <div className="admin-user-info">
-                  <p><strong>ID:</strong> {editUserModal.user.id}</p>
-                  <p><strong>Дата регистрации:</strong> {new Date(editUserModal.user.created_at).toLocaleString('ru-RU')}</p>
-                  <p><strong>Роль:</strong> {
-                    editUserModal.user.is_admin ? 'Администратор' :
-                    editUserModal.user.is_club_owner ? 'Владелец клуба' :
-                    'Клиент'
-                  }</p>
-                </div>
-              </div>
-              
-              <div className="admin-modal-actions">
-                <button 
-                  type="button"
-                  className="admin-btn-cancel"
-                  onClick={closeEditUserModal}
-                  disabled={loading}
-                >
-                  Отмена
-                </button>
-                <button 
-                  type="submit"
-                  className="admin-btn-primary"
-                  disabled={loading}
-                >
-                  {loading ? 'Сохранение...' : 'Сохранить изменения'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+      {editUserModal.show && (
+        <EditUserModal
+          user={editUserModal.user}
+          userForm={userForm}
+          setUserForm={setUserForm}
+          onSave={handleSaveUser}
+          onClose={closeEditUserModal}
+          loading={loading}
+        />
       )}
     </div>
   );
