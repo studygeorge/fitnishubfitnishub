@@ -101,6 +101,17 @@
   background: #ffffff;
 }
 
+/* Убираем стрелочки у input type="number" */
+.edit-user-field input[type="number"]::-webkit-outer-spin-button,
+.edit-user-field input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.edit-user-field input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .edit-user-field input:focus {
   outline: none;
   border-color: #FF6B35;
