@@ -1,0 +1,425 @@
+/* FitnessHub Club Owner Design System - Clean Orange & White */
+/* Используется везде в личном кабинете владельца */
+
+:root {
+  /* Основная цветовая палитра - оранжевый акцент */
+  --club-primary: #FF6B35;
+  --club-primary-hover: #e65a29;
+  --club-primary-light: rgba(255, 107, 53, 0.1);
+  
+  /* Нейтральные цвета */
+  --club-white: #ffffff;
+  --club-black: #1a1a1a;
+  --club-gray-50: #fafafa;
+  --club-gray-100: #f5f5f5;
+  --club-gray-200: #f0f0f0;
+  --club-gray-300: #e0e0e0;
+  --club-gray-400: #d0d0d0;
+  --club-gray-500: #999999;
+  --club-gray-600: #666666;
+  --club-gray-700: #333333;
+  
+  /* Семантические цвета */
+  --club-success: #4CAF50;
+  --club-success-light: rgba(76, 175, 80, 0.1);
+  --club-error: #f44336;
+  --club-error-light: rgba(244, 67, 54, 0.1);
+  --club-warning: #ff9800;
+  --club-warning-light: rgba(255, 152, 0, 0.1);
+  --club-info: #2196F3;
+  --club-info-light: rgba(33, 150, 243, 0.1);
+  
+  /* Отступы и размеры */
+  --club-spacing-xs: 4px;
+  --club-spacing-sm: 8px;
+  --club-spacing-md: 12px;
+  --club-spacing-lg: 16px;
+  --club-spacing-xl: 20px;
+  --club-spacing-2xl: 24px;
+  --club-spacing-3xl: 32px;
+  
+  /* Скругления */
+  --club-radius-sm: 6px;
+  --club-radius-md: 8px;
+  --club-radius-lg: 12px;
+  --club-radius-xl: 16px;
+  
+  /* Тени */
+  --club-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --club-shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --club-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --club-shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --club-shadow-primary: 0 2px 8px rgba(255, 107, 53, 0.25);
+  --club-shadow-primary-hover: 0 3px 12px rgba(255, 107, 53, 0.35);
+  
+  /* Типографика */
+  --club-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --club-font-size-xs: 12px;
+  --club-font-size-sm: 13px;
+  --club-font-size-base: 14px;
+  --club-font-size-md: 15px;
+  --club-font-size-lg: 16px;
+  --club-font-size-xl: 18px;
+  --club-font-size-2xl: 20px;
+  --club-font-size-3xl: 24px;
+  
+  /* Transition */
+  --club-transition: all 0.2s ease;
+}
+
+/* === БАЗОВЫЕ КОМПОНЕНТЫ === */
+
+/* Белая карточка */
+.club-card {
+  background: var(--club-white);
+  border: 1px solid var(--club-gray-200);
+  border-radius: var(--club-radius-lg);
+  padding: var(--club-spacing-2xl);
+  box-shadow: var(--club-shadow-sm);
+  transition: var(--club-transition);
+}
+
+.club-card:hover {
+  box-shadow: var(--club-shadow-md);
+}
+
+/* Кнопки */
+.club-btn {
+  padding: 11px 20px;
+  border-radius: var(--club-radius-md);
+  font-size: var(--club-font-size-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--club-transition);
+  border: none;
+  font-family: var(--club-font-family);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--club-spacing-sm);
+  white-space: nowrap;
+}
+
+.club-btn-primary {
+  background: var(--club-primary);
+  color: var(--club-white);
+  box-shadow: var(--club-shadow-primary);
+}
+
+.club-btn-primary:hover:not(:disabled) {
+  background: var(--club-primary-hover);
+  box-shadow: var(--club-shadow-primary-hover);
+  transform: translateY(-1px);
+}
+
+.club-btn-secondary {
+  background: var(--club-white);
+  color: var(--club-gray-600);
+  border: 1px solid var(--club-gray-300);
+}
+
+.club-btn-secondary:hover:not(:disabled) {
+  background: var(--club-gray-50);
+  border-color: var(--club-gray-400);
+}
+
+.club-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.club-btn-sm {
+  padding: 8px 16px;
+  font-size: var(--club-font-size-sm);
+}
+
+.club-btn-lg {
+  padding: 14px 28px;
+  font-size: var(--club-font-size-lg);
+}
+
+/* Инпуты */
+.club-input,
+.club-select,
+.club-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--club-gray-300);
+  border-radius: var(--club-radius-md);
+  font-size: var(--club-font-size-md);
+  color: var(--club-black);
+  font-family: var(--club-font-family);
+  transition: var(--club-transition);
+  background: var(--club-white);
+}
+
+.club-input:focus,
+.club-select:focus,
+.club-textarea:focus {
+  outline: none;
+  border-color: var(--club-primary);
+  box-shadow: 0 0 0 3px var(--club-primary-light);
+}
+
+.club-input:disabled,
+.club-select:disabled,
+.club-textarea:disabled {
+  background: var(--club-gray-100);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.club-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+}
+
+/* Лейблы */
+.club-label {
+  display: block;
+  font-size: var(--club-font-size-base);
+  font-weight: 500;
+  color: var(--club-black);
+  margin-bottom: var(--club-spacing-sm);
+}
+
+/* Бейджи */
+.club-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: var(--club-font-size-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.club-badge-primary {
+  background: var(--club-primary-light);
+  color: var(--club-primary);
+}
+
+.club-badge-success {
+  background: var(--club-success-light);
+  color: var(--club-success);
+}
+
+.club-badge-error {
+  background: var(--club-error-light);
+  color: var(--club-error);
+}
+
+.club-badge-warning {
+  background: var(--club-warning-light);
+  color: var(--club-warning);
+}
+
+.club-badge-info {
+  background: var(--club-info-light);
+  color: var(--club-info);
+}
+
+.club-badge-gray {
+  background: var(--club-gray-100);
+  color: var(--club-gray-600);
+}
+
+/* Модальные окна */
+.club-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.club-modal {
+  background: var(--club-white);
+  border-radius: var(--club-radius-lg);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--club-shadow-xl);
+}
+
+.club-modal-header {
+  padding: 24px 30px;
+  border-bottom: 1px solid var(--club-gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.club-modal-title {
+  margin: 0;
+  font-size: var(--club-font-size-2xl);
+  font-weight: 600;
+  color: var(--club-black);
+}
+
+.club-modal-close {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--club-gray-500);
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--club-radius-sm);
+  transition: var(--club-transition);
+}
+
+.club-modal-close:hover {
+  background: var(--club-gray-100);
+  color: var(--club-primary);
+}
+
+.club-modal-body {
+  padding: 30px;
+}
+
+.club-modal-footer {
+  padding: 20px 30px;
+  border-top: 1px solid var(--club-gray-200);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  background: var(--club-gray-50);
+  border-radius: 0 0 var(--club-radius-lg) var(--club-radius-lg);
+}
+
+/* Таблицы */
+.club-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--club-white);
+  border-radius: var(--club-radius-lg);
+  overflow: hidden;
+}
+
+.club-table thead {
+  background: var(--club-gray-50);
+}
+
+.club-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: var(--club-font-size-sm);
+  font-weight: 600;
+  color: var(--club-gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--club-gray-200);
+}
+
+.club-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--club-gray-200);
+  font-size: var(--club-font-size-base);
+  color: var(--club-black);
+}
+
+.club-table tbody tr:hover {
+  background: var(--club-gray-50);
+}
+
+.club-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Алерты */
+.club-alert {
+  padding: 14px 18px;
+  border-radius: var(--club-radius-md);
+  margin-bottom: var(--club-spacing-lg);
+  font-size: var(--club-font-size-base);
+  display: flex;
+  align-items: center;
+  gap: var(--club-spacing-md);
+}
+
+.club-alert-success {
+  background: var(--club-success-light);
+  color: var(--club-success);
+  border: 1px solid var(--club-success);
+}
+
+.club-alert-error {
+  background: var(--club-error-light);
+  color: var(--club-error);
+  border: 1px solid var(--club-error);
+}
+
+.club-alert-warning {
+  background: var(--club-warning-light);
+  color: var(--club-warning);
+  border: 1px solid var(--club-warning);
+}
+
+.club-alert-info {
+  background: var(--club-info-light);
+  color: var(--club-info);
+  border: 1px solid var(--club-info);
+}
+
+/* Разделители */
+.club-divider {
+  height: 1px;
+  background: var(--club-gray-200);
+  margin: var(--club-spacing-2xl) 0;
+}
+
+/* Утилиты для текста */
+.club-text-primary {
+  color: var(--club-primary);
+}
+
+.club-text-muted {
+  color: var(--club-gray-500);
+}
+
+.club-text-success {
+  color: var(--club-success);
+}
+
+.club-text-error {
+  color: var(--club-error);
+}
+
+.club-text-warning {
+  color: var(--club-warning);
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .club-modal {
+    max-width: 95%;
+  }
+  
+  .club-modal-header,
+  .club-modal-body,
+  .club-modal-footer {
+    padding: 20px;
+  }
+  
+  .club-modal-footer {
+    flex-direction: column-reverse;
+  }
+  
+  .club-modal-footer .club-btn {
+    width: 100%;
+  }
+}
