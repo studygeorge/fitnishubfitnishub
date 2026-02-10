@@ -131,6 +131,12 @@ const ScheduleCalendar = ({
     return date.getMonth() === currentDate.getMonth();
   };
 
+  const isPastDate = (date) => {
+    const compareDate = new Date(date);
+    compareDate.setHours(23, 59, 59, 999);
+    return compareDate < today;
+  };
+
   const getClassColor = (classItem) => {
     const template = templates.find(t => 
       t.id === classItem.template_id || 
@@ -212,6 +218,8 @@ const ScheduleCalendar = ({
                 !isCurrentMonth(day) ? 'fitness-other-month' : ''
               } ${
                 isToday(day) ? 'fitness-today' : ''
+              } ${
+                isPastDate(day) ? 'fitness-past' : ''
               } ${
                 dayClasses.length > 0 ? 'fitness-has-classes' : ''
               }`}
