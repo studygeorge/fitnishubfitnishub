@@ -52,7 +52,8 @@ router.get('/stats', async (req, res) => {
 router.get('/users', async (req, res) => {
   try {
     const result = await pool.query(`
-      SELECT id, first_name, last_name, email, phone, created_at 
+      SELECT id, first_name, last_name, email, phone, balance, created_at, 
+             is_club_owner, is_admin
       FROM users 
       ORDER BY created_at DESC
     `);
@@ -61,7 +62,7 @@ router.get('/users', async (req, res) => {
     const users = result.rows.map(user => ({
       ...user,
       full_name: `${user.first_name} ${user.last_name || ''}`.trim(),
-      role: 'client' // Добавляем роль по умолчанию
+      role: user.is_admin ? 'admin' : (user.is_club_owner ? 'owner' : 'client')
     }));
     
     res.json(users);
@@ -136,6 +137,104 @@ router.get('/clubs/:id', async (req, res) => {
   } catch (error) {
     console.error('Ошибка получения клуба:', error);
     res.status(500).json({ error: 'Ошибка сервера' });
+  }
+});
+
+// Обновление клуба (PUT /admin/clubs/:id)
+router.put('/clubs/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { 
+      name, 
+      address, 
+      category, 
+      description, 
+      contact_phone, 
+      contact_email, 
+      website, 
+      owner_id 
+    } = req.body;
+    
+    console.log('📝 Обновление клуба:', { id, name, owner_id });
+    
+    // Проверяем обязательные поля
+    if (!name || !address) {
+      return res.status(400).json({ error: 'Название и адрес обязательны' });
+    }
+    
+    // Проверяем существование клуба
+    const existingClub = await getClubById(id);
+    if (!existingClub) {
+      return res.status(404).json({ error: 'Клуб не найден' });
+    }
+    
+    // Если указан owner_id, проверяем его существование
+    if (owner_id) {
+      const ownerCheck = await pool.query(
+        'SELECT id FROM users WHERE id = $1',
+        [owner_id]
+      );
+      if (ownerCheck.rows.length === 0) {
+        return res.status(400).json({ error: 'Указанный владелец не найден' });
+      }
+    }
+    
+    // Обновляем клуб
+    const updateResult = await pool.query(
+      `UPDATE clubs 
+       SET name = $1, 
+           address = $2, 
+           category = $3, 
+           description = $4, 
+           contact_phone = $5, 
+           contact_email = $6, 
+           website = $7, 
+           owner_id = $8,
+           updated_at = CURRENT_TIMESTAMP
+       WHERE id = $9
+       RETURNING *`,
+      [
+        name, 
+        address, 
+        category || null, 
+        description || null, 
+        contact_phone || null, 
+        contact_email || null, 
+        website || null, 
+        owner_id || null, 
+        id
+      ]
+    );
+    
+    const updatedClub = updateResult.rows[0];
+    
+    // Получаем имя владельца
+    let owner_name = 'Не указан';
+    if (updatedClub.owner_id) {
+      const ownerResult = await pool.query(
+        'SELECT first_name, last_name FROM users WHERE id = $1',
+        [updatedClub.owner_id]
+      );
+      if (ownerResult.rows.length > 0) {
+        const owner = ownerResult.rows[0];
+        owner_name = `${owner.first_name} ${owner.last_name || ''}`.trim();
+      }
+    }
+    
+    console.log('✅ Клуб успешно обновлён:', updatedClub.id);
+    
+    res.json({
+      success: true,
+      message: 'Клуб успешно обновлён',
+      club: {
+        ...updatedClub,
+        owner_name
+      }
+    });
+    
+  } catch (error) {
+    console.error('❌ Ошибка обновления клуба:', error);
+    res.status(500).json({ error: 'Ошибка сервера при обновлении клуба' });
   }
 });
 

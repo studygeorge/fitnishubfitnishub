@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
 import EditUserModal from '../components/admin/EditUserModal';
+import EditClubModal from '../components/admin/EditClubModal';
 import './AdminDashboardPage.css';
 
 const AdminDashboardPage = () => {
@@ -14,6 +15,8 @@ const AdminDashboardPage = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [deleteConfirm, setDeleteConfirm] = useState({ show: false, clubId: null, clubName: '' });
   const [editUserModal, setEditUserModal] = useState({ show: false, user: null });
+  const [editClubModal, setEditClubModal] = useState({ show: false, club: null });
+  const [owners, setOwners] = useState([]);
   const [userForm, setUserForm] = useState({
     first_name: '',
     last_name: '',
@@ -21,6 +24,16 @@ const AdminDashboardPage = () => {
     phone: '',
     balance: '',
     new_password: ''
+  });
+  const [clubForm, setClubForm] = useState({
+    name: '',
+    address: '',
+    category: '',
+    description: '',
+    contact_phone: '',
+    contact_email: '',
+    website: '',
+    owner_id: ''
   });
   
   const navigate = useNavigate();
@@ -245,6 +258,89 @@ const AdminDashboardPage = () => {
     }
   };
   
+  // ===== HANDLERS FOR CLUB EDITING =====
+  
+  const handleEditClub = async (clubId) => {
+    try {
+      setLoading(true);
+      
+      // Загружаем данные клуба
+      const clubData = await api.admin.getClub(clubId);
+      
+      // Загружаем список владельцев, если еще не загружен
+      if (owners.length === 0) {
+        const ownersData = await api.admin.getOwners();
+        setOwners(ownersData);
+      }
+      
+      setEditClubModal({ show: true, club: clubData });
+      setClubForm({
+        name: clubData.name || '',
+        address: clubData.address || '',
+        category: clubData.category || '',
+        description: clubData.description || '',
+        contact_phone: clubData.contact_phone || '',
+        contact_email: clubData.contact_email || '',
+        website: clubData.website || '',
+        owner_id: clubData.owner_id || ''
+      });
+    } catch (err) {
+      setError(`Ошибка при загрузке данных клуба: ${err.message}`);
+      console.error('Ошибка загрузки клуба:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const closeEditClubModal = () => {
+    setEditClubModal({ show: false, club: null });
+    setClubForm({
+      name: '',
+      address: '',
+      category: '',
+      description: '',
+      contact_phone: '',
+      contact_email: '',
+      website: '',
+      owner_id: ''
+    });
+  };
+  
+  const handleSaveClub = async (e) => {
+    e.preventDefault();
+    
+    try {
+      setLoading(true);
+      setError('');
+      
+      const updateData = {
+        name: clubForm.name,
+        address: clubForm.address,
+        category: clubForm.category,
+        description: clubForm.description,
+        contact_phone: clubForm.contact_phone,
+        contact_email: clubForm.contact_email,
+        website: clubForm.website,
+        owner_id: clubForm.owner_id
+      };
+      
+      await api.admin.updateClub(editClubModal.club.id, updateData);
+      
+      // Обновляем список клубов
+      const updatedClubs = await api.admin.getAllClubs();
+      setClubs(updatedClubs);
+      
+      closeEditClubModal();
+      showSuccessMessage('Данные клуба успешно обновлены');
+      
+    } catch (err) {
+      setError(`Ошибка при обновлении данных клуба: ${err.message}`);
+      console.error('Ошибка обновления клуба:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   return (
     <div className="admin-dashboard">
       <div className="admin-sidebar">
@@ -335,9 +431,12 @@ const AdminDashboardPage = () => {
                           </td>
                           <td>
                             <div className="table-actions">
-                              <Link to={`/admin/clubs/${club.id}/edit`} className="action-edit">
+                              <button 
+                                className="action-edit"
+                                onClick={() => handleEditClub(club.id)}
+                              >
                                 Изменить
-                              </Link>
+                              </button>
                               <button className="action-view" onClick={() => handleViewClub(club.id)}>
                                 Просмотр
                               </button>
@@ -547,6 +646,19 @@ const AdminDashboardPage = () => {
           onSave={handleSaveUser}
           onClose={closeEditUserModal}
           loading={loading}
+        />
+      )}
+      
+      {/* Модальное окно редактирования клуба */}
+      {editClubModal.show && (
+        <EditClubModal
+          club={editClubModal.club}
+          clubForm={clubForm}
+          setClubForm={setClubForm}
+          onSave={handleSaveClub}
+          onClose={closeEditClubModal}
+          loading={loading}
+          owners={owners}
         />
       )}
     </div>

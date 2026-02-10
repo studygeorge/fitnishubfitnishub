@@ -1293,6 +1293,19 @@ const api = {
         }
       });
       return handleResponse(response);
+    },
+    
+    // Обновление данных клуба
+    updateClub: async (clubId, clubData) => {
+      const response = await fetchWithTimeout(`${API_BASE_URL}/admin/clubs/${clubId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          ...getAdminAuthHeader()
+        },
+        body: JSON.stringify(clubData)
+      });
+      return handleResponse(response);
     }
   }
 };
